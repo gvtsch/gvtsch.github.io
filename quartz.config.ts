@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: {
       provider: "plausible",
     },
-    locale: "de-DE",
+    locale: "en-US",
     baseUrl: "gvtsch.github.io",
     ignorePatterns: ["private", "templates", ".obsidian"],
     contentFolder: ["content/Notes", "content/Blog"],
