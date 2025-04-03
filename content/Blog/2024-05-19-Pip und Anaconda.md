@@ -1,10 +1,8 @@
 ---
 title: Pip und Anaconda
 date: 2024-05-19
-categories: [GENERAL]
 tags: [python, programming]     # TAG names should always be lowercase
 toc: true
-img_path: /assets/images/
 ---
 
 In diesem kurzen Beitrag möchte ich auf Anconda (conda) und Pip eingehen, weil man doch recht häufig mit diesen Zweien zu tun hat, falls man mit Python programmiert.

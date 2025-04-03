@@ -1,7 +1,6 @@
 ---
 title: Der Random Forrest
 date: 2023-02-09
-categories: [MACHINE LEARNING]
 tags: [ML, DL, AI, Medium]     # TAG names should always be lowercase
 toc: true
 ---

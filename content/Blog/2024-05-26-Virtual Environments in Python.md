@@ -1,11 +1,8 @@
 ---
 title: Virtual Environments in Python
 date: 2024-05-26
-description: In diesem Beitrag geht es darum, wie man die in Python (ab Python $3.3$) integrierten virtuellen Umgebungen nutzen kann. 
-categories: [PROGRAMMING]
 tags: [Python]     # TAG names should always be lowercase
 toc: true
-img_path: /assets/images/
 ---
 
 In diesem Beitrag geht es darum, wie man die in Python (ab Python $3.3$) integrierten virtuellen Umgebungen nutzen kann. 

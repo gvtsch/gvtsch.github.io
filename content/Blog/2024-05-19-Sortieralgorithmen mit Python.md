@@ -1,12 +1,8 @@
 ---
 title: Sortieralgorithmen mit Python
 date: 2024-05-19
-description: In diesem Beitrag trage ich ein paar Sortieralgorithmen zusammen, programmiere sie in Python und stelle sie grafisch dar.
-image: Preview.png
-categories: [PROGRAMMING]
 tags: [Python]     # TAG names should always be lowercase
 toc: true
-img_path: /assets/images/2024-05-19-Sortieralgorithmen_files/
 ---
 
 Neulich habe ich mich gefragt, wie genau eigentlich Sortieralgorithmen funktionieren. Das hat mich dazu gebracht, mich näher mit eben diesen zu beschäftigen. Dabei habe ich viel Interessantes gelernt, das ich gerne mit dir teilen möchte.

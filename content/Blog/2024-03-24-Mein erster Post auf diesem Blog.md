@@ -1,7 +1,6 @@
 ---
 title: Mein erster Post
 date: 2024-03-24
-categories: [GENERAL]
 tags: [allgemeines]     # TAG names should always be lowercase
 toc: false
 ---

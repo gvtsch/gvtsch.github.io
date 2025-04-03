@@ -1,11 +1,8 @@
 ---
 title: Neuronale Netze am Beispiel MNIST
 date: 2024-04-01
-categories: [MACHINE LEARNING]
 tags: [ML, DL, AI]     # TAG names should always be lowercase
 toc: true
-img_path: /assets/images/2024-04-01-Neuronale Netze am Beispiel MNIST_files/
-image: 2024-04-01-Neuronale Netze am Beispiel MNIST_12_0.png
 ---
 
 # Wie kann man einem Computer beibringen, eine Ziffer zu erkennen? Oder Schriftzeichen? Handynummern? Schilder?

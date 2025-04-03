@@ -1,7 +1,6 @@
 ---
 title: Der Entscheidungsbaum
 date: 2023-01-16
-categories: [MACHINE LEARNING]
 tags: [ML, DL, AI, Medium]     # TAG names should always be lowercase
 toc: true
 ---
