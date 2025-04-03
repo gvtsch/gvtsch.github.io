@@ -8,16 +8,17 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Christoph Kempkes",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
     },
-    locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    locale: "de-DE",
+    baseUrl: "gvtsch.github.io",
     ignorePatterns: ["private", "templates", ".obsidian"],
+    contentFolder: ["content/Notes", "content/Blog"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
