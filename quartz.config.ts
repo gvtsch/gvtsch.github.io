@@ -8,14 +8,14 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Christoph Kempkes",
+    pageTitle: "Digital garden",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
     },
-    locale: "de-DE",
+    locale: "en-US",
     baseUrl: "gvtsch.github.io",
     ignorePatterns: ["private", "templates", ".obsidian"],
     contentFolder: ["content/Notes", "content/Blog"],
