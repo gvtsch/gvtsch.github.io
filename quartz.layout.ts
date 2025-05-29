@@ -37,7 +37,12 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    // Component.RecentNotes({showTags: false}),
+    // HIER die Sortieroptionen für den Explorer hinzufügen
+    Component.Explorer({
+      sortBy: "date", // Sortiert nach dem 'date'-Feld im Frontmatter
+      sortOrder: "desc", // Absteigend (neueste zuerst)
+    }),
   ],
   right: [
     Component.Graph(),
@@ -61,7 +66,11 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    // HIER die Sortieroptionen für den Explorer hinzufügen
+    Component.Explorer({
+      sortBy: "date", // Sortiert nach dem 'date'-Feld im Frontmatter
+      sortOrder: "desc", // Absteigend (neueste zuerst)
+    }),
   ],
   right: [],
 }
