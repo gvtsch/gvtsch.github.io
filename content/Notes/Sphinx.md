@@ -1,5 +1,5 @@
 ---
-tags: ["python"]
+tags: ["Python"]
 ---
 # Sphinx Dokumentation erstellen
 Sphinx ist ein Werkzeug zur Erstellung von Dokumentationen, insbesondere für Python-Projekte. Es ermöglicht das Generieren von ansprechenden und gut strukturierten Dokumentationen aus Docstrings und RST-Dateien. Durch die einfache Integration und Anpassbarkeit ist Sphinx eine beliebte Wahl für Entwickler. Wenn du dir schon mal die eine oder andere Dokumentation eines (z.B. Python-) Projekts angeschaut hast, bist sicher schon mal über eine mit Sphinx erzeugte Dokumentation gestolptert.

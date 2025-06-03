@@ -1,5 +1,5 @@
 ---
-tags: ["python", "venv"]
+tags: ["Python", "venv"]
 ---
 
 # Poetry

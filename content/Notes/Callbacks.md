@@ -1,5 +1,5 @@
 ---
-tags: ["python"]
+tags: ["Python"]
 author: CKe
 ---
 
