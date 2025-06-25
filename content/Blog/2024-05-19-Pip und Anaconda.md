@@ -1,7 +1,7 @@
 ---
 title: Pip und Anaconda
 date: 2024-05-19
-tags: [python, programming]     # TAG names should always be lowercase
+tags: [Python]     # TAG names should always be lowercase
 toc: true
 ---
 
