@@ -1,7 +1,7 @@
 ---
 title: Mein erster Post
 date: 2024-03-24
-tags: [Allgemeines]     # TAG names should always be lowercase
+tags:     # TAG names should always be lowercase
 toc: false
 ---
 
