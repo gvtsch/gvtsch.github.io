@@ -1,7 +1,7 @@
 ---
 title: Der Entscheidungsbaum
 date: 2023-01-16
-tags: [ML, DL, AI, Medium]     # TAG names should always be lowercase
+tags: [ML, DL, AI, Medium, Python]     # TAG names should always be lowercase
 toc: true
 ---
 
