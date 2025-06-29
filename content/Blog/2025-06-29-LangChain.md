@@ -1,6 +1,6 @@
 ---
 title: Was ist eigentlich `LangChain`?
-date: 2022-06-29
+date: 2025-06-29
 tags: ["Python", "LangChain", "LangGraph", "Machine-Learning", "LLM", "NLP"]
 toc: True
 draft: false
