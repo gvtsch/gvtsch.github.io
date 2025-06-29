@@ -1,5 +1,5 @@
 ---
-tags: ["Python", "windows"]
+tags: ["Python", "Windows"]
 ---
 
 # Das `keyring`-Modul in Python

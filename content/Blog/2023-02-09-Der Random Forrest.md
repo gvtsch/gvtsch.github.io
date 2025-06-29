@@ -1,7 +1,7 @@
 ---
 title: Der Random Forrest
 date: 2023-02-09
-tags: [ML, DL, AI, Medium]     # TAG names should always be lowercase
+tags: [ML, DL, AI, Medium, Python]     # TAG names should always be lowercase
 toc: true
 ---
  
