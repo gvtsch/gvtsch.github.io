@@ -1,5 +1,5 @@
 ---
-tags: ["ML", "LLM", "NLP", "Python", "Statistik", "Vektordatenbank", "RAG"]
+tags: ["ml", "llm", "nlp", "python", "statistik", "vektordatenbank", "rag"]
 ---
 
 # Retrieval Augmented Generation

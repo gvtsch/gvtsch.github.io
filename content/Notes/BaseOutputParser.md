@@ -1,5 +1,5 @@
 ---
-tags: ["LangChain", "LLM", "Python"]
+tags: ["langchain", "llm", "python"]
 author: CKe
 ---
 

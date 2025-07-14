@@ -1,7 +1,7 @@
 ---
 title: Was ist eigentlich `LangChain`?
 date: 2022-06-29
-tags: ["Python", "LangChain", "LangGraph", "ML", "LLM", "NLP"]
+tags: ["python", "langchain", "LangGraph", "ml", "llm", "nlp", "agent", "multi-agent"]
 toc: True
 draft: false
 author: CKe
@@ -477,7 +477,7 @@ print("Bot:", response2['answer'])
 
 response3 = conversation_chain.invoke({"question": "Erinnerst du dich, worüber wir zuerst gesprochen haben?"})
 print("\nUser: Erinnerst du dich, worüber wir zuerst gesprochen haben?")
-print("Bot:", response3['answer']) # Hier sollte es "Langchain" sein, da im Memory
+print("Bot:", response3['answer']) # Hier sollte es "langchain" sein, da im Memory
 ```
 
 Die Ausgabe sieht dann wie folgt aus:

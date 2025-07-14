@@ -1,5 +1,5 @@
 ---
-tags: ["Vektordatenbank", "LLM", "ML", "NLP", "Python", "Statistik"]
+tags: ["vektordatenbank", "llm", "ml", "nlp", "python", "statistik"]
 author: CKe
 ---
 

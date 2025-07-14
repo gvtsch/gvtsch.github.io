@@ -1,5 +1,5 @@
 ---
-tags: ["ML", "LLM", "NLP", "Python", "Statistik", "Vektordatenbank"]
+tags: ["ml", "llm", "nlp", "python", "statistik", "vektordatenbank"]
 ---
 **Work in Progress**
 # Vektordatenbank

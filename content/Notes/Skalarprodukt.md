@@ -1,5 +1,5 @@
 ---
-tags: ["ML", "LLM", "NLP", "Python", "Statistik"]
+tags: ["ml", "llm", "nlp", "python", "statistik"]
 ---
 # Skalarprodukt (Dotprodukt): Ein Fundament der Vektoralgebra
 
