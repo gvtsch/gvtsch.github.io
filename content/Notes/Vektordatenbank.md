@@ -6,7 +6,7 @@ title: 'Vektordatenbanken'
 
 # Vektordatenbanken
 
-**Vektordatenbanken** sind eine spezielle Art von Datenbanken, die entwickelt wurden, **Vektoreinbettungen** (engl. **Embeddings**) effizient zu speichern, zu indizieren und abzufragen. **Embeddings** sind numerische Darstellungen von unstrukturierten Daten wie Texten, Bildern, Audio-Dateien oder Videos. Sie transformieren diese komplexen Daten in Punkte in einem **hochdimensionalen Raum**, typischerweise bestehend aus Hunderten oder Tausenden von Dimensionen. Die Kernidee dabei ist: Sich ähnliche Objekte sollten in diesem Raum **näher beieinander** liegen. Wie sehr sich Objekte ähneln, kann man z.B. mit der [[Kosinusaehnlichkeit|Kosinusähnlichkeit]] oder dem [[Skalarprodukt]] berechnen.
+**Vektordatenbanken** sind eine spezielle Art von Datenbanken, die entwickelt wurden, **Vektoreinbettungen** (engl. [[Embeddings]]) effizient zu speichern, zu indizieren und abzufragen. [[Embeddings]] sind numerische Darstellungen von unstrukturierten Daten wie Texten, Bildern, Audio-Dateien oder Videos. Sie transformieren diese komplexen Daten in Punkte in einem **hochdimensionalen Raum**, typischerweise bestehend aus Hunderten oder Tausenden von Dimensionen. Die Kernidee dabei ist: Sich ähnliche Objekte sollten in diesem Raum **näher beieinander** liegen. Wie sehr sich Objekte ähneln, kann man z.B. mit der [[Kosinusaehnlichkeit|Kosinusähnlichkeit]] oder dem [[Skalarprodukt]] berechnen.
 
 ## Wie funktionieren Vektordatenbanken?
 
@@ -14,7 +14,7 @@ Die Funktionsweise von Vektordatenbanken lässt sich in drei Hauptschritte unter
 
 ### Einbettungserstellung
 
-Bevor unstrukturierte Daten in einer Vektordatenbank gespeichert werden können, müssen sie in **Embeddings** umgewandelt werden. Dieser Prozess erfolgt typischerweise mithilfe von Machine-Learning-Modellen, sogenannten **Embedding-Modellen**. Für Textdaten werden beispielsweise Natural Language Processing (NLP)-Modelle verwendet, die Wörter, Sätze oder ganze Dokumente in einen numerischen Vektor transformieren. Bei Bildern kommen Convolutional Neural Networks (CNNs) zum Einsatz, die visuelle Merkmale extrahieren. Das Ergebnis ist immer ein hochdimensionaler Zahlenvektor, der die semantischen oder visuellen Eigenschaften der Originaldaten mathematisch erfasst.
+Bevor unstrukturierte Daten in einer Vektordatenbank gespeichert werden können, müssen sie in [[Embeddings]] umgewandelt werden. Dieser Prozess erfolgt typischerweise mithilfe von Machine-Learning-Modellen, sogenannten **Embedding-Modellen**. Für Textdaten werden beispielsweise Natural Language Processing (NLP)-Modelle verwendet, die Wörter, Sätze oder ganze Dokumente in einen numerischen Vektor transformieren. Bei Bildern kommen Convolutional Neural Networks (CNNs) zum Einsatz, die visuelle Merkmale extrahieren. Das Ergebnis ist immer ein hochdimensionaler Zahlenvektor, der die semantischen oder visuellen Eigenschaften der Originaldaten mathematisch erfasst.
 
 ### Speicherung und Indizierung
 
