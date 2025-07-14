@@ -1,5 +1,5 @@
 ---
-tags: ["FAISS", "Vektordatenbank", "LLM", "Machine-Lerning", "RAG", "ML", "NLP", "Python", "Statistik"]
+tags: ["faiss", "vektordatenbank", "llm", "rag", "ml", "nlp", "python", "statistik"]
 author: CKe
 ---
 

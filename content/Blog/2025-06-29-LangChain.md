@@ -193,25 +193,7 @@ Final Answer: The current Bundeskanzler of Germany is Friedrich Merz.
 ```
 
 #### #React Agent
-Ein ReAct Agent kombiniert "Reasoning" (logisches Schlussfolgern) und "Acting" (Handeln). Er nutzt Sprachmodelle, um in mehreren Schritten zu überlegen, welche Aktionen (z.B. Tool-Aufrufe) nötig sind, um ein Ziel zu erreichen. Dabei wechselt er zwischen Nachdenken und Handeln.
-
-Ablauf:
-
-Der Agent erhält eine Aufgabe.
-Er denkt nach ("Thought").
-Er entscheidet sich für eine Aktion ("Action").
-Er erhält ein Ergebnis ("Observation").
-Er wiederholt die Schritte, bis die Aufgabe gelöst ist.
-
-```mermaid
-flowchart TD
-    A[Aufgabe erhalten] --> B[Thought: Nachdenken]
-    B --> C[Action: Tool/Handlung wählen]
-    C --> D[Observation: Ergebnis erhalten]
-    D --> E{Ziel erreicht?}
-    E -- Nein --> B
-    E -- Ja --> F[Antwort geben]
-```
+Ein [[ReAct]]-Agent kombiniert "Reasoning" (logisches Schlussfolgern) und "Acting" (Handeln). Er nutzt Sprachmodelle, um in mehreren Schritten zu überlegen, welche Aktionen (z.B. Tool-Aufrufe) nötig sind, um ein Ziel zu erreichen. Dabei wechselt er zwischen Nachdenken und Handeln.
 
 ### Memory
 
