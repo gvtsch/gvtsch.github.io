@@ -5,7 +5,7 @@ author: CKe
 
 # Das Map-Reduce-Paradigma
 
-Das **Map-Reduce-Paradigma** ist ein grundlegendes Programmiermodell, das ursprünglich von Google entwickelt wurde, um die parallele Verarbeitung sehr großer Datenmengen (Big Data) auf verteilten Computerclustern zu ermöglichen. Google hat diese Programmiermodell eingeführt, um die Herausforderung der effizienten Verarbeitung der gigantischen Datenmengen zu bewältigen, die bei der Analyse von Suchergebnissen und anderen Diensten anfielen. Das Konzept wurde maßgeblich in einem Paper aus $2004$ beschrieben, welches von Jeffrey Dean und Sanjay Ghemawot, zwei Google-Forschern, verfasst wurde: (MapReduce: Simplified Data Processing on Large Clusters)[https://static.googleusercontent.com/media/research.google.com/de//archive/mapreduce-osdi04.pdf]
+Das **Map-Reduce-Paradigma** ist ein grundlegendes Programmiermodell, das ursprünglich von Google entwickelt wurde, um die parallele Verarbeitung sehr großer Datenmengen (Big Data) auf verteilten Computerclustern zu ermöglichen. Google hat diese Programmiermodell eingeführt, um die Herausforderung der effizienten Verarbeitung der gigantischen Datenmengen zu bewältigen, die bei der Analyse von Suchergebnissen und anderen Diensten anfielen. Das Konzept wurde maßgeblich in einem Paper aus $2004$ beschrieben, welches von Jeffrey Dean und Sanjay Ghemawot, zwei Google-Forschern, verfasst wurde: [MapReduce: Simplified Data Processing on Large Clusters)[https://static.googleusercontent.com/media/research.google.com/de//archive/mapreduce-osdi04.pdf)
 
 ### 1. Grundprinzip
 
