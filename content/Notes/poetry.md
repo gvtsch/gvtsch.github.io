@@ -1,5 +1,7 @@
 ---
 tags: ["python"]
+author: CKe
+title: 'Poetry'
 ---
 
 # Poetry

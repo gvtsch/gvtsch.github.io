@@ -1,5 +1,7 @@
 ---
 tags: ["ml", "llm", "nlp", "python", "statistik", "vektordatenbank", "rag"]
+author: CKe
+title: 'RAG'
 ---
 
 # Retrieval Augmented Generation

@@ -1,6 +1,7 @@
 ---
 tags: ["llm", "ml", "nlp", "langchain", "google"]
 author: CKe
+title: 'Map-Reduce Paradigma'
 ---
 
 # Das Map-Reduce-Paradigma

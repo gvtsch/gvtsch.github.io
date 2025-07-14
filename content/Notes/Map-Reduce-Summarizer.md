@@ -1,6 +1,7 @@
 ---
 tags: ["llm", "ml", "nlp", "langchain", "agent", "multi-agent"]
 author: CKe
+title: 'Map-Reduce Summarizer'
 ---
 
 # Der Map-Reduce-Summarizer von LangChain

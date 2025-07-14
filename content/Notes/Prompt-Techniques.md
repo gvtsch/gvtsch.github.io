@@ -1,5 +1,5 @@
 ---
-title: Prompt-Strategien und -Techniken
+title: Prompt-Strategien
 tags: ["python", "ml", "llm", "nlp"]
 author: CKe
 ---
