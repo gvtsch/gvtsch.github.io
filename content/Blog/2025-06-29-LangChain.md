@@ -1,7 +1,7 @@
 ---
 title: Was ist eigentlich `LangChain`?
 date: 2022-06-29
-tags: ["Python", "LangChain", "LangGraph", "Machine-Learning", "LLM", "NLP"]
+tags: ["Python", "LangChain", "LangGraph", "ML", "LLM", "NLP"]
 toc: True
 draft: false
 author: CKe

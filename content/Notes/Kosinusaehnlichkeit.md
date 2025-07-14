@@ -1,5 +1,5 @@
 ---
-tags: ["ML", "LLM", "NLP", "Python", "Statistik"]
+tags: ["ML", "LLM", "NLP", "Python", "Statistik", "RAG"]
 author: CKe
 ---
 
