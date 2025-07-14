@@ -9,7 +9,7 @@ Im Rahmen eines Multi-Agent-Frameworks habe ich den Map-Reduce-Summarizer einges
 
 ### Was ist der Map-Reduce-Summarizer?
 
-Der **Map-Reduce-Summarizer** ist eine Methode in LangChain, die darauf ausgelegt ist, sehr lange Dokumente oder Texte zusammenzufassen. Er nutzt das klassische [[Map_Reduce_Paradigma|Map-Reduce-Paradigma]] und ist besonders effektiv, wenn der Eingabetext zu lang ist, um in einem einzigen Aufruf von einem Large Language Model (LLM) verarbeitet zu werden.
+Der **Map-Reduce-Summarizer** ist eine Methode in LangChain, die darauf ausgelegt ist, sehr lange Dokumente oder Texte zusammenzufassen. Er nutzt das klassische [[Map-Reduce-Paradigma|Map-Reduce-Paradigma]] und ist besonders effektiv, wenn der Eingabetext zu lang ist, um in einem einzigen Aufruf von einem Large Language Model (LLM) verarbeitet zu werden.
 
 ### Wie funktioniert der Map-Reduce-Summarizer?
 
