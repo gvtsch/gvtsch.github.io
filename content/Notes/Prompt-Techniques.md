@@ -69,3 +69,5 @@ Im Bereich der Large Language Models (LLMs) gibt es verschiedene etablierte Tech
 
 * **Beschreibung:** Diese Technik ist eher ein Workflow. Man beginnt mit einem groben Prompt, analysiert die Antwort des LLM und verfeinert dann das Prompt schrittweise basierend auf dem Ergebnis oder Feedback, um die Antwortqualität zu verbessern.
 * **Beispiel:** Zuerst: `"Schreibe einen Marketingtext für ein neues Smartphone."` Dann: `"Gut, aber mach ihn kürzer und erwähne die Akkulaufzeit explizit."`
+
+Diese Liste ist alles andere als vollständig, aber es handelt sich um Techniken, die jeder schnell in seinen Alltag einbinden kann, ohne sich z.B. mit neuen Tools vertraut machen zu müssen.
