@@ -1,7 +1,7 @@
 ---
 title: Supervised, Unsupervised und Reinforcement Learning — Eine Übersicht
 date: 2023-01-01
-tags: [ML, DL, AI, Medium]     # TAG names should always be lowercase
+tags: [ml, dl]     # TAG names should always be lowercase
 toc: true
 ---
 
