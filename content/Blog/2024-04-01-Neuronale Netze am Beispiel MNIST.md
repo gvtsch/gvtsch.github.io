@@ -72,7 +72,7 @@ fig.suptitle("20 der Ziffern unseres Datensatzes")
 plt.show()
 ```
 
-![png](Assets/2024-04-01-Neuronale Netze am Beispiel MNIST_12_0.png)
+![png](content/Blog/Assets/2024-04-01-Neuronale Netze am Beispiel MNIST_12_0.png)
 
 #### **Überblick über den MNIST Datensatz**
 
