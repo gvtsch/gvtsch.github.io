@@ -71,7 +71,7 @@ for idx in np.arange(20):
 fig.suptitle("20 der Ziffern unseres Datensatzes")
 plt.show()
 ```
-![](2024-04-01-Neuronale Netze am Beispiel MNIST_12_0.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_12_0.png)
 
 #### **Überblick über den MNIST Datensatz**
 
