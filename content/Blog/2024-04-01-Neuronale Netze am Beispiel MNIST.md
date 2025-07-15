@@ -1,7 +1,7 @@
 ---
 title: Neuronale Netze am Beispiel MNIST
 date: 2024-04-01
-tags: [ML, DL, AI, Python]     # TAG names should always be lowercase
+tags: [ml, dl]     # TAG names should always be lowercase
 toc: true
 ---
 
