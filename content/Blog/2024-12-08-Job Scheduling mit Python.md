@@ -1,7 +1,7 @@
 ---
 title: Job Queue mit Python
 date: 2024-12-08
-tags: [ML, DL, AI, Medium, Python]     # TAG names should always be lowercase
+tags: [python]     # TAG names should always be lowercase
 toc: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Sortieralgorithmen mit Python
 date: 2024-05-19
-tags: [Python]     # TAG names should always be lowercase
+tags: [python]     # TAG names should always be lowercase
 toc: true
 ---
 

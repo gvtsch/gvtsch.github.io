@@ -1,7 +1,7 @@
 ---
 title: Theorie und Formeln hinter dem Entscheidungsbaum
 date: 2023-02-20
-tags: [ML, DL, AI, Medium]     # TAG names should always be lowercase
+tags: [ml, dl]     # TAG names should always be lowercase
 toc: true
 ---
 

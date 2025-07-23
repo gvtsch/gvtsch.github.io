@@ -1,6 +1,7 @@
 ---
 tags: ["faiss", "vektordatenbank", "llm", "rag", "ml", "nlp", "python", "statistik"]
 author: CKe
+date: 2025-07-14
 ---
 
 # `FAISS` - Facebook AI Similarity Search

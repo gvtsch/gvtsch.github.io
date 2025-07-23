@@ -1,7 +1,7 @@
 ---
 title: Neuronale Netze am Beispiel MNIST
 date: 2024-04-01
-tags: [ML, DL, AI, Python]     # TAG names should always be lowercase
+tags: [ml, dl]     # TAG names should always be lowercase
 toc: true
 ---
 
@@ -71,8 +71,7 @@ for idx in np.arange(20):
 fig.suptitle("20 der Ziffern unseres Datensatzes")
 plt.show()
 ```
-
-![png](2024-04-01-Neuronale Netze am Beispiel MNIST_12_0.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_12_0.png)
 
 #### **Überblick über den MNIST Datensatz**
 
@@ -118,7 +117,7 @@ print(f"Label des zufällig gewählten Bildes: {ground_truth}")
     
 
 
-![png](2024-04-01-Neuronale Netze am Beispiel MNIST_16_1.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_16_1.png)
 
 Das zufällige Bild des Datensatzes hat die erwähnten $28x28$ Pixel und ist in Graustufen abgelegt. Als Bild ist es links dargestellt.
 Die einzelnen Werte der Graustufen, also die Zahlen die ein jedes Pixel repräsentieren, sind in der rechten Ausgabe dargestellt. Es handelt sich dabei ursprünglich um Werte zwischen $0$ und $255$, also $8$ Bit je Pixel.  Der Wert gibt an, wie hell dieses Pixel ist.
@@ -335,7 +334,7 @@ plt.show()
 
 
     
-![png](2024-04-01-Neuronale Netze am Beispiel MNIST_44_0.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_44_0.png)
     
 
 
@@ -449,7 +448,7 @@ plt.show()
 
 
     
-![png](2024-04-01-Neuronale Netze am Beispiel MNIST_56_0.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_56_0.png)
     
 
 
@@ -558,7 +557,7 @@ plt.show()
 
 
     
-![png](2024-04-01-Neuronale Netze am Beispiel MNIST_68_0.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_68_0.png)
     
 
 
