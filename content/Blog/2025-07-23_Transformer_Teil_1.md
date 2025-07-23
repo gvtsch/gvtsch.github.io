@@ -5,7 +5,7 @@ tags: [ml, dl, python, llm, nlp, transformer, tokenization, embedding]     # TAG
 toc: true
 ---
 
-# Die Transformer-Architektur - Grundlagen und Anwendungen - Teil 1
+# Die Transformer-Architektur - Grundlagen und Anwendungen
 
 In diesem und dem folgenden Artikel möchte ich ein grundlegendes Verständnis der Transformer-Architektur und ihrer Anwendung in mehr oder weniger modernen Sprachmodellen erarbeiten. Im Fokus soll dabei der Aufmerksamkeitsmechanismus stehen, der letztlich die Kernkomponente dieser Architektur ist.
 
