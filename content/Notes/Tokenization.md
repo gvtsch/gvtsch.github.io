@@ -1,11 +1,11 @@
 ---
-title: Tokenisierung - Wie Computer Sprache "lesen"
+title: Tokenization
 date: 2025-07-22
 tags: [ml, dl, python, llm, nlp, transformer, tokenization, embedding]     # TAG names should always be lowercase
 toc: true
 ---
 
-# Tokenisierung - Wie Computer Sprache "lesen"
+# Tokenization - Wie Computer Sprache "lesen"
 
 Bevor Large Language Models (LLMs) wie ChatGPT Text verstehen oder generieren können, muss dieser in ein Format umgewandelt werden, mit dem der Computer arbeiten kann. Genau hier kommt die Tokenisierung ins Spiel – ein wichtiger erster Schritt in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP).
 
