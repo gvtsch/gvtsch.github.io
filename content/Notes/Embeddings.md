@@ -1,7 +1,7 @@
 ---
 title: Embeddings - Die Sprache der Vektoren
 date: 2025-07-22
-tags: [ml, dl, python, llm, nlp, transformer]     # TAG names should always be lowercase
+tags: [ml, dl, python, llm, nlp, transformer, tokenization, embedding]     # TAG names should always be lowercase
 toc: true
 ---
 
