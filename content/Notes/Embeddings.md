@@ -1,11 +1,11 @@
 ---
-title: Wort- und Token-Embeddings: Die Sprache der Vektoren
+title: Wort- und Token-Embeddings - Die Sprache der Vektoren
 date: 2025-07-22
 tags: [ml, dl, python, llm, nlp, transformer]     # TAG names should always be lowercase
 toc: true
 ---
 
-# Wort- und Token-Embeddings: Die Sprache der Vektoren
+# Wort- und Token-Embeddings - Die Sprache der Vektoren
 
 Embeddings - ein Kernkonzept, das moderne künstliche Intelligenz in der Sprachverarbeitung antreibt. Wenn Computer Sprache verstehen sollen, müssen sie Text in ein Format umwandeln, mit dem sie arbeiten können. Hier kommen Embeddings ins Spiel: Sie sind der Schlüssel, um Wörter und deren Bedeutungen für Maschinen "begreifbar" zu machen.
 
