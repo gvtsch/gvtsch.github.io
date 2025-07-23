@@ -1,4 +1,3 @@
-
 ---
 title: Die Transformer-Architektur: Grundlagen und Anwendungen - Teil 1
 date: 2025-07-22
