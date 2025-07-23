@@ -1,5 +1,5 @@
 ---
-title: Wort- und Token-Embeddings - Die Sprache der Vektoren
+title: Embeddings - Die Sprache der Vektoren
 date: 2025-07-22
 tags: [ml, dl, python, llm, nlp, transformer]     # TAG names should always be lowercase
 toc: true
@@ -117,20 +117,20 @@ Manhattan   22.00000  1.000000   2.100000   4.200000
 
 Die Tabelle verdeutlicht die unterschiedlichen Eigenschaften der Metriken beim Vergleich des Referenzvektors für König mit den anderen Wörtern:
 
-* Skalarprodukt (Dot Product):
+* **Skalarprodukt (Dot Product)**:
     * Misst die "Übereinstimmung" der Richtungen und berücksichtigt gleichzeitig die Länge (Magnitude) der Vektoren. Ein größeres Skalarprodukt deutet auf eine stärkere Ausrichtung in dieselbe Richtung hin und/oder auf längere Vektoren.
     * Je höher der Wert, desto ähnlicher sind die Vektoren.
-    * Im Beispiel: Königin_3 hat mit 6.3 das höchste Skalarprodukt zu König, gefolgt von Königin_2 (4.2) und Königin (2.0). Dies ist, wie erwartet, eine Folge ihrer zunehmenden Vektorlänge, während ihre semantische Richtung zum "König" sehr ähnlich bleibt. Apfel hat ein Skalarprodukt von 0, da die Vektoren orthogonal zueinander stehen.
-* Kosinus-Ähnlichkeit:
+    * Im Beispiel: `Königin_3` hat mit $6.3$ das höchste Skalarprodukt zu `König`, gefolgt von `Königin_2` ($4.2$) und `Königin` ($2.0$). Dies ist, wie erwartet, eine Folge ihrer zunehmenden Vektorlänge, während ihre semantische Richtung zum `König` sehr ähnlich bleibt. `Apfel` hat ein Skalarprodukt von $0$, da die Vektoren orthogonal zueinander stehen.
+* **Kosinus-Ähnlichkeit**:
     * Misst den Winkel zwischen Vektoren und spiegelt somit rein die semantische Richtung oder Ähnlichkeit wider, unabhängig von deren Länge.
-    * Hohe Werte (nahe 1) = sehr ähnliche Bedeutung (Vektoren zeigen in fast dieselbe Richtung).
-    * Niedrige Werte (nahe 0 oder -1) = geringe oder entgegengesetzte Ähnlichkeit.
-    * Im Beispiel: Königin_2 (0.999) und Königin_3 (0.999) sind dem König am ähnlichsten, da ihre Vektoren fast perfekt in dieselbe Richtung zeigen. Königin (0.816) ist immer noch ähnlich, aber der zusätzliche Eintrag in der dritten Dimension (weiblich) führt zu einem etwas größeren Winkel. Apfel ist komplett unähnlich (0.000), da sein Vektor eine völlig andere Richtung hat. Die Kosinus-Ähnlichkeit ist die bevorzugte Metrik für LLMs, da sie die Bedeutungsähnlichkeit robust erfasst.
-* Euklidische Distanz und Manhattan-Distanz:
+    * Hohe Werte (nahe $1$) = sehr ähnliche Bedeutung (Vektoren zeigen in fast dieselbe Richtung).
+    * Niedrige Werte (nahe $0$ oder $-1$) = geringe oder entgegengesetzte Ähnlichkeit.
+    * Im Beispiel: `Königin_2` ($0.999$) und `Königin_3` ($0.999$) sind dem `König` am ähnlichsten, da ihre Vektoren fast perfekt in dieselbe Richtung zeigen. `Königin` ($0.816$) ist immer noch ähnlich, aber der zusätzliche Eintrag in der dritten Dimension (weiblich) führt zu einem etwas größeren Winkel. `Apfel` ist komplett unähnlich ($0.000$), da sein Vektor eine völlig andere Richtung hat. Die Kosinus-Ähnlichkeit ist die bevorzugte Metrik für LLMs, da sie die Bedeutungsähnlichkeit robust erfasst.
+* **Euklidische Distanz und Manhattan-Distanz**:
     * Messen den geometrischen "Abstand" zwischen zwei Vektoren im Vektorraum.
     * Kleine Werte bedeuten hohe Ähnlichkeit (Vektoren sind nah beieinander).
     * Große Werte bedeuten geringe Ähnlichkeit (Vektoren sind weit voneinander entfernt).
-    * Sie sind empfindlich gegenüber der Vektorgröße. Königin_2 und Königin_3 zeigen trotz ihrer hohen semantischen Ähnlichkeit (hohe Kosinus-Werte) eine größere Distanz zu König als Königin. Das liegt daran, dass ihre Vektoren einfach "länger" sind und somit weiter entfernt liegen, auch wenn ihre Richtung sehr ähnlich ist.
+    * Sie sind empfindlich gegenüber der Vektorgröße. `Königin_2` und `Königin_3` zeigen trotz ihrer hohen semantischen Ähnlichkeit (hohe Kosinus-Werte) eine größere Distanz zu `König` als `Königin`. Das liegt daran, dass ihre Vektoren einfach "länger" sind und somit weiter entfernt liegen, auch wenn ihre Richtung sehr ähnlich ist.
     * Diese Distanzmaße sind weniger geeignet, um rein semantische Beziehungen in Embeddings zu quantifizieren, da die Bedeutung von Wörtern in LLMs oft durch die Richtung ihrer Embeddings und weniger durch deren Länge repräsentiert wird.
 
 ## Fazit
