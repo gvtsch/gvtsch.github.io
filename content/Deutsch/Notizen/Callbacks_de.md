@@ -1,5 +1,7 @@
 ---
+title: Callbacks
 tags: ["python"]
+date: 2025-06-02
 author: CKe
 ---
 

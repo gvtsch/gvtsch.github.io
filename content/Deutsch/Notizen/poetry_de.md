@@ -121,7 +121,7 @@ Es gibt noch viele weitere Befehle. Ein paar werde ich noch nennen, auch wenn ic
     Diese Skripte können dann einfach mit `poetry run test` oder `poetry run lint` ausgeführt werden.
 * **Gruppen von Abhängigkeiten**: Neben den normalen Abhängigkeiten ( `[tool.poetry.dependencies]`) und den Entwicklungsabhängigkeiten (`[tool.poetry.group.dev.dependencies]`) können auch weitere Gruppen definiert werden.  Das ist nützlich, um optionale Abhängigkeiten zu verwalten (z.B. für bestimmte Features).
 * **Environment Variables**: Poetry unterstützt die Verwendung von Umgebungsvariablen in der `pyproject.toml` Datei. Das kann nützlich sein, um z.B. geheime Schlüssel oder andere sensible Informationen zu verwalten, ohne sie direkt in der Konfigurationsdatei zu speichern. 
-    * Hier möchte ich auch auf [[keyring]] hinweisen.
+    * Hier möchte ich auch auf [[Keyring_de|Keyring]] hinweisen.
 * **Plugins**: Poetry unterstützt Plugins, um die Funktionalität zu erweitern. Es gibt eine Reihe von Community-Plugins, die z.B. die Integration mit anderen Tools verbessern oder zusätzliche Features hinzufügen.
 * **Versionsverwaltung**: Poetry verwendet Semantic Versioning (SemVer). Das bedeutet, dass Versionsnummern in der Form `MAJOR.MINOR.PATCH` angegeben werden, wobei:
     *   `MAJOR`: Inkompatible API-Änderungen

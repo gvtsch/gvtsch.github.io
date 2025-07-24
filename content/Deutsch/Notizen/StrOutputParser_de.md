@@ -5,7 +5,7 @@ author: CKe
 
 # Was ist `LangChain`'s `StrOutputParser()`?
 
-Der `StringOutputParser()` ist eine Implementierung der [[BaseOutputParser]]-Klasse in `LangChain`. Die Hauptfunktion des Parsers ist es, die Ausgabe, die ihm übergeben wird, als einfach String zurückzugeben. Was im ersten Moment trivial klingt, ist entscheidend, da die Ausgaben innerhalb von `LangChain` komplex sein können.
+Der `StringOutputParser()` ist eine Implementierung der [[BaseOutputParser_de|BaseOutputParser]]-Klasse in `LangChain`. Die Hauptfunktion des Parsers ist es, die Ausgabe, die ihm übergeben wird, als einfach String zurückzugeben. Was im ersten Moment trivial klingt, ist entscheidend, da die Ausgaben innerhalb von `LangChain` komplex sein können.
 
 ## Wozu braucht man den Parser?
 Man kann den Parser z.B. in einem der folgenden Szenarien einsetzen.
@@ -20,7 +20,7 @@ Man kann den Parser z.B. in einem der folgenden Szenarien einsetzen.
 In der [LangChain Dokumentation](https://python.langchain.com/api_reference/core/output_parsers.html) findet man noch viele weitere Parser.
 
 ## Wie verwendet man den `StrOutputParser`?
-Der `StrOutputParser()` hat eine Methode namens `parse()`, die einen String als Eingabe erwartet und diesen String dann unverändert zurückgibt. Im Kontext der Chains, kann man ihn z.B. wie folgt verwenden. Das Beispiel ist ggf. nicht ausführbar, weil man noch einen API-Key angeben muss. Das kann man z.B. mittels [[keyring]] umsetzen.
+Der `StrOutputParser()` hat eine Methode namens `parse()`, die einen String als Eingabe erwartet und diesen String dann unverändert zurückgibt. Im Kontext der Chains, kann man ihn z.B. wie folgt verwenden. Das Beispiel ist ggf. nicht ausführbar, weil man noch einen API-Key angeben muss. Das kann man z.B. mittels [[Keyring_de|Keyring]] umsetzen.
 
 ```python
 from langchain_core.prompts import ChatPromptTemplate

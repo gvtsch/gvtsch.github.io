@@ -30,7 +30,7 @@ Im Bereich der Large Language Models (LLMs) gibt es verschiedene etablierte Tech
 
 * **Beschreibung:** Das LLM wird explizit aufgefordert, seine Schritte zur Problemlösung oder seine Überlegungen aufzuschreiben, bevor es die finale Antwort gibt. Dies verbessert die Genauigkeit bei komplexen Aufgaben und erhöht die Transparenz.
 * **Beispiel:** `"Erkläre Schritt für Schritt, wie man einen Kuchen backt."` oder `"Löse die folgende Aufgabe und zeige alle Rechenschritte: ..." `
-* _Das kann man beliebig komplex gestalten, siehe zum Beispiel [[ReAct|2025-07-14-ReAct]]_
+* _Das kann man beliebig komplex gestalten, siehe zum Beispiel [[ReAct_de|ReAct]]_
 
 ## Tree-of-Thought (ToT) Prompting
 

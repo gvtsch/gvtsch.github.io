@@ -1,4 +1,5 @@
 ---
+title: FAISS Vektordatenbank
 tags: ["faiss", "vektordatenbank", "llm", "rag", "ml", "nlp", "python", "statistik"]
 author: CKe
 date: 2025-07-14
@@ -6,7 +7,7 @@ date: 2025-07-14
 
 # `FAISS` - Facebook AI Similarity Search
 
-`FAISS` ist eine Bibliothek, die von Facebook AI Research (also von Meta) entwickelt wurde, um effiziente Ähnlichkeitssuchen (z.B. [[Kosinusaehnlichkeit]], [[Skalarprodukt]]) durchzuführen. `FAISS` ist hinsichtlich künstlicher Intelligenz und insbesondere für Large Language Models (LLMs) ein sehr wichtiges Werkzeug, da es (wie auch andere Tools wie z.B. Pinecone) die Grundlage für Retrieval Augmented Generation ([[RAG]]) bildet.
+`FAISS` ist eine Bibliothek, die von Facebook AI Research (also von Meta) entwickelt wurde, um effiziente Ähnlichkeitssuchen (z.B. [[Kosinusaehnlichkeit_de|Kosinusähnlichkeit]], [[Skalarprodukt_de|Skalarprodukt]]) durchzuführen. `FAISS` ist hinsichtlich künstlicher Intelligenz und insbesondere für Large Language Models (LLMs) ein sehr wichtiges Werkzeug, da es (wie auch andere Tools wie z.B. Pinecone) die Grundlage für Retrieval Augmented Generation ([[RAG_de|RAG]]) bildet.
 
 ## Was macht `FAISS` so wichtig?
 
@@ -27,11 +28,11 @@ Das ganze werde ich nun stark vereinfachen. Stell dir vor, du hast Millionen von
    * **Flat Index**: Speichert Vektoren direkt und führt eine Brute-Force-Suche durch. Genauer aber langsam bei großen Datenmengen.
    * **Inverted File Index**: Clustern der Vektoren, um die Suche auf relevante Cluster zu beschränken. Schneller, aber mit geringem Genauigkeitsverlust.
    * **Product Quantization**: Komprimiert Vektoren, um den Speicherbedarf zu reduzieren und die Suche zu beschleunigen. Führt ebenfalls zu Genauigkeitsverlusten.
-2. **Suche**: Wenn die Abfrage, also der Vektor der Nutzerfrage, kommt, nutzt `FAISS` den gewählten Index, um die `k`-ähnlichsten Vektoren im Datensatz zu finden. Die "Ähnlichkeit" wird dabei oft über die [[Kosinusaehnlichkeit]] gemessen.
+2. **Suche**: Wenn die Abfrage, also der Vektor der Nutzerfrage, kommt, nutzt `FAISS` den gewählten Index, um die `k`-ähnlichsten Vektoren im Datensatz zu finden. Die "Ähnlichkeit" wird dabei oft über die [[Kosinusaehnlichkeit_de|Kosinusähnlichkeit]] gemessen.
 
 Natürlich hängt die Wahl des Indizes nun von den Anforderungen an Geschwindigkeit, Genauigkeit und Speichernutzung ab.
 
-## `FAISS` in [[LangChain]]
+## `FAISS` in [[LangChain_de|LangChain]]
 
 In `LangChain` wird es als eine unterstützende Vektordatenbank (oder Vectorstore) integriert. Nachdem die Dokumente geladen und in Chunks geteilt wurden, werden diese Chunks in Vektoren umgewandelt (z.B. mit `OpenAIEmbeddings`). Diese Vektoren werden dann an `FAISS` übergeben, um sie zu indizieren.
 
@@ -121,10 +122,10 @@ print("Bot:", response2['answer'])
 print("\n--- Chat-Interaktion beendet ---")
 ```
 
-### Wie der Code die [[RAG]]-Pipeline umsetzt
-Das Code-Beispiel demonstriert die grundlegenden Schritte einer RAG-Pipeline in [[LangChain]] und die zentrale Rolle von `FAISS`:
+### Wie der Code die [[RAG_de|RAG]]-Pipeline umsetzt
+Das Code-Beispiel demonstriert die grundlegenden Schritte einer RAG-Pipeline in [[LangChain_de|LangChain]] und die zentrale Rolle von `FAISS`:
 1. **Laden und Teilen**: `PyPDFFoader` und `RecursiveCharacterTextSplitter` laden das Dokument und teilen es in verwaltbare Text-Chunks auf.
-2. **Vektorisierung**: `OpenAIEmbeddings` wandelt dies Text-Chunks in in Vektoren bzw. [[Embeddings]] um.
+2. **Vektorisierung**: `OpenAIEmbeddings` wandelt dies Text-Chunks in in Vektoren bzw. [[Embeddings_de|Embeddings]] um.
 3. **Indizierung (`FAISS`)**: `FAISS.from_document` indiziert die Vektoren. Hier organisiert `FAISS` die Datenbank, um die spätere Suche zu beschleunigen.
 4. **Abruf und Generierung**: `ConversationalRetrievalChain` verwendet  `vectorstore.as_retriever()`, um bei einer Nutzeranfrage (z.B. _"Was ist Attention?"_) die ähnlichsten Vektoren (also die relevantesten Text-Chunks) aus `FAISS` abzurufen und diese dem LLM zur Generierung der Antwort bereitzustellen.
 

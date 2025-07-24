@@ -15,7 +15,7 @@ Im Grunde misst die Kosinusähnlichkeit den **Kosinus des Winkels zwischen zwei 
 * Ein Wert von **0** bedeutet, dass der Winkel 90 Grad beträgt (die Vektoren sind orthogonal). Es gibt **keine Ähnlichkeit** in ihrer Ausrichtung.
 * Ein Wert von **-1** bedeutet, dass der Winkel 180 Grad beträgt, d.h., die Vektoren zeigen in exakt entgegengesetzte Richtungen. Dies indiziert **maximale Unähnlichkeit**.
 
-Wichtig ist, dass die Kosinusähnlichkeit **unabhängig von der Größe (Länge)** der Vektoren ist. Sie betrachtet ausschließlich ihre **Ausrichtung im Vektorraum**. Das ist entscheidend, da in vielen Anwendungen (wie Text-Embeddings) die Länge eines Vektors nicht unbedingt eine Rolle für die semantische Bedeutung spielt, sondern nur seine Richtung. Und darin unterscheidet es sich vom [[Skalarprodukt|Skalarprodukt]].
+Wichtig ist, dass die Kosinusähnlichkeit **unabhängig von der Größe (Länge)** der Vektoren ist. Sie betrachtet ausschließlich ihre **Ausrichtung im Vektorraum**. Das ist entscheidend, da in vielen Anwendungen (wie Text-Embeddings) die Länge eines Vektors nicht unbedingt eine Rolle für die semantische Bedeutung spielt, sondern nur seine Richtung. Und darin unterscheidet es sich vom [[Skalarprodukt_de|Skalarprodukt]].
 
 
 ## Formel der Kosinusähnlichkeit
@@ -37,7 +37,7 @@ Dabei ist:
 
 Die Kosinusähnlichkeit ist eine Schlüsselkomponente in modernen NLP-Systemen:
 
-* **Semantische Suche und [[RAG|Retrieval Augmented Generation (RAG)]]:** Wenn man eine Frage an ein LLM stellt, wird die Frage in einen Vektor (Embedding) umgewandelt. Dieses Embedding wird dann mit den Embeddings einer Wissensdatenbank (häufig [[Vektordatenbank|Vektordatenbanken]]) verglichen, um die relevantesten Dokumente oder Passagen zu finden. Die Kosinusähnlichkeit hilft dabei, die "nächsten" oder semantisch ähnlichsten Inhalte zu identifizieren.
+* **Semantische Suche und [[RAG|Retrieval Augmented Generation (RAG)]]:** Wenn man eine Frage an ein LLM stellt, wird die Frage in einen Vektor (Embedding) umgewandelt. Dieses Embedding wird dann mit den Embeddings einer Wissensdatenbank (häufig [[Vektordatenbank_de|Vektordatenbanken]]) verglichen, um die relevantesten Dokumente oder Passagen zu finden. Die Kosinusähnlichkeit hilft dabei, die "nächsten" oder semantisch ähnlichsten Inhalte zu identifizieren.
 * **Empfehlungssysteme:** Produkte, Filme oder Artikel, die ähnliche inhaltliche Beschreibungen oder Nutzerprofile aufweisen, können anhand der Kosinusähnlichkeit ihrer Embeddings empfohlen werden.
 * **Text-Clustering und Klassifizierung:** Texte mit hoher Kosinusähnlichkeit werden zu Gruppen (Clustern) zusammengefasst oder bestimmten Kategorien zugeordnet, da sie wahrscheinlich ein ähnliches Thema behandeln.
 * **Plagiatserkennung:** Durch den Vergleich der Kosinusähnlichkeit von Textsegmenten kann die Ähnlichkeit gemessen und mögliche Plagiate identifiziert werden.

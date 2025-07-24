@@ -30,7 +30,7 @@ Diese geometrische Interpretation ist besonders aussagekräftig:
 * Wenn $\theta = 90^\circ$ (Vektoren sind orthogonal), ist $\cos(\theta) = 0$, und das Skalarprodukt ist 0.
 * Wenn $\theta = 180^\circ$ (Vektoren zeigen in entgegengesetzte Richtungen), ist $\cos(\theta) = -1$, und das Skalarprodukt ist maximal negativ.
 
-## Zusammenhang zur [[Kosinusaehnlichkeit|Kosinusähnlichkeit]]
+## Zusammenhang zur [[Kosinusaehnlichkeit_de|Kosinusähnlichkeit]]
 
 Das Skalarprodukt ist eng mit der Kosinusähnlichkeit verbunden. Tatsächlich ist die Kosinusähnlichkeit nichts anderes als das **normalisierte Skalarprodukt**. Wenn wir die geometrische Formel nach $\cos(\theta)$ auflösen, erhalten wir genau die Formel für die Kosinusähnlichkeit:
 

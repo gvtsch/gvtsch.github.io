@@ -17,7 +17,7 @@ Stell dir vor, du hast einen langen Satz. Für einen Computer ist das zunächst 
 
 ## Und wozu das ganze?
 
-Computer verstehen Text selbstverständlich nicht so, wie wir Menschen es können. Sie benötigen eine numerische Darstellung. Durch die Tokenisierung wird der Text in diskrete Einheiten heruntergebrochen. Diese Tokens können dann wiederum in sogenannte [[Embeddings]] gewandelt werden. [[Embeddings]] sind numerische Vektordarstellungen der Textschnipsel oder Tokens, mit denen NLP-Modelle arbeiten und komplexe Sprachmuster verarbeiten können.
+Computer verstehen Text selbstverständlich nicht so, wie wir Menschen es können. Sie benötigen eine numerische Darstellung. Durch die Tokenisierung wird der Text in diskrete Einheiten heruntergebrochen. Diese Tokens können dann wiederum in sogenannte [[Embeddings_de|Embeddings]] gewandelt werden. [[Embeddings|Embeddings]] sind numerische Vektordarstellungen der Textschnipsel oder Tokens, mit denen NLP-Modelle arbeiten und komplexe Sprachmuster verarbeiten können.
 
 Die Tokenisierung ist entscheidend, weil sie ...
 

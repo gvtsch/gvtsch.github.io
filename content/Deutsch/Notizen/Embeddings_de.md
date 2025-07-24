@@ -11,7 +11,7 @@ Embeddings - ein Kernkonzept, das moderne künstliche Intelligenz in der Sprachv
 
 ## Was sind Embeddings?
 
-Embeddings sind numerische Vektordarstellungen von Wörtern, Subwörtern oder anderen Texteinheiten, die wir als [[Tokenization|Tokens]] bezeichnen. Ihr Hauptzweck ist es, die semantische (bedeutungsbezogene) und syntaktische (grammatikalische) Beziehung zwischen diesen Tokens in einem hochdimensionalen Raum zu erfassen. Das bedeutet: Wörter mit ähnlicher Bedeutung oder Funktion liegen im Vektorraum näher beieinander.
+Embeddings sind numerische Vektordarstellungen von Wörtern, Subwörtern oder anderen Texteinheiten, die wir als [[Tokenization_de|Tokens]] bezeichnen. Ihr Hauptzweck ist es, die semantische (bedeutungsbezogene) und syntaktische (grammatikalische) Beziehung zwischen diesen Tokens in einem hochdimensionalen Raum zu erfassen. Das bedeutet: Wörter mit ähnlicher Bedeutung oder Funktion liegen im Vektorraum näher beieinander.
 
 Stell dir vor, du könntest jedes Wort nicht nur als Zeichenkette, sondern als einen Punkt in einem riesigen, mathematischen Raum darstellen. Wenn "König" und "Königin" in diesem Raum nahe beieinander liegen und "Apfel" weit entfernt ist, dann spiegelt das ihre jeweilige Bedeutungsähnlichkeit wider.
 
@@ -40,7 +40,7 @@ In der Praxis haben diese Wort-Embeddings bedeutend mehr Dimensionen. Moderne Sp
 
 Um die semantische Ähnlichkeit zwischen Vektoren zu messen, werden verschiedene mathematische Metriken verwendet. Die Kosinus-Ähnlichkeit und das Skalarprodukt (Dot Product) sind besonders wichtig im Kontext von Natural Language Processing (NLP) und Large Language Models (LLMs), da sie die Richtung von Vektoren bewerten und somit die Bedeutungsähnlichkeit robust erfassen. Daneben gibt es Distanzmaße wie die Euklidische oder Manhattan-Distanz, die den "Abstand" zwischen Vektoren im Raum messen.
 
-Wir werden hier die [[Kosinusaehnlichkeit|Kosinus-Ähnlichkeit]], das Skalarprodukt, die Euklidische Distanz und die Manhatten-Distanz zusammen mit der Euklidischen und Manhattan-Distanz in einem Beispiel vergleichen, um ihre Unterschiede und Zusammenhänge in der Bewertung der semantischen Nähe zu verdeutlichen.
+Wir werden hier die [[Kosinusaehnlichkeit_de|Kosinus-Ähnlichkeit]], das Skalarprodukt, die Euklidische Distanz und die Manhatten-Distanz zusammen mit der Euklidischen und Manhattan-Distanz in einem Beispiel vergleichen, um ihre Unterschiede und Zusammenhänge in der Bewertung der semantischen Nähe zu verdeutlichen.
 
 
 ```python

@@ -29,11 +29,11 @@ Natürlich bringt diese Komprimierung auch Nachteile mit sich. Es ist möglich, 
 
 ### Tokens und Embeddings - Die Bausteine
 
-Das folgende ist eine kurze Einführung in die Bausteine von Sprachmodellen. Ausführlichere Informationen findest du unter [[Tokenization]] und [[Embeddings]].
+Das folgende ist eine kurze Einführung in die Bausteine von Sprachmodellen. Ausführlichere Informationen findest du unter [[Tokenization_de|Tokenisierung]] und [[Embeddings_de|Embeddings]].
 
 #### Tokens und Tokenisierung
 
-Tokens sind die grundlegenden Einheiten, in die ein Sprachmodell Text zerlegt. Dieser Prozess wird [[Tokenization|Tokenisierung]] genannt. Stellen wir uns das an einem konkreten Beispiel vor. Wir verwenden dazu den `distilgpt2`-Tokenizer.
+Tokens sind die grundlegenden Einheiten, in die ein Sprachmodell Text zerlegt. Dieser Prozess wird [[Tokenization_de|Tokenisierung]] genannt. Stellen wir uns das an einem konkreten Beispiel vor. Wir verwenden dazu den `distilgpt2`-Tokenizer.
 
 Wir importieren unsere Abhängigkeiten und laden dann das `distilgpt2`-Modell und den zugehörigen Tokenizer. Der Tokenizer ist ein wesentlicher Bestandteil, da er den Eingabetext in die numerische Darstellung (Token-IDs) umwandelt, mit der das Modell arbeiten kann.
 
@@ -70,7 +70,7 @@ Wie du siehst, zerlegt der Tokenizer den Satz in eine Liste von Tokens. Beachte 
 
 Nach der Tokenisierung kommen die Embeddings ins Spiel. Vereinfacht ausgedrückt sind Embeddings numerische Vektordarstellungen von Tokens, die deren semantische Bedeutung erfassen. Stell dir vor, jedes Wort wird in einem mehrdimensionalen Raum als Punkt dargestellt. Wörter mit ähnlicher Bedeutung liegen näher beieinander, während Wörter mit unterschiedlicher Bedeutung weiter auseinander liegen.
 
-Diese komplexen Vektoren werden während des Trainings von Sprachmodellen gelernt. Um die Ähnlichkeit zwischen diesen Vektoren zu messen, werden verschiedene Metriken verwendet, die bekannteste davon ist die [[Kosinusaehnlichkeit|Kosinus-Ähnlichkeit]].
+Diese komplexen Vektoren werden während des Trainings von Sprachmodellen gelernt. Um die Ähnlichkeit zwischen diesen Vektoren zu messen, werden verschiedene Metriken verwendet, die bekannteste davon ist die [[Kosinusaehnlichkeit_de|Kosinus-Ähnlichkeit]].
 
 **Warum Kosinus-Ähnlichkeit?**
 
@@ -104,7 +104,7 @@ def get_top_n_predictions(model, tokenizer, input_ids, n=10):
     return top_n_predictions
 ```
 
-Diese Funktion nimmt das Modell, den Tokenizer und die Token-IDs als Eingabe und gibt eine Liste von Top-Wörtern und ihren Logits zurück. Logits sind die rohen, unnormalisierten Vorhersagewerte des Modells, die noch nicht in Wahrscheinlichkeiten umgewandelt wurden (dafür wäre eine [[Softmax]]-Funktion nötig).
+Diese Funktion nimmt das Modell, den Tokenizer und die Token-IDs als Eingabe und gibt eine Liste von Top-Wörtern und ihren Logits zurück. Logits sind die rohen, unnormalisierten Vorhersagewerte des Modells, die noch nicht in Wahrscheinlichkeiten umgewandelt wurden (dafür wäre eine [[Softmax_de|Softmax]]-Funktion nötig).
 
 Nun lassen wir uns überraschen, was das Modell aus unseren ersten Worten macht. Das folgende Beispiel demonstriert diesen iterativen Prozess, indem das Modell schrittweise die nächsten drei wahrscheinlichsten Tokens voraussagt und das wahrscheinlichste davon an den Satz anhängt. Wir wiederholen diesen Vorgang zehn Mal.
 

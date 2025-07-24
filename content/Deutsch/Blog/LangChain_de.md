@@ -1,5 +1,5 @@
 ---
-title: Was ist eigentlich `LangChain`?
+title: Was ist `LangChain`?
 date: 2025-06-29
 tags: ["python", "langchain", "langgraph", "ml", "llm", "nlp", "agent", "multi-agent"]
 toc: True
@@ -9,15 +9,15 @@ author: CKe
 
 # Was ist LangChain?
 
-Ich darf mich aktuell unter Anderem mit `LangChain` auseinandersetzen. Und meine Gedanken versuche ich auch hier in irgendeiner Form festzuhalten. 
+Ich darf mich aktuell unter Anderem mit `LangChain`  auseinandersetzen. Und meine Gedanken versuche ich auch hier in irgendeiner Form festzuhalten. 
 
 ## Einführung
 
-LangChain ist ein leistungsstarkes Framework, das die Integration und Interaktion von Large Language Models (LLMs) mit externen Daten und Werkzeugen kombitioniert. LLMs sind von Natur aus in ihrem Wissen auf die Daten beschränkt, mit denen sie trainiert wurden, und können selten direkt auf externe Informationen zugreifen oder komplexe Aktionen ausführen. Genau hier setzt LangChain an.
+`LangChain` ist ein leistungsstarkes Framework, das die Integration und Interaktion von Large Language Models (LLMs) mit externen Daten und Werkzeugen kombitioniert. LLMs sind von Natur aus in ihrem Wissen auf die Daten beschränkt, mit denen sie trainiert wurden, und können selten direkt auf externe Informationen zugreifen oder komplexe Aktionen ausführen. Genau hier setzt `LangChain` an.
 
-Das Framework überwindet diese Limitierungen, indem es LLMs die Fähigkeit verleiht, mit der Außenwelt zu interagieren. Stell dir vor, du möchtest einen Chatbot entwickeln, der nicht nur allgemeine Fragen basierend auf seinem internen Wissen beantworten kann, sondern auch Informationen aus spezifischen Quellen wie zum Beispiel Wikipedia oder deinen eigenen internen Dokumenten abruft und sich an das bisher gesagte erinnern kann. Ohne LangChain müsste man alles selber bauen, APIs integrieren, Logiken für Konversationen schreiben, ... LangChain vereinfacht diese komplexe Aufgabe erheblich, indem man vorgefertige Ketten (Chains), Speicher (Memory) und Werkzeuge (Tools) nutzen kann.
+Das Framework überwindet diese Limitierungen, indem es LLMs die Fähigkeit verleiht, mit der Außenwelt zu interagieren. Stell dir vor, du möchtest einen Chatbot entwickeln, der nicht nur allgemeine Fragen basierend auf seinem internen Wissen beantworten kann, sondern auch Informationen aus spezifischen Quellen wie zum Beispiel Wikipedia oder deinen eigenen internen Dokumenten abruft und sich an das bisher gesagte erinnern kann. Ohne `LangChain` müsste man alles selber bauen, APIs integrieren, Logiken für Konversationen schreiben, ... `LangChain` vereinfacht diese komplexe Aufgabe erheblich, indem man vorgefertige Ketten (Chains), Speicher (Memory) und Werkzeuge (Tools) nutzen kann.
 
-Darüber hinaus fördert LangChain eine enorme Flexibilität und Modularität in deinen Projekten. Anstatt auf einen einzigen, oft überladenen "Super-Prompt" angewiesen zu sein, ermöglicht LangChain die Entwicklung von intelligenten Agenten, die jeweils mit speziellen Aufgaben betraut werden können. Dies macht es deutlich einfacher, komplexe LLM-Anwendungen strukturiert und wartbar zu entwickeln.
+Darüber hinaus fördert `LangChain` eine enorme Flexibilität und Modularität in deinen Projekten. Anstatt auf einen einzigen, oft überladenen "Super-Prompt" angewiesen zu sein, ermöglicht `LangChain` die Entwicklung von intelligenten Agenten, die jeweils mit speziellen Aufgaben betraut werden können. Dies macht es deutlich einfacher, komplexe LLM-Anwendungen strukturiert und wartbar zu entwickeln.
 
 ### Vorteile
 Zu den Vorteilen zählen unter anderem:
@@ -59,9 +59,9 @@ print(llm.invoke("Wie heißt die schönste Stadt Deutschlands?"))
 
 Es ändert sich im Grunde nicht viel mehr als der Import und die verwendete Klasse. Alles andere wird im Hintergrund durch `LangChain` umgesetzt.
 
-Was ich in beiden Fällen unterschlagen habe, ist der `API-KEY`. Man kann in der Regel nicht ohne einem solchen `API-Key` mit den LLMs intergarieren. Hat man einen solchen Key, kann man ihn z.B. über [[dotenv]] oder [[keyring]] einbinden und nutzen.
+Was ich in beiden Fällen unterschlagen habe, ist der `API-KEY`. Man kann in der Regel nicht ohne einem solchen `API-Key` mit den LLMs intergarieren. Hat man einen solchen Key, kann man ihn z.B. über [[dotenv_de|dotenv]] oder [[Keyring_de|Keyring]] einbinden und nutzen.
 
-Tatsächlich kann noch viele weitere Parameter konfigurieren. Ich habe hier nur den Parameter [[`temperature`]] angepasst. Für Mistral findet man Informationen zu den weiteren Parametern in dieser [LangChain Dokumentation](https://python.langchain.com/api_reference/mistralai/chat_models/langchain_mistralai.chat_models.ChatMistralAI.html). Für OpenAI würde man analog in dieser [LangChain Dokumentation](https://python.langchain.com/api_reference/openai/chat_models/langchain_openai.chat_models.base.ChatOpenAI.html) fündig werden.
+Tatsächlich kann noch viele weitere Parameter konfigurieren. Ich habe hier nur den Parameter [[`temperature_de`]] angepasst. Für Mistral findet man Informationen zu den weiteren Parametern in dieser [`LangChain` Dokumentation](https://python.langchain.com/api_reference/mistralai/chat_models/langchain_mistralai.chat_models.ChatMistralAI.html). Für OpenAI würde man analog in dieser [`LangChain` Dokumentation](https://python.langchain.com/api_reference/openai/chat_models/langchain_openai.chat_models.base.ChatOpenAI.html) fündig werden.
 
 ### Prompts und `PromptTemplates`
 
@@ -104,7 +104,7 @@ So kann man vergleichsweise einfach Pipelines für LLM-Operationen aufzusetzen. 
 
 Durch Chains kann man seinen Code einfach strukturieren und vereinfacht die oft komplexen Workflows.
 
-Eine LLM-Chain könnte z.B. so aussehen (API-Key wie gehabt z.B. über [[keyring]] einbinden):
+Eine LLM-Chain könnte z.B. so aussehen (API-Key wie gehabt z.B. über [[Keyring_de|Keyring]] einbinden):
 
 ```python
 from langchain.chains import LLMChain
@@ -138,7 +138,7 @@ Das _Invoken_ einer Chain oder eines Agenten in `LangChain` bedeutet, dass man e
 
 ### Agents und Tools
 
-Agents und Tools sorgen dafür, dass LLMs "intelligenter" handeln können. Ein Agent entscheidet basierend auf dem aktuellen Problem, welche Tools er verwenden muss und in welcher Reihenfolge. Funktionen die ein Agent aufrufen kann, um externe Aktionen auszuführen sind z.B. eine Google- oder Wikipedia-Suche, eine Datenbankabfrage, aufrufen einer API, ... Langchain bietet für diesen Zweck viele vorgefertigte Tools und erlaubt außerdem das Erstellen eigener.
+Agents und Tools sorgen dafür, dass LLMs "intelligenter" handeln können. Ein Agent entscheidet basierend auf dem aktuellen Problem, welche Tools er verwenden muss und in welcher Reihenfolge. Funktionen die ein Agent aufrufen kann, um externe Aktionen auszuführen sind z.B. eine Google- oder Wikipedia-Suche, eine Datenbankabfrage, aufrufen einer API, ... `LangChain` bietet für diesen Zweck viele vorgefertigte Tools und erlaubt außerdem das Erstellen eigener.
 
 Ein abstraktes Beispiel. Man fragt den Agenten "Wie wird das Wetter morgen?". 
 Dann folgt ggf. dieser Ablauf:
@@ -192,7 +192,7 @@ Final Answer: The current Bundeskanzler of Germany is Friedrich Merz.
 {'input': 'Wer ist der aktuelle Bundeskanzler von Deutschland?', 'output': 'The current Bundeskanzler of Germany is Friedrich Merz.'}
 ```
 
-Oben wird übrigens ein [[ReAct]]-Agent verwendet. Ein [[ReAct]]-Agent kombiniert "Reasoning" (logisches Schlussfolgern) und "Acting" (Handeln). Er nutzt Sprachmodelle, um in mehreren Schritten zu überlegen, welche Aktionen (z.B. Tool-Aufrufe) nötig sind, um ein Ziel zu erreichen. Dabei wechselt er zwischen Nachdenken und Handeln.
+Oben wird übrigens ein [[ReAct_de|ReAct]]-Agent verwendet. Ein [[ReAct_de|ReAct]]-Agent kombiniert "Reasoning" (logisches Schlussfolgern) und "Acting" (Handeln). Er nutzt Sprachmodelle, um in mehreren Schritten zu überlegen, welche Aktionen (z.B. Tool-Aufrufe) nötig sind, um ein Ziel zu erreichen. Dabei wechselt er zwischen Nachdenken und Handeln.
 
 ### Memory
 
@@ -252,7 +252,7 @@ So wird die Chain zum zentralen Baustein, der LLM, Speicher und Logik miteinande
 
 Ich möchte in weiteren Beispielen weitere Anwendungsbeispiele zeigen.
 
-### Dokumentenbefragung (Retrieval Question Answering - [[RAG]])
+### Dokumentenbefragung (Retrieval Question Answering - [[RAG_de|RAG]])
 
 LLMs haben nur Wissen bis zu ihrem Trainingsdatum und keine spezifischen Unternehmens- oder Projektdaten. Möchte man das ändern, kommt RAG ins Spiel. Auf diese kann man das LLM um relevante, externe Dokumente "erweitern", um spezifische Fragen zu beantworten.
 
@@ -260,7 +260,7 @@ Der Workflow kann dann in etwa so aussehen:
 * **Dokumente laden**: PDFs, Textdateien, Datenbanken, ...
 * **Texte aufteilen**: Große Dokumente in kleinere, handhabbare sogenannte Chunks zerlegen
 * **Einbetten (Embedding)**: Die Textchunks werden in numerische Vektoren gewandelt.
-* **Vektordatenbank (Vector Store)**: Speichert die zuvor gewandelten Vektoren für eine schnelle Ähnlichkeitssuche (z.B. [[Kosinusähnlichkeit]]) in Vektordatenbanken (z.B. `Chroma`, `FAISS`, `Pinecone`)
+* **Vektordatenbank (Vector Store)**: Speichert die zuvor gewandelten Vektoren für eine schnelle Ähnlichkeitssuche (z.B. [[Kosinusaehnlichkeit_de|Kosinusähnlichkeit]]) in Vektordatenbanken (z.B. `Chroma`, `FAISS`, `Pinecone`)
 * **Abfrage**: 
   * Nutzer stellt eine Frage
   * Frage wird "eingebettet"
@@ -426,7 +426,7 @@ llm = OpenAI(temperature=0, api_key=api_key)
 embeddings = OpenAIEmbeddings(api_key=api_key)
 
 # PDF laden
-loader = PyPDFLoader(r"C:\Users\gutsc\Documents\Second_Brain\Quartz\content\Notes\Attention_is_all_you_need_1706.03762v7.pdf")
+loader = PyPDFLoader(r"C:\...\Attention_is_all_you_need_1706.03762v7.pdf")
 docs = loader.load()
 
 # Embeddings und Vektordatenbank erzeugen
