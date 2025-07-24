@@ -9,6 +9,6 @@ tsconfig.tsbuildinfo
 private/
 .replit
 replit.nix
-content/Notes/Unpublished/*
 *.pyc
 .venv
+content/Unpublished_Background/*
