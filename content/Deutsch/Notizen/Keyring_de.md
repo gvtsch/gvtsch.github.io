@@ -1,5 +1,7 @@
 ---
+date: 2025-06-29
 tags: ["python", "windows"]
+title: Keyring
 ---
 
 # Das `keyring`-Modul in Python

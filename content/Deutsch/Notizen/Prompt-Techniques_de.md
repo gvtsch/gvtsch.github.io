@@ -2,6 +2,7 @@
 title: Prompt-Strategien
 tags: ["python", "ml", "llm", "nlp"]
 author: CKe
+date: 2025-07-20
 ---
 
 # Prompt-Strategien und -Techniken

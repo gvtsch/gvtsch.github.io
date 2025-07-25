@@ -2,6 +2,7 @@
 tags: ["ml", "llm", "nlp", "python", "statistik", "vektordatenbank"]
 author: CKe
 title: 'Vektordatenbanken'
+date: 2025-06-28
 ---
 
 # Vektordatenbanken

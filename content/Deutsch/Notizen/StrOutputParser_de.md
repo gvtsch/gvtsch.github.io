@@ -1,6 +1,8 @@
 ---
 tags: ["langchain", "llm", "python"]
 author: CKe
+title: StrOutPutParser
+date: 2025-06-29
 ---
 
 # Was ist `LangChain`'s `StrOutputParser()`?

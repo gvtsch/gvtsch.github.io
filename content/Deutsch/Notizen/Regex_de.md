@@ -1,6 +1,8 @@
 ---
 tags: ["python"]
 author: CKe
+title: Regex
+date: 2025-06-30
 ---
 
 # Regex - Was sind "reguläre Ausdrücke"?

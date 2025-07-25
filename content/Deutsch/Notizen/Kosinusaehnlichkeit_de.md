@@ -1,6 +1,8 @@
 ---
 tags: ["ml", "llm", "nlp", "python", "statistik", "rag"]
 author: CKe
+title: Kosinusähnlichkeit
+date: 2025-06-29
 ---
 
 # Kosinusähnlichkeit: Ein Maß für die semantische Ähnlichkeit

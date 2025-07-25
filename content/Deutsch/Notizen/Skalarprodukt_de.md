@@ -1,6 +1,10 @@
 ---
 tags: ["ml", "llm", "nlp", "python", "statistik"]
+author: CKe
+title: Skalarprodukt
+date: 2025-06-29
 ---
+
 # Skalarprodukt (Dotprodukt): Ein Fundament der Vektoralgebra
 
 Das **Skalarprodukt**, auch bekannt als **Dotproduct**, ist eine grundlegende Operation in der linearen Algebra, die zwei Vektoren nimmt und eine einzelne skalare Zahl (daher "Skalarprodukt") zurückgibt. Diese Zahl gibt Aufschluss über die Beziehung der Vektoren zueinander, insbesondere über ihre **relative Ausrichtung** und **Größe**.
