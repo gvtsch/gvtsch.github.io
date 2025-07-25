@@ -437,7 +437,7 @@ $$ \text{head}_i = \text{Attention}(\mathbf{Q}\mathbf{W}_Q^i, \mathbf{K}\mathbf{
 
 Und die $\text{Attention}$-Funktion (Scaled Dot-Product Attention) die wir bereits kennen:
 
-$$ \text{Attention}(\mathbf{Q}', \mathbf{K}', \mathbf{V}') = \text{softmax}\left(\frac{\mathbf{Q}' (\mathbf{K}')^T}{\sqrt{d_k}}\right) \mathbf{V}' $$
+$$ \text{Attention}(\mathbf{Q}, \mathbf{K}, \mathbf{V}) = \text{softmax}\left(\frac{\mathbf{Q} (\mathbf{K})^T}{\sqrt{d_k}}\right) \mathbf{V}$$
 
 Hierbei gilt:
 
