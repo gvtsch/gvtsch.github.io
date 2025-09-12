@@ -11,4 +11,7 @@ private/
 replit.nix
 *.pyc
 .venv
+.venv_tf
 content/Unpublished_Background/*
+.python_files
+.Archiv/

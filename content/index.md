@@ -1,11 +1,10 @@
 ---
-title: Digitaler Garten
+title: Digital Garden
 ---
 
-Beim _digitalen Garten_ geht es darum, anstelle von statischen Blogposts, ein dynamisches, lebendiges Ökosytem zu erstellen. 
-Wie ein echter Garten benötigt er Pflege und regelmäßige Aufmerksamkeit. Das führt dazu, die Inhalte immer mal wieder zu überprüfen, zu aktualisieren und zu verbessern. 
-Man schafft sich mit Verlinkungen ein Netzwerk dessen, was sich man erarbeitet oder gelernt hat und kann so tiefer in einzelne Themengebiete eintauchen.
-
-Das hier ist mein _digitaler Garten_ oder zumindest der Teil, den ich öffentlich teile. Er befindet sich sozusagen noch im ersten Frühling, aber die Pflanzen sprießen und es gibt zahlreich Setzlinge, die noch umziehen müssen. Es gibt aber auch noch einige Fragezeichen und ich muss mich weiter in das Thema einarbeiten.
-
-Wenn dir etwas auffällt, oder wenn ich dir irgendwie weiterhelfen kann oder einfach auch nur so... Dann melde dich doch einfach!
+The _digital garden_ is about creating a dynamic, living ecosystem instead of static blog posts.
+Like a real garden, it needs care and regular attention. This means checking, updating, and improving the content from time to time.
+ 
+Links allow you to create a network of what you have worked on or learned, enabling you to delve deeper into individual topics.
+This is my _digital garden_, or at least the part that I share publicly. It is still in its first spring, so to speak, but the plants are sprouting and there are numerous seedlings that still need to be moved. However, there are still some question marks and I need to continue familiarizing myself with the topic.
+If you notice anything, or if I can help you in any way, or even if you just want to chat... Then feel free to get in touch!
