@@ -12,7 +12,7 @@ In this article, I would like to discuss decision trees. Since it makes sense, w
 Let's start with the decision tree. Decision trees are used for both [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] and [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Regression|regression]] tasks.
 The following graphic of a decision tree (which we will program below) shows the hierarchical sequence of decisions. This is a structured process for making decisions. Each node represents a decision, each edge a result or a subsequent decision.
 
-![Decision tree](assets/decision_tree.png)
+![Decision tree](decision_tree.png)
 *Decision tree wine data set - source code at the end of the article, image by the author*
 
 A decision tree is a supervised learning algorithm.
@@ -55,7 +55,7 @@ df.head()
 
 With `df.head()`, you can now display the first 5 rows of the DataFrame and take a closer look at the dataset.
 
-![](assets/decision_tree_head.png)
+![](decision_tree_head.png)
 *df-head() of our DataFrame, image by the author*
 
 One of the features, for example, is the alcohol content in the first column. In column `y`, on the other hand, the class to be learned ($0$, $1$, or $2$) is stored. If you want to learn more about the features and the data set, you can find more information at this [link](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_wine.html) to the Scikit-learn documentation.

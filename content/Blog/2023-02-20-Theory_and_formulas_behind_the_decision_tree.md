@@ -7,7 +7,7 @@ toc: true
 
 In the last two articles, we learned how to program [[2023-01-16-Decision_tree|decision trees]] and [[2023-02-09-Random_forrest|random forests]]. This article will focus on the theory behind them. But first, a quick recap.
 
-![Decision tree wine dataset - source code at the end of the article, image by the author](assets/decision_tree.png)
+![Decision tree wine dataset - source code at the end of the article, image by the author](decision_tree.png)
 *Decision tree wine dataset - source code at the end of the article*
 
 Decision trees are a well-known model in machine learning and are often used for [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] and [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Regression|regression]] problems. They represent a hierarchy of decisions and predictions based on specific features and rules.

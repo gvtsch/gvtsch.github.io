@@ -13,7 +13,7 @@ A random forest consists of several uncorrelated decision trees. Each of these d
 
 * An **ensemble model** is a machine learning method in which multiple models are combined to increase prediction accuracy.
 
-![Random Forrest, image by author](assets/random_forest_3.png)
+![Random Forrest, image by author](random_forest_3.png)
 _Random Forest (Ensemble Model) with three estimators_
 
 The image above shows three decision trees from the programmed random forest. The source code for the random forest follows in the next section.
@@ -93,7 +93,7 @@ The higher accuracy of a random forest compared to a single decision tree mentio
 
 For completeness, here is the visualization of all $20$ estimators.
 
-![](assets/random_forest_all.png)
+![](random_forest_all.png)
 *Complete random forest*
 
 ## Summary
