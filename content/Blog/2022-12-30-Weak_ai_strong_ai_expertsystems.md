@@ -5,7 +5,7 @@ tags: [machine-learning]
 toc: true
 ---
 
-In this post, I would like to discuss what artificial intelligence (AI) is and how it can be categorized. Everyone surely has an idea of what artificial intelligence is and what it can do. It's not uncommon to think of the _Terminator_ or _Sonny_ from _I, Robot_, for example. Those who were lucky enough to grow up with Star Trek will probably immediately think of _Data_. But even today, this is still science fiction and falls into the field of strong AI. More on that later.
+In this post, I would like to discuss what artificial intelligence (AI) is and how it can be categorized. Everyone surely has an idea of what artificial intelligence is and what it can do. It's not uncommon to think of the _Terminator_ or _Sonny_ from _I, Robot_, for example. Those who were lucky enough to grow up with _Star Trek_ will probably immediately think of _Data_. But even today, this is still science fiction and falls into the field of strong AI. More on that later.
 
 First, we should clarify the question of what artificial intelligence is. My attempt to put it simply: Artificial intelligence is the attempt to teach a computer or an application how to learn and think like a human being. The aim is to give this application intelligence that it can use to find answers to problems of all kinds and solve them independently.
 
@@ -13,7 +13,7 @@ First, we should clarify the question of what artificial intelligence is. My att
 
 Weak AI is basically an algorithm. In many cases, it is admittedly a very complex algorithm, but weak AI has no consciousness of its own and cannot demonstrate understanding. It is often trained and used to recognize patterns or search through very large amounts of data. Weak AI performs complex, repetitive tasks that can be precisely specified.
 
-In our everyday lives, we encounter weak AI in text and image recognition (efor exampla traffic sign recognition in cars), speech recognition (chatbots, Alexa, Siri, etc.), navigation systems, advertising and product recommendations (Amazon, Google, Netflix, etc.), predictive maintenance, and so on and so forth. Almost every AI you can imagine that is used today (outside of the cinema screen and science fiction) is weak AI.
+In our everyday lives, we encounter weak AI in text and image recognition (for example traffic sign recognition in cars), speech recognition (chatbots, Alexa, Siri, etc.), navigation systems, advertising and product recommendations (Amazon, Google, Netflix, etc.), predictive maintenance, and so on and so forth. Almost every AI you can imagine that is used today (outside of the cinema screen and science fiction) is weak AI.
 
 ## Strong AI
 
