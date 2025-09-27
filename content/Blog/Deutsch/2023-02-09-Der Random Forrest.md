@@ -1,7 +1,7 @@
 ---
 title: Der Random Forrest
 date: 2023-02-09
-tags: [python, ml, dl]     # TAG names should always be lowercase
+tags: [machine-learning, python]   
 toc: true
 ---
  

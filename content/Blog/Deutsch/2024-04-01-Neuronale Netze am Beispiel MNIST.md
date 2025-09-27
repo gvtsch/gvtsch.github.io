@@ -4,10 +4,7 @@ date: 2024-04-01
 tags:
   - machine-learning
   - neural-network
-  - coding
-  - LSTM
-  - RNN
-  - CNN
+  - python
 toc: true
 ---
 
