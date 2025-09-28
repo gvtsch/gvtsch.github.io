@@ -68,17 +68,17 @@ As you can see, the tokenizer breaks the sentence down into a list of tokens. No
 #### Embeddings
 
 After tokenization, embeddings come into play. Put simply, embeddings are numerical vector representations of tokens that capture their semantic meaning. Imagine each word being represented as a point in a multidimensional space. Words with similar meanings are closer together, while words with different meanings are further apart.
-These complex vectors are learned during the training of language models. Various metrics are used to measure the similarity between these vectors, the best known of which is [[cosine similarity]].
+These complex vectors are learned during the training of language models. Various metrics are used to measure the similarity between these vectors, the best known of which is [[cosine_similarity|cosine similarity]].
 
 **Why cosine similarity?**
 
-Unlike distance measures such as Euclidean distance, which measure the _straight_ or _direct_ distance between two points and are strongly influenced by the length of the vectors, cosine similarity measures the angle between two vectors. A small angle (cosine value close to 1) means that the vectors point in a very similar direction, meaning that there is a high degree of semantic similarity. A large angle (cosine value close to 0 or negative) indicates little or no semantic similarity.
+Unlike distance measures such as Euclidean distance, which measure the _straight_ or _direct_ distance between two points and are strongly influenced by the length of the vectors, [[cosine_similarity|cosine similarity]] measures the angle between two vectors. A small angle (cosine value close to 1) means that the vectors point in a very similar direction, meaning that there is a high degree of semantic similarity. A large angle (cosine value close to 0 or negative) indicates little or no semantic similarity.
 
-This makes cosine similarity particularly suitable for language models, as it effectively captures the semantic relationship between words regardless of the _strength_ of their vector representation (their length).
+This makes [[cosine_similarity|cosine similarity]] particularly suitable for language models, as it effectively captures the semantic relationship between words regardless of the _strength_ of their vector representation (their length).
 
 #### Summary
 
-Tokens are the broken-down text building blocks that are processed by language models. They are assigned token IDs. Embeddings are the numerical vector representations of these tokens that capture their semantic meaning. Cosine similarity is often used to measure the similarity between words, as it effectively reflects the content-related proximity of the embeddings. These concepts are fundamental to understanding how modern language models process and understand text.
+Tokens are the broken-down text building blocks that are processed by language models. They are assigned token IDs. Embeddings are the numerical vector representations of these tokens that capture their semantic meaning. [[cosine_similarity|Cosine similarity]] is often used to measure the similarity between words, as it effectively reflects the content-related proximity of the embeddings. These concepts are fundamental to understanding how modern language models process and understand text.
 
 ### Generating entire sentences
 
