@@ -4,13 +4,14 @@ date: 2023-02-20
 tags: [machine-learning]     # TAG names should always be lowercase
 toc: true
 ---
+# Theory and formulas behind the decision tree
 
-In the last two articles, we learned how to program [[2023-01-16-Decision_tree|decision trees]] and [[2023-02-09-Random_forrest|random forests]]. This article will focus on the theory behind them. But first, a quick recap.
+In the last two articles, we learned how to program [[The Decision Tree|decision trees]] and [[The Random Forrest|random forests]]. This article will focus on the theory behind them. But first, a quick recap.
 
 ![Decision tree wine dataset - source code at the end of the article, image by the author](decision_tree.png)
 *Decision tree wine dataset - source code at the end of the article*
 
-Decision trees are a well-known model in machine learning and are often used for [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] and [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Regression|regression]] problems. They represent a hierarchy of decisions and predictions based on specific features and rules.
+Decision trees are a well-known model in machine learning and are often used for [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] and [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Regression|regression]] problems. They represent a hierarchy of decisions and predictions based on specific features and rules.
 
 A random forest, on the other hand, consists of several uncorrelated decision trees that were created during the learning process under a certain randomization and trained with random subsets of the input data. The final prediction of the model is determined by averaging the predictions of all decision trees.
 

@@ -43,7 +43,7 @@ Besonders häufig werden die folgenden Algorithmen eingesetzt:
 * K-nearest neighbors (KNN)
 * Support Vector Machines (SVM)
 * Naive Bayes
-* Entscheidungsbäume ([[2023-01-16-Der Entscheidungsbaum|Decision Trees]]) und abgeleitete Verfahren wie [[2023-02-09-Random_forrest|Random Forrests]] oder Gradient Boosted Trees
+* Entscheidungsbäume ([[2023-01-16-Der Entscheidungsbaum|Decision Trees]]) und abgeleitete Verfahren wie [[The Random Forrest|Random Forrests]] oder Gradient Boosted Trees
 * Künstliche neuronale Netze (zum Beispiel Convolutional Neural Networks)
 
 ### Regression

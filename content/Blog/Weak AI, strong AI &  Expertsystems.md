@@ -1,7 +1,8 @@
 ---
-title: Weak AI, strong AI, and expert systems
+title: Weak AI, strong AI &  Expertsystems
 date: 2022-12-30
-tags: [machine-learning]   
+tags:
+  - machine-learning
 toc: true
 ---
 
@@ -19,7 +20,7 @@ In our everyday lives, we encounter weak AI in text and image recognition (for e
 
 Strong AI, also known as superintelligence or general purpose AI (GPAI), for example, is still science fiction from today's perspective. A strong AI is, for example, a robot that can solve problems of a general nature and is not limited to any specific area of application. It acts independently, proactively, and flexibly, similar to a human being, and can even be creative. As described at the beginning, _Data_, the _Terminator_, and _Sonny_ are examples of such systems.
 
-Because this is still science fiction, the list of examples is soberingly short. In another article, we will take a closer look at for example or [[Transformers_Part_1|Transformer]].
+Because this is still science fiction, the list of examples is soberingly short. In another article, we will take a closer look at for example or [[The Transformer Architecture I|Transformer]].
 
 ## Expert systems
 
@@ -29,4 +30,4 @@ Expert systems are applications developed to solve complex problems in a defined
 
 _Deep Blue [Source](https://de.wikipedia.org/wiki/Deep_Blue#/media/Datei:IBM_rs6000_SP_-_Deep_Blue.jpg)_
 
-Probably one of the best-known expert systems is the chess computer [Deep Blue}(https://de.wikipedia.org/wiki/Deep_Blue), which defeated the then world chess champion Kasparov in 1997. This system was further developed and became famous in 2011 when Watson won the quiz show Jeopardy. Other expert systems are used, for example, in the evaluation of X-rays, analysis of chemical compound structures, geological exploration (reconnaissance, earthquake prediction, etc.) and many other areas.
+Probably one of the best-known expert systems is the chess computer [Deep Blue](https://de.wikipedia.org/wiki/Deep_Blue), which defeated the then world chess champion Kasparov in 1997. This system was further developed and became famous in 2011 when Watson won the quiz show Jeopardy. Other expert systems are used, for example, in the evaluation of X-rays, analysis of chemical compound structures, geological exploration (reconnaissance, earthquake prediction, etc.) and many other areas.

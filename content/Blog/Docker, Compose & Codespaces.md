@@ -1,17 +1,20 @@
 ---
-title: "My development environment: Docker, Compose, Codespaces"
+title: "My development environment: Docker, Compose & Codespaces"
 date: 2025-09-28
 tags:
-- python
-- Docker
-- github
-- codespace
+  - python
+  - Docker
+  - github
+  - codespace
 toc: true
 ---
 
 # My development environment: How I work with Docker, Compose, and Codespaces
 
 I decided to write down how I work with Docker, Compose and so on. Some, or most/all of the concepts may be familiar to you, but I'm also doing this to record my thoughts. And maybe one or two of you will find something useful.
+
+The repository can be found here: [Docker Example](https://github.com/gvtsch/docker_example.git) 
+It is part of this larger [collection of examples](https://github.com/gvtsch/Blog_Code_Snippets).
 
 ## Introduction
 

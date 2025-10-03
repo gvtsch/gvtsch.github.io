@@ -1,8 +1,15 @@
 ---
-title: What is LangChain?
+title: What is LangChain
 date: 2025-06-29
-tags: ["python", "langchain", "langgraph", "machine-learning", "llm", "nlp", "agent"]
-toc: True
+tags:
+  - python
+  - langchain
+  - langgraph
+  - machine-learning
+  - llm
+  - nlp
+  - agent
+toc: true
 draft: false
 author: CKe
 ---

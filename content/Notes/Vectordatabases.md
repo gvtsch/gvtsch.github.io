@@ -7,7 +7,7 @@ date: 2025-06-28
 
 # Vector databases
 
-**Vector databases** are a special type of database designed to efficiently store, index, and query **vector embeddings**. [[Embeddings|Embeddings]] are numerical representations of unstructured data such as text, images, audio files, or videos. They transform this complex data into points in a **high-dimensional space**, typically consisting of hundreds or thousands of dimensions. The core idea here is that similar objects should be **closer to each other** in this space. The degree of similarity between objects can be calculated using, for example, [[cosine_similarity|cosine similarity]] or the [[dot_product|dot product]].
+**Vector databases** are a special type of database designed to efficiently store, index, and query **vector embeddings**. [[Embeddings and similarity metrics|Embeddings and similarity metrics]] are numerical representations of unstructured data such as text, images, audio files, or videos. They transform this complex data into points in a **high-dimensional space**, typically consisting of hundreds or thousands of dimensions. The core idea here is that similar objects should be **closer to each other** in this space. The degree of similarity between objects can be calculated using, for example, [[Cosine similarity|cosine similarity]] or the [[dot_product|dot product]].
 
 ## How do vector databases work?
 
@@ -15,7 +15,7 @@ The functioning of vector databases can be divided into three main steps: the cr
 
 ### Embedding creation
 
-Before unstructured data can be stored in a vector database, it must be converted into [[Embeddings|Embeddings]]. This process is typically performed using machine learning models, known as **embedding models**. For text data, natural language processing (NLP) models are used to transform words, sentences, or entire documents into a numerical vector. For images, convolutional neural networks (CNNs) are used to extract visual features. The result is always a high-dimensional numerical vector that mathematically captures the semantic or visual properties of the original data.
+Before unstructured data can be stored in a vector database, it must be converted into [[Embeddings and similarity metrics|Embeddings and similarity metrics]]. This process is typically performed using machine learning models, known as **embedding models**. For text data, natural language processing (NLP) models are used to transform words, sentences, or entire documents into a numerical vector. For images, convolutional neural networks (CNNs) are used to extract visual features. The result is always a high-dimensional numerical vector that mathematically captures the semantic or visual properties of the original data.
 
 ### Storage and indexing
 
@@ -27,7 +27,7 @@ Once the data has been converted into vectors, it is stored in the vector databa
 
 The main purpose of a vector database is to perform **similarity searches** efficiently. When a query is received, it is also converted into a vector (query embedding). The vector database then searches for the vectors in the index that are most similar to this query embedding. The _similarity_ is determined by distance measures in high-dimensional space:
 
-* **[[cosine_similarity|Cosine similarity]]**: Measures the cosine of the angle between two vectors. A value close to $1$ means high similarity, close to $0$ means dissimilarity. This is particularly well suited for comparing the orientation or _direction_ of vectors, regardless of their length.
+* **[[Cosine similarity|Cosine similarity]]**: Measures the cosine of the angle between two vectors. A value close to $1$ means high similarity, close to $0$ means dissimilarity. This is particularly well suited for comparing the orientation or _direction_ of vectors, regardless of their length.
 * **[[dot_product|Dot Product]]**: Calculates the sum of the products of the corresponding components of two vectors. A higher dot product indicates a higher similarity, especially if the vectors are also relevant in terms of their _length_ (magnitude).
 * **Euclidean distance**: Measures the _straight line_ distance between two points in vector space. A smaller distance means higher similarity.
 The result of a similarity search is typically the `k` most similar vectors (`top_k` results) along with their similarity values.

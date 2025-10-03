@@ -260,7 +260,7 @@ Der Workflow kann dann in etwa so aussehen:
 * **Dokumente laden**: PDFs, Textdateien, Datenbanken, ...
 * **Texte aufteilen**: Große Dokumente in kleinere, handhabbare sogenannte Chunks zerlegen
 * **Einbetten (Embedding)**: Die Textchunks werden in numerische Vektoren gewandelt.
-* **Vektordatenbank (Vector Store)**: Speichert die zuvor gewandelten Vektoren für eine schnelle Ähnlichkeitssuche (z.B. [[cosine_similarity|Kosinusähnlichkeit]]) in Vektordatenbanken (z.B. `Chroma`, `FAISS`, `Pinecone`)
+* **Vektordatenbank (Vector Store)**: Speichert die zuvor gewandelten Vektoren für eine schnelle Ähnlichkeitssuche (z.B. [[Cosine similarity|Kosinusähnlichkeit]]) in Vektordatenbanken (z.B. `Chroma`, `FAISS`, `Pinecone`)
 * **Abfrage**: 
   * Nutzer stellt eine Frage
   * Frage wird "eingebettet"

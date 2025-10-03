@@ -17,7 +17,7 @@ Imagine you have a long sentence. For a computer, this is initially just a seque
 
 ## And what is the point of all this?
 
-Computers do not understand text in the same way that we humans do. They need a numerical representation. Tokenization breaks the text down into discrete units. These tokens can then be converted into so-called [[Embeddings|embeddings]]. [[Embeddings|Embeddings]] are numerical vector representations of the text snippets or tokens that NLP models use to process complex language patterns.
+Computers do not understand text in the same way that we humans do. They need a numerical representation. Tokenization breaks the text down into discrete units. These tokens can then be converted into so-called [[Embeddings and similarity metrics|embeddings]]. [[Embeddings and similarity metrics|Embeddings and similarity metrics]] are numerical vector representations of the text snippets or tokens that NLP models use to process complex language patterns.
 
 Tokenization is crucial because it...
 

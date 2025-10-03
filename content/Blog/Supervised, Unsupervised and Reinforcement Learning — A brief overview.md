@@ -5,7 +5,7 @@ tags: [machine-learning]
 toc: true
 ---
 
-From the last article, we know that basically all common artificial intelligence methods can be classified as [[2022-12-30-Weak_ai_strong_ai_expertsystems#Weak AI|weak AI]]. And these methods and techniques can be further subdivided. Today, we want to focus on this subdivision.
+From the last article, we know that basically all common artificial intelligence methods can be classified as [[Weak AI, strong AI &  Expertsystems#Weak AI|weak AI]]. And these methods and techniques can be further subdivided. Today, we want to focus on this subdivision.
 
 In fact, when I talk about artificial intelligence, we are dealing with machine learning (ML) — a category of artificial intelligence. ML can be further subdivided into supervised, unsupervised, and reinforcement learning. We will deal with these three and their respective subcategories today
 
@@ -25,13 +25,13 @@ _Two categories of supervised learning, image from [whataftercollege](https://ww
 
 ### Classification
 
-In classification, models are trained to divide the input data into fixed categories. One example, which we will also cover in a later article with Python code, is the publicly available [[2024-04-01-Neural_networks_MNIST|MNIST]] database, which consists of $60.000$ examples in the training dataset and $10.000$ examples in the test dataset. These are handwritten digits stored in $28x28$ pixel grayscale images. Each image is linked to a unique label or observation variable.
+In classification, models are trained to divide the input data into fixed categories. One example, which we will also cover in a later article with Python code, is the publicly available [[Neural networks explained, using the MNIST example|MNIST]] database, which consists of $60.000$ examples in the training dataset and $10.000$ examples in the test dataset. These are handwritten digits stored in $28x28$ pixel grayscale images. Each image is linked to a unique label or observation variable.
 
 ![MNIST dataset, image from [Wikipedia](https://de.wikipedia.org/wiki/MNIST-Datenbank)](https://upload.wikimedia.org/wikipedia/commons/2/27/MnistExamples.png)
 
 _MNIST dataset, image from [Wikipedia](https://de.wikipedia.org/wiki/MNIST-Datenbank)_
 
-The training data set is now used to train the model (often a convolutional neural network) and the test data set is used to test and validate the model. For this purpose, each image is fed into the model, which makes a prediction (classifying it into one of the ten categories/digits, see [[Softmax]]). During training, the model is constantly updated to improve this prediction. We will also take a closer look at this process in Python code in a concrete example.
+The training data set is now used to train the model (often a convolutional neural network) and the test data set is used to test and validate the model. For this purpose, each image is fed into the model, which makes a prediction (classifying it into one of the ten categories/digits, see [[Softmax Activationfunction]]). During training, the model is constantly updated to improve this prediction. We will also take a closer look at this process in Python code in a concrete example.
 
 Further examples are:
 
@@ -45,7 +45,7 @@ The following algorithms are used particularly frequently:
 * K-nearest neighbors (KNN)
 * Support Vector Machines (SVM)
 * Naive Bayes
-* [[2023-01-16-Decision_tree|Decision trees]] and derived methods such as [[2023-02-09-Random_forrest|random forests]] or gradient boosted trees
+* [[The Decision Tree|Decision trees]] and derived methods such as [[The Random Forrest|random forests]] or gradient boosted trees
 * Artificial neural networks (e.g., convolutional neural networks)
 
 ### Regression

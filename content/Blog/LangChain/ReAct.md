@@ -44,7 +44,7 @@ Unlike agents that only reason (think) or only act (perform tasks), ReAct agents
 
 ---
 
-## Example in the [[LangChain]] environment:
+## Example in the [[What is LangChain]] environment:
 
 A ReAct model could answer a question by first thinking about the question, then querying a search engine, analyzing the results, and finally providing an informed answer.
 
@@ -54,7 +54,7 @@ First, the question arises: what makes an agent a ReAct agent?
 
 ### What makes an agent a ReAct agent?
 
-The agent becomes a ReAct agent through the strategic combination of three core elements that interact in the [[LangChain]] environment:
+The agent becomes a ReAct agent through the strategic combination of three core elements that interact in the [[What is LangChain]] environment:
 
 * **The ReAct principle (Reasoning + Acting)**: This is the fundamental theoretical framework. It guides the agent to proceed in an iterative cycle of "thinking" (Thought), "choosing an action" (Action), and "observing the result" (Observation). The agent becomes a ReAct agent because it uses this specific way of thinking and acting to solve problems.
 * **A special prompt (e.g., `hub.pull('hwchase17/react'))`: This prompt is absolutely crucial. It is not a mere instruction, but a detailed guide that teaches the LLM how to execute the ReAct process. It typically contains:
@@ -95,7 +95,7 @@ The agent becomes a ReAct agent through the strategic combination of three core 
     Thought:{agent_scratchpad}
     ```
 
-* **Orchestration by `create_react_agent` and `AgentExecutor`**: These functions from [[LangChain]] are the technical "conductors":
+* **Orchestration by `create_react_agent` and `AgentExecutor`**: These functions from [[What is LangChain]] are the technical "conductors":
   * `create_react_agent` takes the LLM, the available tools, and the prompt tailored to ReAct and configures the agent accordingly.
   * The `AgentExecutor` is the control center that controls the ReAct process step by step. It sends the prompt to the LLM, reads its response (to recognize thoughts, actions, and their inputs), executes the desired action using the appropriate tool, and returns the result ('observation') to the LLM. This cycle repeats until the agent has found a final answer.
 
@@ -168,7 +168,7 @@ Beyond the three tools discussed, there are of course many more. LLM agents can 
 
 ### Combining the tools into an agent
 
-`Tools`, `AgentExecutor`, and `create_react_agent` can be imported from [[LangChain]].
+`Tools`, `AgentExecutor`, and `create_react_agent` can be imported from [[What is LangChain]].
 ```python
 from langchain.agents import Tool, AgentExecutor, create_react_agent
 ```
@@ -268,4 +268,4 @@ Final Answer: The last chancellor of Germany before Friedrich Merz was Olaf Scho
 I think it's easy to understand how the ReAct agent works. 
 
 ## Summary
-In summary, ReAct is a powerful approach that enables large language models to solve complex problems through a dynamic combination of logical thinking and targeted actions. The ability to transparently trace the agent's thought process through thought and action steps is valuable for debugging and crucial for trust in AI systems. And thanks to tools like [[LangChain]], the development and deployment of such intelligent agents are becoming increasingly accessible, opening up new possibilities for a wide range of applications.
+In summary, ReAct is a powerful approach that enables large language models to solve complex problems through a dynamic combination of logical thinking and targeted actions. The ability to transparently trace the agent's thought process through thought and action steps is valuable for debugging and crucial for trust in AI systems. And thanks to tools like [[What is LangChain]], the development and deployment of such intelligent agents are becoming increasingly accessible, opening up new possibilities for a wide range of applications.

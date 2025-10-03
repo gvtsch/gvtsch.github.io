@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
 The output might look like this, for example:
 
-![Output in the command line](output.png)
+![Output in the command line](Quartz/public/Blog/Assets/output.png)
 _Output of a single job_
 
 ## The processor `queue_processor.py`
@@ -326,7 +326,7 @@ We get the following output:
 
 At the same time, the browser should open and call up the above URL, consisting of IP or Localhost and port, IP. If this does not happen, you can also call up the URL manually.
 
-![Streamlit App](streamlit.png)
+![Streamlit App](Quartz/public/Blog/Assets/streamlit.png)
 _Streamlit interface_
 
 And here you can now diligently test the individual functions.

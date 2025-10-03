@@ -4,12 +4,13 @@ date: 2023-01-16
 tags: [machine-learning, python]  
 toc: true
 ---
+# The Decision Tree
 
 In this article, I would like to discuss decision trees. Since it makes sense, we will also briefly talk about GridSearchCV and other necessary libraries. And all of this does not work - at least in my case - without Python. We will go through this Python code block by block/line by line. It is definitely advantageous if you have programmed before and ideal if you are familiar with Python
 
 ## Decision Tree
 
-Let's start with the decision tree. Decision trees are used for both [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] and [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Regression|regression]] tasks.
+Let's start with the decision tree. Decision trees are used for both [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] and [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Regression|regression]] tasks.
 The following graphic of a decision tree (which we will program below) shows the hierarchical sequence of decisions. This is a structured process for making decisions. Each node represents a decision, each edge a result or a subsequent decision.
 
 ![Decision tree](decision_tree.png)
@@ -33,8 +34,8 @@ from sklearn.model_selection import train_test_split
 
 * `Numpy` is a program library that enables easy handling of vectors, matrices, and higher-dimensional arrays. It also offers a variety of functions for numerical calculations that are frequently used in scientific programming and data analysis.
 * `Pandas` is a program library that facilitates the processing and analysis of tabular data. It provides data structures such as Series and DataFrame, which are similar to columns and tables in relational databases or arrays in Numpy. With pandas, you can easily read, edit, manipulate, model, and visualize data. It is one of the most commonly used tools in data analysis and preparation.
-* The wine dataset (`load_wine`) is a sample dataset included in the Python library Scikit-learn. It contains information about various wines, such as alcohol content, acidity, color pigments, and proanthocyanidins. The dataset consists of 178 samples of wines and 13 features. This dataset is often used in examples to demonstrate the use of Scikit-learn for [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] problems
-* The `DecisionTreeClassifier` is a [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] model from the Scikit-learn library based on the concept of a decision tree. The DecisionTreeClassifier creates a decision tree from the given training data and then uses it to classify new input data. This model is particularly useful for identifying patterns and relationships in complex, multidimensional data sets. It is easy to understand and interpret, and it is also robust to changes in the data.
+* The wine dataset (`load_wine`) is a sample dataset included in the Python library Scikit-learn. It contains information about various wines, such as alcohol content, acidity, color pigments, and proanthocyanidins. The dataset consists of 178 samples of wines and 13 features. This dataset is often used in examples to demonstrate the use of Scikit-learn for [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] problems
+* The `DecisionTreeClassifier` is a [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] model from the Scikit-learn library based on the concept of a decision tree. The DecisionTreeClassifier creates a decision tree from the given training data and then uses it to classify new input data. This model is particularly useful for identifying patterns and relationships in complex, multidimensional data sets. It is easy to understand and interpret, and it is also robust to changes in the data.
 * `GridSearchCV` is a method that allows you to try out a variety of hyperparameters for a given algorithm and automatically select the best parameters. GridSearchCV performs a search over a specified parameter range and estimates the performance of the algorithm using a specified evaluation function. It allows you to quickly and easily find the best hyperparameters for a model without having to try each value manually.
 * `train_test_split` is a function used to split a dataset into training and test data. It takes the dataset and target variables as input and splits them into two parts: one part for training the model and one part for evaluating the model's performance.
 
@@ -196,4 +197,4 @@ print(tree_rules)
 ## Summary
 At this point, we have now used our first data set and programmed our first decision tree. We have also looked at what GridSearchCV does, for example, and why it can be so useful for us.
 
-In the next article, I will describe what a [[2023-02-09-Random_forrest|random forest]] is and how to program it.
+In the next article, I will describe what a [[The Random Forrest|random forest]] is and how to program it.

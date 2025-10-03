@@ -7,7 +7,7 @@ date: 2025-07-14
 
 # `FAISS` - Facebook AI Similarity Search
 
-`FAISS` is a library developed by Facebook AI Research (Meta) to perform efficient similarity searches (e.g., [[cosine_similarity|cosine similarity]], [[dot_product|dot producte]]). `FAISS` is a very important tool in artificial intelligence, especially for large language models (LLMs), as it (like other tools such as Pinecone or ChromaDB) forms the basis for ([[RAG|retrieval augmented generation]]).
+`FAISS` is a library developed by Facebook AI Research (Meta) to perform efficient similarity searches (e.g., [[Cosine similarity|cosine similarity]], [[dot_product|dot producte]]). `FAISS` is a very important tool in artificial intelligence, especially for large language models (LLMs), as it (like other tools such as Pinecone or ChromaDB) forms the basis for ([[RAG|retrieval augmented generation]]).
 
 ## What makes `FAISS` so important?
 
@@ -27,10 +27,10 @@ I will now simplify the whole process considerably. Imagine you have millions of
    * **Flat Index**: Stores vectors directly and performs a brute force search. More accurate but slow with large amounts of data.
    * **Inverted File Index**: Clusters the vectors to limit the search to relevant clusters. Faster, but with a slight loss of accuracy.
    * **Product Quantization**: Compresses vectors to reduce memory requirements and speed up the search. Also leads to accuracy losses.
-2. **Search**: When the query - the vector of the user's question - arrives, `FAISS` uses the selected index to find the `k` most similar vectors in the dataset. The _similarity_ is often measured using [[cosine_similarity|cosine similarity]].
+2. **Search**: When the query - the vector of the user's question - arrives, `FAISS` uses the selected index to find the `k` most similar vectors in the dataset. The _similarity_ is often measured using [[Cosine similarity|cosine similarity]].
 Of course, the choice of index now depends on the requirements for speed, accuracy, and memory usage.
 
-## `FAISS` in [[LangChain]]
+## `FAISS` in [[What is LangChain]]
 
 In `LangChain`, it is integrated as a supporting vector database (or vector store). After the documents have been loaded and divided into socalled chunks, these chunks are converted into vectors (for example with `OpenAIEmbeddings`). These vectors are then passed to `FAISS` for indexing.
 
@@ -110,10 +110,10 @@ print('\n--- Chat interaction ended ---')
 
 ### How the code implements the [[RAG]] pipeline
 
-The code example demonstrates the basic steps of a RAG pipeline in [[LangChain]] and the central role of `FAISS`:
+The code example demonstrates the basic steps of a RAG pipeline in [[What is LangChain]] and the central role of `FAISS`:
 
 1. **Loading and splitting**: `PyPDFFoader` and `RecursiveCharacterTextSplitter` load the document and split it into manageable text chunks.
-2. **Vectorization**: `OpenAIEmbeddings` converts these text chunks into vectors or [[Embeddings|embeddings]].
+2. **Vectorization**: `OpenAIEmbeddings` converts these text chunks into vectors or [[Embeddings and similarity metrics|embeddings]].
 3. **Indexing (`FAISS`)**: `FAISS.from_document` indexes the vectors. Here, `FAISS` organizes the database to speed up later searches.
 4. **Retrieval and generation**: `ConversationalRetrievalChain` uses `vectorstore.as_retriever()` to retrieve the most similar vectors (the most relevant text chunks) from `FAISS` for a user query (e.g. _'What is attention?'_) and provide them to the LLM for generating the response.
 

@@ -27,7 +27,7 @@ Of course, this compression also has its disadvantages. It is possible that the 
 
 ### Tokens and embeddings – the building blocks
 
-The following is a brief introduction to the building blocks of language models. More detailed information can be found under [[Tokenization]] and [[Embeddings]].
+The following is a brief introduction to the building blocks of language models. More detailed information can be found under [[Tokenization]] and [[Embeddings and similarity metrics]].
 
 #### Tokens and Tokenization
 
@@ -68,17 +68,17 @@ As you can see, the tokenizer breaks the sentence down into a list of tokens. No
 #### Embeddings
 
 After tokenization, embeddings come into play. Put simply, embeddings are numerical vector representations of tokens that capture their semantic meaning. Imagine each word being represented as a point in a multidimensional space. Words with similar meanings are closer together, while words with different meanings are further apart.
-These complex vectors are learned during the training of language models. Various metrics are used to measure the similarity between these vectors, the best known of which is [[cosine_similarity|cosine similarity]].
+These complex vectors are learned during the training of language models. Various metrics are used to measure the similarity between these vectors, the best known of which is [[Cosine similarity|cosine similarity]].
 
 **Why cosine similarity?**
 
-Unlike distance measures such as Euclidean distance, which measure the _straight_ or _direct_ distance between two points and are strongly influenced by the length of the vectors, [[cosine_similarity|cosine similarity]] measures the angle between two vectors. A small angle (cosine value close to 1) means that the vectors point in a very similar direction, meaning that there is a high degree of semantic similarity. A large angle (cosine value close to 0 or negative) indicates little or no semantic similarity.
+Unlike distance measures such as Euclidean distance, which measure the _straight_ or _direct_ distance between two points and are strongly influenced by the length of the vectors, [[Cosine similarity|cosine similarity]] measures the angle between two vectors. A small angle (cosine value close to 1) means that the vectors point in a very similar direction, meaning that there is a high degree of semantic similarity. A large angle (cosine value close to 0 or negative) indicates little or no semantic similarity.
 
-This makes [[cosine_similarity|cosine similarity]] particularly suitable for language models, as it effectively captures the semantic relationship between words regardless of the _strength_ of their vector representation (their length).
+This makes [[Cosine similarity|cosine similarity]] particularly suitable for language models, as it effectively captures the semantic relationship between words regardless of the _strength_ of their vector representation (their length).
 
 #### Summary
 
-Tokens are the broken-down text building blocks that are processed by language models. They are assigned token IDs. Embeddings are the numerical vector representations of these tokens that capture their semantic meaning. [[cosine_similarity|Cosine similarity]] is often used to measure the similarity between words, as it effectively reflects the content-related proximity of the embeddings. These concepts are fundamental to understanding how modern language models process and understand text.
+Tokens are the broken-down text building blocks that are processed by language models. They are assigned token IDs. Embeddings are the numerical vector representations of these tokens that capture their semantic meaning. [[Cosine similarity|Cosine similarity]] is often used to measure the similarity between words, as it effectively reflects the content-related proximity of the embeddings. These concepts are fundamental to understanding how modern language models process and understand text.
 
 ### Generating entire sentences
 
@@ -100,7 +100,7 @@ def get_top_n_predictions(model, tokenizer, input_ids, n=10):
     return top_n_predictions
 ```
 
-This function takes the model, tokenizer, and token IDs as input and returns a list of top words and their logits. Logits are the raw, unnormalized prediction values of the model that have not yet been converted into probabilities (this would require a [[Softmax]] function).
+This function takes the model, tokenizer, and token IDs as input and returns a list of top words and their logits. Logits are the raw, unnormalized prediction values of the model that have not yet been converted into probabilities (this would require a [[Softmax Activationfunction]] function).
 
 Now let's see what the model makes of our first words. The following example demonstrates this iterative process by having the model predict the next three most likely tokens step by step and append the most likely one to the sentence. We repeat this process ten times.
 
@@ -262,7 +262,7 @@ The attention weights are calculated by first calculating the [[dot_product|dot 
 
 If a mask is present, the scores for certain connections are set to a negative value ($-1e9$). This large negative value ensures that the softmax function sets the corresponding weight in the attention matrix close to $0$. The mask is used to prevent the model from accessing future words in the sequence. This is particularly important in decoder architectures or during training, where the model is supposed to generate words sequentially and may only use information from the previous words.
 
-The [[Softmax]] function is then applied to the scores. This converts the similarity values into probabilities that sum to $1$ for each row. These probabilities are the actual attention weights, which indicate how strongly each word in the sentence influences the meaning of the current word.
+The [[Softmax Activationfunction]] function is then applied to the scores. This converts the similarity values into probabilities that sum to $1$ for each row. These probabilities are the actual attention weights, which indicate how strongly each word in the sentence influences the meaning of the current word.
 
 Finally, the context vector for each word is generated by multiplying the attention weights by the value vectors. This context vector is a weighted sum of the value vectors of all words in the sentence and contains the relevant information of the entire sentence, taking into account the relationships between the words.
 
@@ -368,11 +368,11 @@ Comparison for 'the':
   you		0.9596		0.1133
 ```
 
-The results of the script suggest a correlation between semantic similarity (measured by the [[cosine_similarity|cosine similarity]] of the context vectors) and the attention weights. Words that are considered by the model to be more relevant to the context of a particular query word (as indicated by high attention weights) also tend to have higher semantic similarity in their resulting context vectors. This is illustrated, for example, by comparing `May` with `be` and `you` (high similarity and high weights) versus `May` with `the` (lower similarity and lower weight).
+The results of the script suggest a correlation between semantic similarity (measured by the [[Cosine similarity|cosine similarity]] of the context vectors) and the attention weights. Words that are considered by the model to be more relevant to the context of a particular query word (as indicated by high attention weights) also tend to have higher semantic similarity in their resulting context vectors. This is illustrated, for example, by comparing `May` with `be` and `you` (high similarity and high weights) versus `May` with `the` (lower similarity and lower weight).
 
 Dynamic weighting through the attention mechanism enables the model to precisely understand the context of each word and extract relevant information for further processing. The resulting context vector thus serves as an enriched basis for subsequent layers in the Transformer model. To better understand this dynamic weighting, the question arises: Why do certain words in this matrix show a stronger relationship to each other than others? This is due to the weighting matrices ($W_Q$, $W_K$, $W_V$) learned during training, which shape the relationships in the $Q$, $K$, and $V$ vectors in such a way that meaningful dependencies are recognized.
 
-So far, we have examined how a single-head attention block works. We have seen how the input set is broken down into [[tokenization|tokens]] and converted into [[embeddings]]. The query, key, and value matrices are derived from these input [[embeddings]]. These matrices are used to calculate attention weights, which are then used to weight the value matrices and generate contextualized vectors (context vectors).
+So far, we have examined how a single-head attention block works. We have seen how the input set is broken down into [[Tokenization|tokens]] and converted into [[Embeddings and similarity metrics]]. The query, key, and value matrices are derived from these input [[Embeddings and similarity metrics]]. These matrices are used to calculate attention weights, which are then used to weight the value matrices and generate contextualized vectors (context vectors).
 
 <img src="https://deeprevision.github.io/posts/001-transformer/scaled-dot.png" alt="Scaled Dot-product Attention" width=400>
 

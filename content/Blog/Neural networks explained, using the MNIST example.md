@@ -1,5 +1,5 @@
 ---
-title: Neural networks using the MNIST example
+title: Neural networks explained, using the MNIST example
 date: 2024-04-01
 tags:
   - machine-learning
@@ -65,7 +65,7 @@ fig.suptitle("20 of the digits in our dataset")
 plt.show()
 ```
 
-![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_12_0.png)
+![](Quartz/public/Blog/Assets/2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_12_0.png)
 
 #### Overview of the MNIST dataset
 
@@ -109,7 +109,7 @@ plt.show()
 Label of the randomly selected image: 4
 ```
 
-![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_16_1.png)
+![](Quartz/public/Blog/Assets/2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_16_1.png)
 
 The random image from the data set has the aforementioned $28x28$ pixels and is stored in grayscale. It is shown on the left as an image.
 The individual gray scale values, the numbers representing each pixel, are shown in the output on the right. These are originally values between $0$ and $255$, or $8$ bits per pixel. The value indicates how bright this pixel is.
@@ -150,7 +150,7 @@ A neuron consists of an input vector $a_i$, a weight vector $w_i$, an offset or 
 ![Three of the most common activation functions: sigmoid, tanh, and ReLU.](https://www.researchgate.net/profile/Max-Pritzkoleit/publication/335490710/figure/fig1/AS:797522956124160@1567155698415/Figure-4-Common-activation-functions-f-Act-for-use-in-KNN.png)
 *Three of the most common activation functions: sigmoid, tanh, and ReLU.*
 
-The neuron can be trained for a variety of tasks, including [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] and [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Regression|regression]]. In the case of [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]], the neuron is trained to classify an input into one of several predefined categories. In the case of [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Regression|regression]], the neuron is trained to predict a continuous output based on an input.
+The neuron can be trained for a variety of tasks, including [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] and [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Regression|regression]]. In the case of [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]], the neuron is trained to classify an input into one of several predefined categories. In the case of [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Regression|regression]], the neuron is trained to predict a continuous output based on an input.
 
 Training a neuron essentially consists of adjusting the weights to improve the prediction accuracy of the model. This is done using an optimization algorithm such as the gradient descent method, which updates the weights during so-called backpropagation based on the errors made by the neuron in its prediction.
 
@@ -185,7 +185,7 @@ Maximum value of an entry: 1.0
 
 Next, I perform **one-hot encoding**. One-hot encoding is a technique for representing categories as binary vectors. Each category is assigned a vector, where one position represents the category and all other positions contain zeros. This encoding is often used in machine learning modeling. In the case of our handwritten digits, each digit would be assigned a unique category. For example, a $0$ could be encoded as $[1, 0, 0, 0, 0, 0, 0, 0, 0, 0]$, while a $1$ would be encoded as $[0, 1, 0, 0, 0, 0, 0, 0, 0, 0]$, etc.
 
-Especially for [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] problems (such as here with the MNIST dataset) the output variables should be converted into a suitable form so that they can be used in the model. By using one-hot encoding, the output variables can be used more efficiently with the model, as they can be represented as numerical values. This facilitates the calculations and training of the model.
+Especially for [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] problems (such as here with the MNIST dataset) the output variables should be converted into a suitable form so that they can be used in the model. By using one-hot encoding, the output variables can be used more efficiently with the model, as they can be represented as numerical values. This facilitates the calculations and training of the model.
 
 ```python
 y_train = tf.keras.utils.to_categorical(y_train)
@@ -231,12 +231,12 @@ model = tf.keras.Sequential([
 ])
 ```
 
-The above code defines a TensorFlow Keras sequential model with three dense layers. The first layer has `first_layer_size` neurons and a `ReLU` activation, the second has `second_layer_size` neurons and a `ReLU` activation, and the last has `output_layer_size` neurons and a [[Softmax|softmax]] activation.
+The above code defines a TensorFlow Keras sequential model with three dense layers. The first layer has `first_layer_size` neurons and a `ReLU` activation, the second has `second_layer_size` neurons and a `ReLU` activation, and the last has `output_layer_size` neurons and a [[Softmax Activationfunction|softmax]] activation.
 
 The model must then be compiled. Here, you can pass on a wide variety of parameters. I will limit myself here (in the code below) to the optimizer, the loss, and the metrics. A brief description:
 
 * **Optimizer**: An optimizer is an algorithm that adjusts the weights of a neural network to minimize error.
-* **Loss**: The loss is a function that measures the error between the model's predictions and the actual values. I am using `categorical_crossentropy`, which is a loss function used in multi-class [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] tasks, measuring the difference between predicted and true probability distributions.
+* **Loss**: The loss is a function that measures the error between the model's predictions and the actual values. I am using `categorical_crossentropy`, which is a loss function used in multi-class [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] tasks, measuring the difference between predicted and true probability distributions.
 * **Metrics**: Metrics are benchmarks used to evaluate the performance of a model, e.g., accuracy or F1 score.
 
 Usually, a learning rate is also passed, which is used to adjust the weights during backpropagation. The Adam optimizer used makes this step unnecessary.
@@ -321,7 +321,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_44_0.png)
+![](Quartz/public/Blog/Assets/2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_44_0.png)
 
 The plot above shows the accuracy and loss of training and validation after each epoch. These curves show the general performance. However, more specific information can also be derived. For example, if the accuracy of the training is very good, but that of the validation is not, the model is probably overfitted. If both accuracies are poor, it is underfitted. More on this shortly. 
 You too can see, that the ealy-stopping callback stopped the training process early, since we planned with 50 epochs.
@@ -439,7 +439,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_56_0.png)
+![](Quartz/public/Blog/Assets/2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_56_0.png)
     
 
 
@@ -459,7 +459,7 @@ Next, we look at the error matrix to see where the model could make even better 
 
 ### Confusion matrix
 
-The error matrix (also known as the confusion matrix) is a table that shows the performance of a [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] model. It shows the number of correctly and incorrectly classified examples for each class.
+The error matrix (also known as the confusion matrix) is a table that shows the performance of a [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] model. It shows the number of correctly and incorrectly classified examples for each class.
 
 The confusion matrix consists of four main components: 
 * true positives (TP)
@@ -471,7 +471,7 @@ TP are the correctly classified positive examples, TN are the correctly classifi
 
 The confusion matrix allows us to derive various performance metrics, such as accuracy, precision, recall, and F1 score. It also gives us insights into the types of errors the model makes and can help us improve the model's performance by analyzing the errors and making appropriate adjustments.
 
-The confusion matrix is an important tool in the evaluation of [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] models and helps us understand and interpret the strengths and weaknesses of the model.
+The confusion matrix is an important tool in the evaluation of [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] models and helps us understand and interpret the strengths and weaknesses of the model.
 
 I would like to use it here to estimate where the model makes incorrect predictions. To do this, we first need to let the model make the predictions.
 
@@ -547,7 +547,7 @@ plt.tight_layout()
 plt.show()
 ```
     
-![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_68_0.png)
+![](Quartz/public/Blog/Assets/2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_68_0.png)
 
 What we can see from this graph... The correct digit is plotted on the y-axis, and the predicted digit on the x-axis. If these values match, the counter is incremented (on the diagonal). The higher the values on the diagonal, the better, because the model has predicted more correctly.
 
@@ -563,7 +563,7 @@ The neural network learns by adjusting its weights and bias values to improve it
 
 1. **Initialization**: The weights and bias values of the network are initialized randomly, often with a small normal distribution to promote more efficient convergence.
 2. **Forward propagation**: The input data is passed through the network, using the activation functions and weights to calculate the network's output. Each layer of the network performs a linear transformation of the inputs and then applies a nonlinear activation function such as the sigmoid, ReLU, or tanh function.
-3. **Error calculation**: The difference between the calculated output of the network and the actual output values is calculated using an error or cost function such as the mean squared error (MSE) for regressions or the cross-entropy error for [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]]. This function measures the performance of the network and serves as the basis for adjusting the weights.
+3. **Error calculation**: The difference between the calculated output of the network and the actual output values is calculated using an error or cost function such as the mean squared error (MSE) for regressions or the cross-entropy error for [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]]. This function measures the performance of the network and serves as the basis for adjusting the weights.
 4. **Backpropagation**: The error is propagated backward through the network to calculate the gradient of the error function with respect to the weights and bias values. This is achieved using the chain rule of differentiation by tracing the error back from the output layer to the input layer. The gradient indicates how much the weights and bias values need to change to reduce the error.
 5. **Weight update**: An optimizer, such as gradient descent or its variants such as SGD, Adam, or RMSprop, is used to update the weights and bias values based on the calculated gradient. The learning rate, which determines the size of the update steps, can be adjusted to control convergence and avoid overfitting.
 6. **Repetition**: Steps 2-5 are repeated for a certain number of epochs or until a termination criterion is met. Typical termination criteria include reaching a certain level of accuracy on a validation dataset or the absence of significant improvement in performance over several epochs.
@@ -589,26 +589,26 @@ Here, $z^{(l)}$ is the weighted sum of the inputs in layer $l$, $W^{(l)}$ are th
 
 In this section, I would like to mention a few of the most common cost functions.
 
-* **Mean Squared Error (MSE)**: The MSE function measures the average squared error between the actual and expected outputs. It is often used in [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Regression|regression]] problems where the goal is to estimate a continuous output. The function calculates the squared difference between each actual and expected output and then takes the average across all examples. The MSE function is sensitive to outliers because the squared error increases sharply as the difference between the actual and expected values increases.
+* **Mean Squared Error (MSE)**: The MSE function measures the average squared error between the actual and expected outputs. It is often used in [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Regression|regression]] problems where the goal is to estimate a continuous output. The function calculates the squared difference between each actual and expected output and then takes the average across all examples. The MSE function is sensitive to outliers because the squared error increases sharply as the difference between the actual and expected values increases.
 
 $$MSE = \dfrac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
 
-* **Mean Absolute Error (MAE)**: The MAE function measures the average absolute error between actual and expected outputs. Unlike the MSE function, which considers the squared error, MAE considers the absolute error. This means that outliers in the data have less influence on the cost than when using MSE. The MAE function is also useful for [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Regression|regression]] problems and is often used when it is important to understand the average error in the actual units of output.
+* **Mean Absolute Error (MAE)**: The MAE function measures the average absolute error between actual and expected outputs. Unlike the MSE function, which considers the squared error, MAE considers the absolute error. This means that outliers in the data have less influence on the cost than when using MSE. The MAE function is also useful for [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Regression|regression]] problems and is often used when it is important to understand the average error in the actual units of output.
 
 $$MAE = \dfrac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$
 
-* **Binary Cross-Entropy**: This function is used when dealing with a binary [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] problem where the output is either 0 or 1. The function measures the error between the actual and expected outputs, where the outputs are interpreted as probabilities. It uses the logarithmic function to calculate the error, with a higher error occurring when the actual output deviates significantly from the expected output. The binary cross-entropy function is often combined with the sigmoid activation function in the output layer.
+* **Binary Cross-Entropy**: This function is used when dealing with a binary [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] problem where the output is either 0 or 1. The function measures the error between the actual and expected outputs, where the outputs are interpreted as probabilities. It uses the logarithmic function to calculate the error, with a higher error occurring when the actual output deviates significantly from the expected output. The binary cross-entropy function is often combined with the sigmoid activation function in the output layer.
 
 $$Binary Cross Entropy = -\dfrac{1}{n} \sum_{i=1}^{n} [y_i \log(\hat{y}_i) + (1-y_i) \log(1-\hat{y}_i)]$$
 
-* **Categorical Cross-Entropy**: This function is used when dealing with a multi-class [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] problem where the output is divided into several classes. Similar to the binary cross-entropy function, it measures the error between the actual and expected outputs, where the outputs are interpreted as probabilities. The categorical cross-entropy function uses the logarithmic function to calculate the error, where a higher error occurs when the actual output deviates significantly from the expected output. It is often combined with the [[softmax]] activation function in the output layer to normalize the probabilities for each class.
+* **Categorical Cross-Entropy**: This function is used when dealing with a multi-class [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] problem where the output is divided into several classes. Similar to the binary cross-entropy function, it measures the error between the actual and expected outputs, where the outputs are interpreted as probabilities. The categorical cross-entropy function uses the logarithmic function to calculate the error, where a higher error occurs when the actual output deviates significantly from the expected output. It is often combined with the [[Softmax Activationfunction]] activation function in the output layer to normalize the probabilities for each class.
 
 $$
 Categorical Cross Entropy = -\dfrac{1}{n} \sum_{i=1}^{n} \sum_{j=1}^{m} y_{ij} \log(\hat{y}_{ij})
 $$
 
 In the equations, $y$ and $\hat{y}_i$ represent the actual (ground truth) and predicted values or outputs of the model, respectively.
-  * In the context of [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Regression|regression]] (as with MSE and MAE), $y$ represents the actual value of the target variable (actual prices in a price prediction model) and $\hat{y}_i$​ represents the values predicted by the model.
+  * In the context of [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Regression|regression]] (as with MSE and MAE), $y$ represents the actual value of the target variable (actual prices in a price prediction model) and $\hat{y}_i$​ represents the values predicted by the model.
   * In binary cross entropy loss, $y$ represents the actual class (either $0$ or $1$) and $\hat{y}_i$​ represents the probability that the model predicts this class.
 * In categorical cross entropy, $y_{ij}$ represents the probability that the model predicts example $i$ as class $j$, while $y_{ij}$ is the actual probability that example $i$ is class $j$.
 In all cases, $y$ is the ground truth value and $\hat{y}_i$ is the model prediction.
@@ -650,11 +650,11 @@ Activation functions are also an important part of any artificial neural network
 
 ### **Sigmoid function**
 
-The **sigmoid function** is often used in binary [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] problems. The function uses an S-shaped curve that allows for a smooth overlap between classes. It returns an output value between 0 and 1. One disadvantage of the sigmoid function is that it is susceptible (I learned a new word here ;)) to the problem of gradient vanishing when the weights become too large.
+The **sigmoid function** is often used in binary [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] problems. The function uses an S-shaped curve that allows for a smooth overlap between classes. It returns an output value between 0 and 1. One disadvantage of the sigmoid function is that it is susceptible (I learned a new word here ;)) to the problem of gradient vanishing when the weights become too large.
 
 * **Sigmoid gradient vanishing** describes the phenomenon of individual gradients approaching zero. This is because the derivative of the sigmoid function becomes very small for very large or very small inputs. If the gradient is close to zero, the ANN may train very slowly or stop training altogether, because the gradient is needed to update the parameters of the ANN. Solutions can include other activation functions, for example ReLU, or the use of methods such as gradient clipping or batch normalization.
  
-A common use case for sigmoid activation functions is in binary [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] problems, where the model must make predictions that are either `true` or `false` (Is there a dog in the picture?).
+A common use case for sigmoid activation functions is in binary [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] problems, where the model must make predictions that are either `true` or `false` (Is there a dog in the picture?).
 The formula for the sigmoid activation function is:
 
 $$f(x) = \dfrac{1}{1 + e^{-x}}$$
@@ -741,7 +741,7 @@ Neural networks can be divided into different types depending on their architect
 
 ### **Feedforward networks**
 
-Feedforward networks are the simplest type of neural networks and consist of an input layer, one or more hidden layers, and an output layer. Data flows through the network in one direction, from the input layer to the output layer. Feedforward networks are often used for [[2023-01-01-Supervised_Unsupervised_Reinforcement_Learning#Classification|classification]] tasks, such as recognizing handwritten digits.
+Feedforward networks are the simplest type of neural networks and consist of an input layer, one or more hidden layers, and an output layer. Data flows through the network in one direction, from the input layer to the output layer. Feedforward networks are often used for [[Supervised, Unsupervised and Reinforcement Learning — A brief overview#Classification|classification]] tasks, such as recognizing handwritten digits.
   
 ![A deep feedforward neural network.](https://tikz.net/wp-content/uploads/2021/12/neural_networks-006.png)
 *A deep feedforward neural network. [Image source](https://tikz.net/neural_networks/)*

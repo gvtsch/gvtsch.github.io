@@ -36,9 +36,9 @@ In practice, these word embeddings have significantly more dimensions. Modern la
 
 ### Measuring the similarity of embeddings
 
-Various mathematical metrics are used to measure the semantic similarity between vectors. [[cosine_similarity|Cosine similarity]] and the [[dotproduct|dot product]] are particularly important in the context of natural language processing (NLP) and large language models (LLMs), as they evaluate the direction of vectors and thus robustly capture semantic similarity. In addition, there are distance measures such as Euclidean or Manhattan distance, which measure the _distance_ between vectors in space.
+Various mathematical metrics are used to measure the semantic similarity between vectors. [[Cosine similarity|Cosine similarity]] and the [[Scalar Product|dot product]] are particularly important in the context of natural language processing (NLP) and large language models (LLMs), as they evaluate the direction of vectors and thus robustly capture semantic similarity. In addition, there are distance measures such as Euclidean or Manhattan distance, which measure the _distance_ between vectors in space.
 
-Here, we will compare [[cosine_similarity|Cosine similarity]], the scalar product together with Euclidean and Manhattan distance in an example to illustrate their differences and relationships in the evaluation of semantic proximity.
+Here, we will compare [[Cosine similarity|Cosine similarity]], the scalar product together with Euclidean and Manhattan distance in an example to illustrate their differences and relationships in the evaluation of semantic proximity.
 
 ```python
 def vector_metrics (vector_a: np.ndarray, vector_b: np.ndarray) -> tuple[float, float, float, float]:
@@ -112,9 +112,9 @@ apple                    0.0           0.000000           14.212670             
 The table illustrates the different properties of the metrics when comparing the reference vector for queen with the other words:
 
 #### Dot product
-* Measures the _match_ between the directions while also taking into account the length (magnitude) of the vectors. A larger [[dotproduct|dot product]] indicates a stronger alignment in the same direction and/or longer vectors.
+* Measures the _match_ between the directions while also taking into account the length (magnitude) of the vectors. A larger [[Scalar Product|dot product]] indicates a stronger alignment in the same direction and/or longer vectors.
 * The higher the value, the more similar the vectors are.
-* In the example: `Queen_3` has the highest [[dotproduct|dot product]] with `King` at $6.0$, followed by `Queen_2` ($4.0$) and `Queen` ($2.0$). As expected, this is a consequence of their increasing vector length, while their semantic direction to `King` remains very similar. `Apple` has a [[dotproduct|dot product]] of $0$ because the vectors are orthogonal to each other.
+* In the example: `Queen_3` has the highest [[Scalar Product|dot product]] with `King` at $6.0$, followed by `Queen_2` ($4.0$) and `Queen` ($2.0$). As expected, this is a consequence of their increasing vector length, while their semantic direction to `King` remains very similar. `Apple` has a [[Scalar Product|dot product]] of $0$ because the vectors are orthogonal to each other.
 
 #### Cosine similarity
 * Measures the angle between vectors and thus purely reflects the semantic direction or similarity, regardless of their length.
@@ -132,4 +132,4 @@ The table illustrates the different properties of the metrics when comparing the
  
 ## Conclusion
 
-The [[dotproduct|dot product]] is closely related to [[cosine_similarity|Cosine similarity]] and is a key component in the attention mechanism of transformers, where it is used to calculate the similarity (scores) between query and key vectors. It is an efficient way to measure the _match_ of vectors pointing in similar directions. [[cosine_similarity|Cosine similarity]] is the more robust choice when it comes to comparing pure semantic meaning, as it normalizes the vector length.
+The [[Scalar Product|dot product]] is closely related to [[Cosine similarity|Cosine similarity]] and is a key component in the attention mechanism of transformers, where it is used to calculate the similarity (scores) between query and key vectors. It is an efficient way to measure the _match_ of vectors pointing in similar directions. [[Cosine similarity|Cosine similarity]] is the more robust choice when it comes to comparing pure semantic meaning, as it normalizes the vector length.

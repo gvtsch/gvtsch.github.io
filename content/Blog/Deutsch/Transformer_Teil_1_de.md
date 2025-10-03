@@ -29,7 +29,7 @@ Natürlich bringt diese Komprimierung auch Nachteile mit sich. Es ist möglich, 
 
 ### Tokens und Embeddings - Die Bausteine
 
-Das folgende ist eine kurze Einführung in die Bausteine von Sprachmodellen. Ausführlichere Informationen findest du unter [[Tokenization|Tokenisierung]] und [[Embeddings|Embeddings]].
+Das folgende ist eine kurze Einführung in die Bausteine von Sprachmodellen. Ausführlichere Informationen findest du unter [[Tokenization|Tokenisierung]] und [[Embeddings and similarity metrics|Embeddings and similarity metrics]].
 
 #### Tokens und Tokenisierung
 
@@ -70,7 +70,7 @@ Wie du siehst, zerlegt der Tokenizer den Satz in eine Liste von Tokens. Beachte 
 
 Nach der Tokenisierung kommen die Embeddings ins Spiel. Vereinfacht ausgedrückt sind Embeddings numerische Vektordarstellungen von Tokens, die deren semantische Bedeutung erfassen. Stell dir vor, jedes Wort wird in einem mehrdimensionalen Raum als Punkt dargestellt. Wörter mit ähnlicher Bedeutung liegen näher beieinander, während Wörter mit unterschiedlicher Bedeutung weiter auseinander liegen.
 
-Diese komplexen Vektoren werden während des Trainings von Sprachmodellen gelernt. Um die Ähnlichkeit zwischen diesen Vektoren zu messen, werden verschiedene Metriken verwendet, die bekannteste davon ist die [[cosine_similarity|Kosinus-Ähnlichkeit]].
+Diese komplexen Vektoren werden während des Trainings von Sprachmodellen gelernt. Um die Ähnlichkeit zwischen diesen Vektoren zu messen, werden verschiedene Metriken verwendet, die bekannteste davon ist die [[Cosine similarity|Kosinus-Ähnlichkeit]].
 
 **Warum Kosinus-Ähnlichkeit?**
 
@@ -104,7 +104,7 @@ def get_top_n_predictions(model, tokenizer, input_ids, n=10):
     return top_n_predictions
 ```
 
-Diese Funktion nimmt das Modell, den Tokenizer und die Token-IDs als Eingabe und gibt eine Liste von Top-Wörtern und ihren Logits zurück. Logits sind die rohen, unnormalisierten Vorhersagewerte des Modells, die noch nicht in Wahrscheinlichkeiten umgewandelt wurden (dafür wäre eine [[Softmax|Softmax]]-Funktion nötig).
+Diese Funktion nimmt das Modell, den Tokenizer und die Token-IDs als Eingabe und gibt eine Liste von Top-Wörtern und ihren Logits zurück. Logits sind die rohen, unnormalisierten Vorhersagewerte des Modells, die noch nicht in Wahrscheinlichkeiten umgewandelt wurden (dafür wäre eine [[Softmax Activationfunction|Softmax Activationfunction]]-Funktion nötig).
 
 Nun lassen wir uns überraschen, was das Modell aus unseren ersten Worten macht. Das folgende Beispiel demonstriert diesen iterativen Prozess, indem das Modell schrittweise die nächsten drei wahrscheinlichsten Tokens voraussagt und das wahrscheinlichste davon an den Satz anhängt. Wir wiederholen diesen Vorgang zehn Mal.
 
