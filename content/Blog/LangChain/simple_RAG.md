@@ -26,14 +26,14 @@ This post walks you through building a clean, and document-aware chatbot using t
 I have recorded a small demo, of what we are going to build:
 
 <video width="640" controls>
-  <source src="https://github.com/gvtsch/Simple_RAG/blob/main/demonstration.mp4" type="video/mp4">
+  <source src="https://github.com/gvtsch/Simple_RAG/blob/main/demonstration.mp4">
   Ihr Browser unterstützt das Video-Tag nicht.
 </video>
 
 You can the code on [Github](https://github.com/gvtsch/Simple_RAG.git)
 And now ... Without further ado, let's start.
 
-## 💡 The Architecture at a Glance
+## The Architecture at a Glance
 
 Our [[RAG]] system is split into three Python files, ensuring modularity:
 
