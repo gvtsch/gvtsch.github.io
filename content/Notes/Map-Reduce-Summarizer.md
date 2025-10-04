@@ -1,6 +1,6 @@
 ---
 date: 2025-07-14
-tags: ["llm", "machine-learning", "nlp", "langchain", "agent", "multi-agent"]
+tags: ["llm", "machine-learning", "nlp", "langchain", "agent"]
 author: CKe
 title: "Map-Reduce Summarizer"
 ---

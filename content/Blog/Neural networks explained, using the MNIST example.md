@@ -5,9 +5,9 @@ tags:
   - machine-learning
   - neural-network
   - coding
-  - LSTM
-  - RNN
-  - CNN
+  - lstm
+  - rnn
+  - cnn
 toc: true
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: Build a simple RAG Chatbot
 tags:
-    - RAG
-    - LangChain
+    - rag
+    - langchain
     - llm
     - nlp
-    - Streamlit
-    - Python
-    - Machine-Learning
+    - streamlit
+    - python
+    - machine-learning
 toc: true
 draft: false
 author: CKe

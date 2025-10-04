@@ -1,6 +1,6 @@
 ---
 date: 2025-07-14
-tags: ["llm", "ml", "nlp", "langchain", "google"]
+tags: ["llm", "machine-learning", "nlp", "langchain", "google"]
 author: CKe
 title: "Map-Reduce Paradigm"
 ---

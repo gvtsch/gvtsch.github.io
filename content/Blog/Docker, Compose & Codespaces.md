@@ -3,7 +3,7 @@ title: "My development environment: Docker, Compose & Codespaces"
 date: 2025-09-28
 tags:
   - python
-  - Docker
+  - docker
   - github
   - codespace
 toc: true

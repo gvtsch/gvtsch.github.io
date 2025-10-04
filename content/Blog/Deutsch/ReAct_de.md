@@ -1,7 +1,7 @@
 ---
 title: Was ist eigentlich ReAct?
 date: 2025-07-14
-tags: ["python", "langchain", "machine-learning", "llm", "nlp", "agent"]
+tags: ["python", "langchain", "machine-learning", "llm", "nlp", "agent", "react"]
 toc: True
 draft: false
 author: CKe
