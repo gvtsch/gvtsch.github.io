@@ -27,9 +27,7 @@ I have recorded a small demo, of what we are going to build:
 
 <img src="simple_RAG.gif" alt="Beschreibung des GIFs" width="640">
 
-<img src="Assets/simple_RAG.gif" alt="Beschreibung des GIFs" width="640">
 
-![Simple RAG System](Simple_RAG.gif)
 
 You can the code on [Github](https://github.com/gvtsch/Simple_RAG.git)
 And now ... Without further ado, let's start.
