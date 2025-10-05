@@ -11,22 +11,22 @@ toc: true
 
 # My development environment: How I work with Docker, Compose, and Codespaces
 
-I decided to write down how I work with Docker, Compose and so on. Some, or most/all of the concepts may be familiar to you, but I'm also doing this to record my thoughts. And maybe one or two of you will find something useful.
+I decided to write down my workflow with Docker, Compose, etc. You may already be familiar with some or all of the concepts, but I'm also doing this to record my thoughts. Hopefully, one or two of you will find something useful!
 
 The repository can be found here: [Docker Example](https://github.com/gvtsch/docker_example.git) 
 It is part of this larger [collection of examples](https://github.com/gvtsch/Blog_Code_Snippets).
 
 ## Introduction
 
-I develop (privately) using Docker, Compose, and Codespaces, among other things. In the following chapters, I have written down how and why. There will also be a practical example with Python.
+I develop privately using Docker, Compose and Codespaces, among other things. In the following chapters, I explain how and why I do this. There will also be a practical Python example.
 
 ### What is Docker?
 
-So... what is Docker? Docker is a technology for orchestrating applications. For example, you can develop and execute Python code in an isolated and portable environment called a container.
+So, what is Docker? Docker is a technology for orchestrating applications. For instance, it enables you to develop and execute Python code in an isolated and portable environment known as a 'container'.
 
-### Why containerization?
+Why containerisation?
 
-Have you ever heard someone say, "It works on my computer"? Or have you said it yourself? With Docker, that's a thing of the past. Docker allows you to create consistent and reproducible development environments that can be run on a wide variety of systems. For example, I work on my laptop with a dual-boot system consisting of Windows 11 and Fedora. When I use Docker I can easily work on the project on both systems.
+Have you ever heard someone say, 'It works on my computer'? Or have you said it yourself? With Docker, that's a thing of the past. Docker enables you to create consistent and reproducible development environments that can be run on a wide variety of systems. For example, I have a dual-boot system on my laptop consisting of Windows 11 and Fedora. When I use Docker, I can easily work on the project on both systems.
 
 ## Docker – the cornerstone of containerization
 
