@@ -1,7 +1,7 @@
 ---
 title: What exactly is ReAct?
 date: 2025-07-14
-tags: ["python", "langchain", "ml", "llm", "nlp", "agent", "react"]
+tags: ["python", "langchain", "machine-learning", "llm", "nlp", "agent", "react"]
 toc: True
 draft: false
 author: CKe
@@ -9,69 +9,61 @@ author: CKe
 
 # ReAct - Reasoning and Acting
 
-ReAct (Reasoning + Acting) is an approach that enables large language models (LLMs) to perform both logical thinking (reasoning) and actions (acting) in an integrated process. ReAct combines the ability of LLMs to generate chains of reasoning ([[Prompt-Techniques|Chain-of-Thought]]) with the ability to perform task-specific actions, such as retrieving information, calling APIs, or using external tools.
+ReAct (Reasoning + Acting) is a pretty cool approach that lets large language models (LLMs) both think logically and actually do stuff. Instead of just generating text, ReAct agents can reason through problems step-by-step AND take concrete actions like calling APIs, searching the web, or running code.
+
+It's basically combining the thinking power of LLMs with the ability to interact with the real world through ([[Prompt-Techniques|Chain-of-Thought]]) reasoning.
 
 ## Process
 
-* The agent receives a task.
-* He thinks ("Thought").
-* He decides on an action ("Action").
-* He receives a result ("Observation").
-* He repeats the steps until the task is solved.
+The process is actually quite straightforward:
+
+* The agent gets a task
+* It thinks about what to do ("Thought")
+* It decides on an action ("Action") 
+* It gets a result back ("Observation")
+* It repeats this cycle until the problem is solved
 
 ```mermaid
 flowchart TD
-    A[Receive task] --&gt; B[Thought: Think]
-    B --&gt; C[Action: Select tool/action]
-    C --&gt; D[Observation: Receive result]
-    D --&gt; E{Goal achieved?}
+    A[Receive task] --&gt; B["Think (Though)"]
+    B --&gt; C["Select tool/action (Action)"]
+    C --&gt; D["Receive result (Observation)"]
+    D --&gt; E{"Goal achieved?"}
     E -- No --&gt; B
-    E -- Yes --&gt; F[Give answer]
+    E -- Yes --&gt; F["Give answer"]
 ```
 
-## Key features of ReAct:
-* **Reasoning**: The model explains its thought processes by generating step-by-step considerations. This improves the transparency and traceability of decisions.
-* **Actions (Acting)**: In addition to reasoning, the model performs concrete actions, such as retrieving information or interacting with an environment.
-* **Nesting**: ReAct combines thinking and acting in a nested manner. The model can switch between reasoning and action to solve complex tasks efficiently.
+## What makes ReAct special
 
-## Advantages of ReAct:
+* **Reasoning**: The model actually explains its thought process step-by-step. You can see exactly how it's thinking through a problem.
+* **Acting**: It doesn't just think - it takes real actions like searching Wikipedia or running Python code.
+* **Transparency**: Since you can see the reasoning trace, you understand why the agent made certain decisions.
 
-* **Improved problem solving**: By combining thinking and acting, the model can handle * complex tasks that pure thinking or acting alone could not solve.
-* **Explainability**: The reasoning traces make the model's decisions comprehensible.
-* **Flexibility**: ReAct can be used in various areas of application, e.g., in automation, decision-making, or interaction with external tools.
+## Why ReAct is better than traditional approaches
 
 Unlike agents that only reason (think) or only act (perform tasks), ReAct agents combine both approaches. This allows them to solve more complex problems, adapt to new situations, and provide more reliable and explainable results.
 
----
+## Building a ReAct agent with LangChain
 
-## Example in the [[What is LangChain]] environment:
-
-A ReAct model could answer a question by first thinking about the question, then querying a search engine, analyzing the results, and finally providing an informed answer.
-
-In the following, I would like to program a small ReAct agent that can execute Python code, query Wikipedia, or start an Internet search. To do this, I will define tools that this agent is then allowed to use. I will not show the entire code, but only the parts that are helpful for understanding. The boilerplate code can be handled by programming copilots anyway.
-
-First, the question arises: what makes an agent a ReAct agent?
+I want to show you how to actually build one of these agents. We'll create an agent that can run Python code, search Wikipedia, and browse the internet. Let me walk you through the key parts.
 
 ### What makes an agent a ReAct agent?
 
-The agent becomes a ReAct agent through the strategic combination of three core elements that interact in the [[What is LangChain]] environment:
+It's actually three things working together in the [[What is LangChain|LangChain]] environment:
 
-* **The ReAct principle (Reasoning + Acting)**: This is the fundamental theoretical framework. It guides the agent to proceed in an iterative cycle of "thinking" (Thought), "choosing an action" (Action), and "observing the result" (Observation). The agent becomes a ReAct agent because it uses this specific way of thinking and acting to solve problems.
-* **A special prompt (e.g., `hub.pull('hwchase17/react'))`: This prompt is absolutely crucial. It is not a mere instruction, but a detailed guide that teaches the LLM how to execute the ReAct process. It typically contains:
-    * Examples ([[Prompt-Techniques|Few-shot]] examples): These show the LLM what the "Thought" process should look like, how to correctly formulate an "Action" (tool call), and how to interpret the "Observation" in order to arrive at the next "Thought."
-    * Format specifications: These define the exact text format in which the agent should output its thoughts and actions (e.g., "Thought: ...", "Action: ...", "Action Input: ...").
-    Without this prompt, which is specifically tailored to ReAct, the LLM would not know how to execute this complex cycle of thought and action. It acts as the "instruction manual" for the LLM to behave like a ReAct agent.
-  * The following are instructions on how to import the prompt:
+1. **The ReAct principle**: This is the core idea - the agent cycles through thinking, acting, and observing. It's the theoretical framework that guides the iterative process of "Thought" -> "Action" -> "Observation."
+2. **A special prompt**: This is crucial. You need a prompt that teaches the LLM how to behave like a ReAct agent. It's not just an instruction - it's a detailed guide containing examples ([[Prompt-Techniques|Few-shot]] examples) and format specifications. LangChain has a ready-made one:
+
     ```python
     from langchain import hub
-    hub.pull('hwchase17/react')
+    prompt = hub.pull('hwchase17/react')
 
     print(prompt.input_variables)
     print(prompt.template)
     ```
 
-    And the content:
-    
+    This gives you:
+
     ```bash
     ['agent_scratchpad', 'input', 'tool_names', 'tools']
     Answer the following questions as best you can. You have access to the following tools:
@@ -95,25 +87,21 @@ The agent becomes a ReAct agent through the strategic combination of three core 
     Thought:{agent_scratchpad}
     ```
 
-* **Orchestration by `create_react_agent` and `AgentExecutor`**: These functions from [[What is LangChain]] are the technical "conductors":
-  * `create_react_agent` takes the LLM, the available tools, and the prompt tailored to ReAct and configures the agent accordingly.
-  * The `AgentExecutor` is the control center that controls the ReAct process step by step. It sends the prompt to the LLM, reads its response (to recognize thoughts, actions, and their inputs), executes the desired action using the appropriate tool, and returns the result ('observation') to the LLM. This cycle repeats until the agent has found a final answer.
-
-Now let's move on to the tools.
+3. **LangChain's orchestration**: The `create_react_agent` and `AgentExecutor` functions handle all the complex stuff behind the scenes. They're like the technical *managers* that control the ReAct process step by step.
 
 ### Tools
 
-In the context of large language models, and ReAct agents in particular, tools are external functions or interfaces that give the LLM capabilities beyond its pure text generation and language comprehension function. While LLMs excel at recognizing patterns in text and generating coherent responses, they have well-known inherent limitations:
+This is where it gets interesting. Tools are what give your agent superpowers beyond just text generation. LLMs are great at language, but they have well-known limitations:
 
-* **Knowledge base**: LLMs' knowledge is limited to the data they were trained on. This knowledge quickly becomes outdated in today's world.
-* **Logic and precise calculations**: LLMs can make mistakes and hallucinate when performing complex mathematical calculations or adhering to strict logical rules. 
-* **Interaction with the outside world**: LLMs cannot directly access the internet, call APIs, or perform actions in real-world systems.
+* **Knowledge base**: Their knowledge gets outdated quickly
+* **Logic and calculations**: They can make mistakes with complex math or strict logical rules
+* **Interaction with the real world**: They can't directly access the internet, call APIs, or perform actions
 
-This is where tools come into play. They extend LLMs and agents with "senses" and "capabilities" by allowing the agent to perform specific external tasks. A ReAct agent decides, based on its reasoning, which tool is best suited to answer an intermediate question or solve a problem, and then processes the results of the tool.
+That's where tools come in. They extend the agent with *senses* and *capabilities*. I'll walk you through just a couple of them.
 
 #### Python REPL
 
-Here’s how you define the Python REPL tool for your agent.
+Here's how you define the Python REPL tool for your agent:
 
 ```python
 python_repl = PythonREPLTool()
@@ -124,11 +112,11 @@ python_repl_tool = Tool(
 )
 ```
 
-The Python REPL (Read-Eval-Print Loop) tool allows the agent to execute Python code directly. This is particularly useful for precise calculations, data manipulation, testing hypotheses, or complex logical operations where an LLM alone might be prone to errors. It acts as a "calculator on steroids" and "logic engine." We will see this in the example below.
+This tool lets the agent execute Python code directly. Super useful for calculations, data manipulation, or any logic where you need precision – things that LLMs can be unreliable at.
 
 #### Wikipedia
 
-Here’s how you set up the Wikipedia tool.
+Here's how you set up the Wikipedia tool:
 
 ```python
 api_wrapper = WikipediaAPIWrapper()
@@ -140,12 +128,11 @@ wikipedia_tool = Tool(
 )
 ```
 
-The Wikipedia tool allows the agent to access Wikipedia's extensive and structured knowledge base. It is ideal for retrieving more or less reliable, factual information on a wide range of topics that may not be included in the LLM's original training dataset or may be out of date. The agent uses it to quickly get an overview of a topic or to check specific facts.
+Wikipedia access gives the agent a massive knowledge base for factual information that might not be in the LLM's training data or could be outdated.
 
 #### TavilySearchResults
 
-Here’s how you configure the Tavily Search tool.
-
+Here's how you configure the Tavily Search tool:
 
 ```python
 search = TavilySearchResults(
@@ -160,28 +147,31 @@ tavily_tool = Tool(
 )
 ```
 
-The Tavily Search Tool allows agents to search for real-time information on the internet. Unlike Wikipedia, which accesses curated knowledge, Tavily is particularly valuable for finding highly topical information, news, or specific website content that is constantly changing. It expands the agent's ability to interact with the dynamic world outside its training data and is often the first choice for general information gathering.
+This one's great for real-time web searches when you need current information. Unlike Wikipedia's "curated" knowledge, this finds highly topical stuff, news, or specific website content.
 
-#### Additional tools
+#### Other tools you could add
 
-Beyond the three tools discussed, there are of course many more. LLM agents can access a wide range of specialized tools to expand their core capabilities. These include, for example, access to academic databases, financial APIs, or product databases for targeted searches. Data analysis tools such as SQL interaction or spreadsheet APIs are also conceivable. For interaction with the environment, they can use email services, calendar APIs, or file system access. Even the direct execution of shell commands or interaction with image generation services is possible. This variety of tools enables agents to solve precise problems, access up-to-date information, and master complex tasks in the real world.
+The possibilities are endless. You could add:
+- Database access (SQL queries)
+- Email services  
+- Calendar APIs
+- File system access
+- Image generation
+- Shell commands
 
-### Combining the tools into an agent
+Next, let's put it together and make it work.
 
-`Tools`, `AgentExecutor`, and `create_react_agent` can be imported from [[What is LangChain]].
+### Putting it all together
+
+Alright, time to wire everything together and get this agent working:
+
+You need to utilize the agent with the above shown tools:
+
 ```python
 from langchain.agents import Tool, AgentExecutor, create_react_agent
-```
 
-The tools that the agent is ultimately allowed to use are summarized as such in a list.
-
-```python
 tools = [tavily_tool, python_repl_tool, wikipedia_tool]
-```
 
-Then the agent is being created:
-
-```python
 agent = create_react_agent(llm, tools, prompt)
 agent_executer = AgentExecutor(
     agent=agent,
@@ -192,7 +182,7 @@ agent_executer = AgentExecutor(
 )
 ```
 
-And finally, you can instruct the agent to create something, search for something, etc. 
+Now you can ask it to do stuff:
 
 ```python
 question = 'Generate the first 20 Fibonacci numbers.'
@@ -201,7 +191,9 @@ output = agent_executer.invoke({
 })
 ```
 
-The agent then begins to "think" about how to reach its goal and finally presents its route and the solution.
+## Watching the agent think
+
+Here's what's really cool - you can see exactly how the agent works through problems. The agent starts thinking about how to reach its goal and shows you its entire route to the solution:
 
 ````bash
 > Entering new AgentExecutor chain...
@@ -239,7 +231,10 @@ Final Answer: The first 20 Fibonacci numbers are: [0, 1, 1, 2, 3, 5, 8, 13, 21, 
 > Finished chain.
 ````
 
-As proof that it does not always generate a Python function:
+Notice how it made a syntax error, realized it, and fixed itself? That's the power of the reasoning loop.
+
+Here's another example showing it doesn't always generate Python functions:
+
 
 ```python
 question = 'Who is the last chancellor of Germany?'
@@ -248,7 +243,8 @@ output = agent_executer.invoke({
 })
 ```
 
-This leads to the following train of thought (here, the agent first interprets "last chancellor" as "current chancellor" and then corrects its search in the second step):
+This leads to an interesting thought process where the agent first interprets "last chancellor" as "current chancellor" and then corrects its search:
+
 
 ```bash
 > Entering new AgentExecutor chain...
@@ -265,7 +261,12 @@ Final Answer: The last chancellor of Germany before Friedrich Merz was Olaf Scho
 > Finished chain.
 ```
 
-I think it's easy to understand how the ReAct agent works. 
+Pretty straightforward to see how the ReAct agent works through different types of problems.
 
-## Summary
-In summary, ReAct is a powerful approach that enables large language models to solve complex problems through a dynamic combination of logical thinking and targeted actions. The ability to transparently trace the agent's thought process through thought and action steps is valuable for debugging and crucial for trust in AI systems. And thanks to tools like [[What is LangChain]], the development and deployment of such intelligent agents are becoming increasingly accessible, opening up new possibilities for a wide range of applications.
+## Why I like ReAct
+
+What I find compelling about ReAct is the transparency. You're not dealing with a black box - you can see exactly how the agent is thinking and what steps it's taking. This makes debugging easier and builds trust in the system.
+
+Plus, with LangChain handling the heavy lifting, building these agents is way more accessible than it used to be. You can focus on defining the right tools and prompts instead of worrying about the orchestration logic.
+
+The combination of reasoning and acting opens up so many possibilities for real-world applications. Pretty exciting stuff!
