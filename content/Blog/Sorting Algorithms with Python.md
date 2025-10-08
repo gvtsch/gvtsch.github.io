@@ -9,7 +9,7 @@ toc: true
 The other day, I wondered how sorting algorithms actually work. This prompted me to take a closer look at them. In the process, I learned a lot of interesting things that I would like to share with you.
 In this article, I will introduce various sorting algorithms and explain how they work using Python code and illustrative graphics. I will look at well-known algorithms such as bubble sort and quick sort, as well as more unusual ones such as bogosort. I will also discuss the speed of the algorithms and find out which ones are suitable for which use cases.
 
-![PNGs of the different sorting algorithms](Quartz/public/Blog/Assets/final.gif)
+![PNGs of the different sorting algorithms](final.gif)
 _All sorting processes in comparison_
 
 ## Why are sorting algorithms important?
