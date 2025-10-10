@@ -24,7 +24,7 @@ To overcome these challenges, it is worth switching to a so-called graph structu
 
 Let's imagine we want to build an agent that tests Python code, corrects errors independently, and, depending on the result, either performs an analysis or escalates the issue to a human. This is not possible with a classic [[ReAct]] agent in LangChain – the limitations quickly become apparent.
 
-**LangChain ReAct agent (classic):**
+**LangChain ReAct agent (classic)**
 
 ```python
 from langchain.agents import initialize_agent, Tool
@@ -58,8 +58,7 @@ result = agent.run("Test this code and analyze the output or escalate if there i
 print(result)
 ```
 
-### What is happening here?
-
+**What is happening here?**
 I think most of the code is understandable to most people. However, a digression on the `test_code` method could provide a little more clarity.
 
 **What is happening, step by step**
