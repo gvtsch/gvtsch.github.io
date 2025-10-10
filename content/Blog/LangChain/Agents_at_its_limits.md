@@ -12,8 +12,6 @@ date: 2025-10-05
 toc: true
 ---
 
-# Agents at their limits
-
 ## The limits of the LangChain chain
 
 In [[ReAct]], we talked about a versatile agent, coded it, and put it to use. [[ReAct]] agents are great for smaller workflows or tool calls and are also suitable for prototypes.
