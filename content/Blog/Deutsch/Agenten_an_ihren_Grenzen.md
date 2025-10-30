@@ -26,7 +26,7 @@ Um diese Herausforderungen zu meistern, lohnt sich der Wechsel zu einer sogenann
 
 Stellen wir uns vor, wir möchten einen Agenten bauen, der Python-Code testen, bei Fehlern selbstständig korrigieren und je nach Ergebnis entweder eine Analyse durchführen oder an einen Menschen eskalieren soll. Mit einem klassischen [[ReAct_de|ReAct]]-Agenten in LangChain ist das nicht möglich – die Grenzen werden schnell sichtbar.
 
-**LangChain ReAct-Agent (klassisch):**
+**LangChain ReAct-Agent (klassisch)**
 
 ```python
 from langchain.agents import initialize_agent, Tool
@@ -59,8 +59,6 @@ agent = initialize_agent(tools, llm, agent="zero-shot-react-description")
 result = agent.run("Test this code and analyze the output or escalate if there is an error:\nprint(x)")
 print(result)
 ```
-
-### Was passiert hier?
 
 Ich denke der Großteil des Codes ist den meisten verständlich. Ein Exkurs die `test_code`-Methode könnte aber noch etwas mehr Klarheit schaffen. 
 

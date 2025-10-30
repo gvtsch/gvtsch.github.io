@@ -9,7 +9,7 @@ toc: true
 The other day, I wondered how sorting algorithms actually work. This prompted me to take a closer look at them. In the process, I learned a lot of interesting things that I would like to share with you.
 In this article, I will introduce various sorting algorithms and explain how they work using Python code and illustrative graphics. I will look at well-known algorithms such as bubble sort and quick sort, as well as more unusual ones such as bogosort. I will also discuss the speed of the algorithms and find out which ones are suitable for which use cases.
 
-![PNGs of the different sorting algorithms](Quartz/public/Blog/Assets/final.gif)
+![PNGs of the different sorting algorithms](final.gif)
 _All sorting processes in comparison_
 
 ## Why are sorting algorithms important?
@@ -76,7 +76,7 @@ plt.imshow(image)
 plt.axis("off")
 plt.show()
 ```
-![Start configuration](Quartz/public/Blog/Assets/Start.png)
+![Start configuration](Start.png)
 _Start configuration: Every sorting algorithm starts with this data set_
     
 # Sorting algorithms
@@ -93,7 +93,7 @@ Bubble sort is a simple comparison sorting algorithm that repeatedly compares ad
 * **Time complexity**: The time complexity of bubble sort is $O(n^2)$ on average and in the worst case, where $n$ is the number of elements in the array. For large data sets, bubble sort can therefore be very inefficient and is often replaced in practice by faster sorting algorithms such as quick sort, merge sort, or heap sort.
 * **Special features**: Bubble sort is easy to understand and implement, but inefficient for large data sets. It is a stable sorting algorithm, i.e., the relative order of equal elements is preserved.
 
-![Bubble sort](Quartz/public/Blog/Assets/bubble_sort.gif)
+![Bubble sort](bubble_sort.gif)
 _Bubble sort sorting process_
 
 Theoretically, the data set to be sorted already exists. For the sake of completeness, I will still generate it each time.
@@ -157,7 +157,7 @@ Insertion sort builds the sorted array step by step by taking each element from 
 * **Time complexity**: $O(n²)$ on average and in the worst case. However, insertion sort is more efficient than bubble sort if the array is already partially sorted. In this case, each element only needs to be moved a short distance to get to the correct position. Therefore, the time complexity of insertion sort can be close to $O(n)$ in such cases. This only applies to partially sorted arrays. For randomly sorted arrays, the time complexity of insertion sort is still $O(n^2)$.
 * **Special features**: Insertion sort is an in-place algorithm, i.e., it does not require additional storage space. It is easy to implement and efficient for small data sets or almost sorted data.
 
-![Insertion sort](Quartz/public/Blog/Assets/insertion_sort.gif)
+![Insertion sort](insertion_sort.gif)
 _Insertion sort sorting process_
 
 ```python
@@ -215,7 +215,7 @@ In each pass, Selection Sort finds the smallest element in the unsorted part of 
 * **Time complexity**: $O(n²)$ in all cases. The number of comparisons is always the same, regardless of the order of the elements.
 * **Special features**: Selection sort is easy to understand and implement, but it is not efficient for large data sets. One advantage of selection sort over some other sorting algorithms, such as bubble sort, is that it minimizes the number of swaps, which can be useful when swapping elements is an expensive operation.
 
-![Selection Sort](Quartz/public/Blog/Assets/selection_sort.gif)
+![Selection Sort](selection_sort.gif)
 _Selection sort process_
 
 ```python
@@ -276,7 +276,7 @@ Merge sort is a "divide and conquer" algorithm that recursively divides the arra
 * **Time complexity**: The time complexity of merge sort is $O(n \cdot log(n))$ in all cases, since the array is halved in each step and then the two halves are merged in $O(n)$ time. This makes merge sort efficient for large data sets.
 * **Special features**: Merge sort is a stable sorting algorithm, which means that equal elements in the sorted output have the same relative order as in the input. A disadvantage of merge sort is that it requires additional memory to store the two halves during merging.
 
-![Merge Sort](Quartz/public/Blog/Assets/merge_sort.gif)
+![Merge Sort](merge_sort.gif)
 
 _Merge sort sorting process_
 
@@ -375,7 +375,7 @@ Quick Sort is another "divide and conquer" algorithm. It selects an element as a
 * **Time complexity**: The average time complexity of Quick Sort is $O(n \cdot log(n))$, but in the worst case (if the smallest or largest element is chosen as the pivot), it can increase to $O(n^2) in the worst case (if the smallest or largest element is chosen as the pivot).
 * **Special features**: Quick Sort is an in-place algorithm, which means that it does not require any additional storage space. In practice, it is often faster than Merge Sort, even though its time complexity is higher in the worst case. One disadvantage of Quick Sort is that it is not stable, i.e., equal elements may change their relative order during sorting.
 
-![Quicksort](Quartz/public/Blog/Assets/quick_sort.gif)
+![Quicksort](quick_sort.gif)
 
 _Quicksort sorting process_
 
@@ -461,7 +461,7 @@ Heap Sort uses a special data structure called a heap to sort the array. A heap 
 
 * **Special features**: Heap sort is an in-place algorithm, which means it does not require additional storage space. It guarantees a time complexity of $O(n \cdot log(n))$, regardless of the arrangement of the elements. A disadvantage of heap sort is that it is more complex to implement than other sorting algorithms such as quick sort or merge sort.
 
-![Heapsort](Quartz/public/Blog/Assets/heap_sort.gif)
+![Heapsort](heap_sort.gif)
 
 _Heapsort sorting process_
 
@@ -524,7 +524,7 @@ Radix Sort sorts numbers by their individual digits, starting with the least sig
 * **Time complexity**: The time complexity of radix sort is $O(nk)$, where n is the number of elements and k is the maximum number of digits. This makes radix sort very efficient when the number of digits is limited.
 * **Special features**: Radix sort is particularly efficient for integers with a limited number of digits. It is not a comparison-based algorithm, but uses the distribution of digits to sort the numbers. This distinguishes radix sort from many other sorting algorithms that are based on comparisons.
 
-![Radix sort](Quartz/public/Blog/Assets/radix_sort.gif)
+![Radix sort](radix_sort.gif)
 
 _Radix sort sorting process_
 
@@ -592,7 +592,7 @@ Bogo Sort is an inefficient and non-deterministic sorting algorithm. It works by
 * **Time complexity**: The time complexity of Bogo Sort is infinite on average and in the worst case, as there is no guarantee that the algorithm will ever end. This makes Bogo Sort extremely inefficient.
 * **Special features**: Bogo Sort is an example of an extremely inefficient and impractical sorting algorithm. It is often used as a humorous example of a bad algorithm.
 
-![Bogosort](Quartz/public/Blog/Assets/bogo_sort.gif)
+![Bogosort](bogo_sort.gif)
 
 _Bogosort sorting process_
 
@@ -640,7 +640,7 @@ Sleep Sort is an unconventional and inefficient sorting algorithm based on the i
 * **Time complexity**: The time complexity of Sleep Sort is $O(n + max(arr))$, where $max(arr)$ is the largest element in the array. This makes Sleep Sort inefficient for large amounts of data or arrays with very large values.
 * **Special features**: Sleep Sort is not deterministic, as the order of output may vary for identical elements. It is more of a curiosity and not intended for practical use.
 
-![Sleepsort](Quartz/public/Blog/Assets/sleep_sort.gif)
+![Sleepsort](sleep_sort.gif)
 
 _Sleepsort sorting process_
 

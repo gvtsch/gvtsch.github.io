@@ -12,8 +12,6 @@ date: 2025-10-05
 toc: true
 ---
 
-# Agents at their limits
-
 ## The limits of the LangChain chain
 
 In [[ReAct]], we talked about a versatile agent, coded it, and put it to use. [[ReAct]] agents are great for smaller workflows or tool calls and are also suitable for prototypes.
@@ -26,7 +24,7 @@ To overcome these challenges, it is worth switching to a so-called graph structu
 
 Let's imagine we want to build an agent that tests Python code, corrects errors independently, and, depending on the result, either performs an analysis or escalates the issue to a human. This is not possible with a classic [[ReAct]] agent in LangChain – the limitations quickly become apparent.
 
-**LangChain ReAct agent (classic):**
+**LangChain ReAct agent (classic)**
 
 ```python
 from langchain.agents import initialize_agent, Tool
@@ -60,8 +58,6 @@ result = agent.run("Test this code and analyze the output or escalate if there i
 print(result)
 ```
 
-### What is happening here?
-
 I think most of the code is understandable to most people. However, a digression on the `test_code` method could provide a little more clarity.
 
 **What is happening, step by step**
@@ -74,15 +70,13 @@ I think most of the code is understandable to most people. However, a digression
 1. **If successful**: Returns `"Success"`
 2. **If there is an error**: Catches the exception and returns the error message
 
-**What happens with `print(x)`?**
-
 When the agent tests `print(x)`, the following happens:
 
 * Python tries to find the variable `x`
 * However, `x` is not defined anywhere (neither in global nor local variables)
-* Python throws a `NameError: name "x" is not defined`
+* Python throws a `NameError: name 'x' is not defined`
 * The `test_code` function catches this error
-* It returns: `"Error: name "x" is not defined"`
+* It returns: `"Error: name 'x' is not defined"`
 
 **The problem with the classic agent**
 
@@ -94,7 +88,7 @@ The agent receives this error message, but cannot:
 
 It simply stops after the first error because the entire retry and branching logic is hidden in the prompt, not in the code.
 
-And that is the core of the problem: Classic [[LangChain]] agents cannot respond to errors in a structured and traceable manner.
+And that is the core of the problem: Classic [[What is LangChain|LangChain]] agents cannot respond to errors in a structured and traceable manner.
 
 ### Conclusion
 
@@ -104,13 +98,13 @@ This example shows that classic [[ReAct]] agents quickly reach their limits when
 
 ### 1. Lack of explicit loop control and self-correction
 
-Classic agent frameworks such as [[LangChain]] do not offer true programmatic iteration or self-correction. This means that the agent cannot autonomously correct errors or refine results in a targeted manner. The standard agent loop is designed to arrive at a final answer as quickly as possible. Internal iterations are not provided for.
+Classic agent frameworks such as [[What is LangChain|LangChain]] do not offer true programmatic iteration or self-correction. This means that the agent cannot autonomously correct errors or refine results in a targeted manner. The standard agent loop is designed to arrive at a final answer as quickly as possible. Internal iterations are not provided for.
 
 For example, if a tool call fails because a code test returns an error, there is no clear instruction in the code to repeat the error correction cycle. The entire responsibility for corrections lies with the LLM and is hidden in the prompt, which is error-prone and difficult to trace. Debugging is also difficult because the loop and correction logic is hidden in the prompt rather than in the code.
 
 ### 2. Complex branching and black box logic
 
-Another problem with classic [[LangChain]] chains is the handling of complex branches. Often, the workflow must behave differently depending on the result of an intermediate step. In [[LangChain]], however, the entire branching logic must be formulated in the prompt ("If result X, then tool A, otherwise tool B"). This makes the logic difficult to maintain, error-prone, and inflexible—a small change in the prompt can affect the entire workflow.
+Another problem with classic [[What is LangChain|LangChain]] chains is the handling of complex branches. Often, the workflow must behave differently depending on the result of an intermediate step. In [[What is LangChain|LangChain]], however, the entire branching logic must be formulated in the prompt ("If result X, then tool A, otherwise tool B"). This makes the logic difficult to maintain, error-prone, and inflexible—a small change in the prompt can affect the entire workflow.
 
 There is no clear mechanism in the code to define the next step based on an intermediate result. Control lies in the LLM and not in the code. As complexity increases, such chains quickly become confusing and difficult to maintain. Graph structures, on the other hand, are modular, easier to extend, and allow explicit branching.
 
@@ -123,15 +117,15 @@ Agents often need a shared, changeable project status (shared state) that they c
 
 ### Further challenges
 
-- **Integration of human-in-the-loop:** Graphs allow human intervention (e.g., review steps) to be explicitly incorporated.
-- **Transparency and debugging**: In classic [[LangChain]] chains, it is often difficult to understand the exact sequence of events and sources of errors because much of the logic is contained in the prompt rather than in the code. With [[LangGraph]], on the other hand, the sequence of events is explicitly visible in the code and easier to test.
+- **Integration of human-in-the-loop:** Graphs allow human intervention (for example review steps) to be explicitly incorporated.
+- **Transparency and debugging**: In classic [[What is LangChain|LangChain]] chains, it is often difficult to understand the exact sequence of events and sources of errors because much of the logic is contained in the prompt rather than in the code. With [[LangGraph]], on the other hand, the sequence of events is explicitly visible in the code and easier to test.
 
-The above mentioned challenges are precisely the challenges I face. In a framework I am working on, we have implemented several agents linearly. In some places, however, it would be helpful if we could integrate a human-in-the-loop or branches and loops. This is also one of the reasons why I am currently working with [[LangGraph]]. We will convert our framework to [[LangGraph]].
+The above mentioned challenges are precisely the challenges I face. In a framework I am working on, we have implemented several agents linearly. In some places, however, it would be helpful if we could integrate a human-in-the-loop or branches and loops. This is also one of the reasons why I am currently working with [[LangGraph]] and why we will convert our framework to [[LangGraph]].
 
 ## Conclusion: The solution is the graph
 
-All these problems have a common cause: the linear, static nature of classic LangChain agents. What we need is an architecture that can branch flexibly, perform loops, and manage a common state.
+All these problems have a common cause: the linear, static nature of classic [[What is LangChain|LangChain]] agents. What we need is an architecture that can branch flexibly, perform loops, and manage a common state.
 
-This is exactly where [[LangGraph]] comes in – an extension of [[LangChain]] based on graphs. Instead of a rigid (learned a new english word here, yay!) chain, [[LangGraph]] allows you to explicitly define nodes and edges. This enables true loops, clean branches, and a shared state that all agents can use.
+This is exactly where [[LangGraph]] comes in – an extension of [[What is LangChain|LangChain]] based on graphs. Instead of a rigid (learned a new english word here, yay!) chain, [[LangGraph]] allows you to explicitly define nodes and edges. This enables true loops, clean branches, and a shared state that all agents can use.
 
 Curious? Then take a closer look at [[LangGraph]] or contact me directly.
