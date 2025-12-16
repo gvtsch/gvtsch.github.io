@@ -1,4 +1,15 @@
-# Day 15: Dynamic Agent System - Configuration over Hardcoding
+---
+title: "Day 15: Dynamic Agent System - Configuration over Hardcoding"
+date: 2025-12-16
+tags:
+  - python
+  - aoc
+  - adventofcode
+  - aiagents
+  - yaml
+  - systemdesign
+toc: true
+---
 
 You can find the code in my [repository](https://github.com/gvtsch/aoc_2025_heist/tree/main/day_15). 
 
