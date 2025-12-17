@@ -1,5 +1,5 @@
 ---
-title: "Day 16: Service Integration"
+title: "Tag 16: Service Integration"
 date: 2025-12-16
 tags:
   - python
