@@ -10,36 +10,36 @@ tags:
 toc: true
 ---
 
-Alle Dokumente zu diesem Beitrag sind in meinem [repository](https://github.com/gvtsch/aoc_2025_heist/tree/main/day_18) zu finden.
+All documents for this post can be found in my [repository](https://github.com/gvtsch/aoc_2025_heist/tree/main/day_18).
 
-Tag 18 macht aus gesammelten Daten verwertbare Insights. Seit Tag 16 loggen wir jede Message, jeden Tool-Call und jede Agent-Interaktion in SQLite. Seit Tag 17 tracken wir dynamisch entdeckte Tools. Aber bisher haben wir die Daten nur gesammelt, nie analysiert. Also zumindest ich nicht... 😄 Das ändern wir heute.
+Day 18 turns collected data into actionable insights. Since Day 16 we've been logging every message, every tool call, and every agent interaction in SQLite. Since Day 17 we're tracking dynamically discovered tools. But so far we've only been collecting data, never analyzing it. At least I haven't... 😄 That changes today.
 
-## Das Problem
+## The Problem
 
-Wir haben jetzt Sessions in der Datenbank. Verschiedene Tool-Konfigurationen, verschiedene Agent-Setups und verschiedene Runs. Aber wie vergleichen wir sie? Welche Konfiguration funktioniert besser? Welcher Agent nutzt welche Tools am häufigsten? Wer interagiert mit wem?
+We now have sessions in the database. Different tool configurations, different agent setups, and different runs. But how do we compare them? Which configuration works better? Which agent uses which tools most frequently? Who interacts with whom?
 
-Die Daten sind da. Wir brauchen nur die Werkzeuge um sie zu analysieren.
+The data is there. We just need the tools to analyze it.
 
 ## Session Analytics
 
-Die Lösung ist eine Analytics-Schicht über der SQLite-Datenbank. Eine API die Sessions vergleicht, Tool-Usage zusammenfasst und Agent-Interaktionen visualisiert.
+The solution is an analytics layer on top of the SQLite database. An API that compares sessions, summarizes tool usage, and visualizes agent interactions.
 
-### Was wir analysieren könnten
+### What We Could Analyze
 
-* **Session-Vergleich**: Verschiedene Runs nebeneinander legen. Welcher hatte mehr Turns? Welcher war erfolgreicher?
-* **Tool Usage Patterns**: Welche Tools werden wie oft genutzt? Wie hoch ist die Success-Rate? Welcher Agent nutzt welches Tool?
-* **Agent Activity**: Wie aktiv ist jeder Agent? Wer spricht am meisten? Wer am wenigsten?
-* **Interaction Matrix**: Wer folgt wem in der Konversation? Welche Agent-Paare interagieren am häufigsten?
-* **Success Metrics**: Completion-Rate über alle Sessions. Durchschnittliche Turns pro Session. Tool-Success-Rates.
+* **Session Comparison**: Put different runs side by side. Which had more turns? Which was more successful?
+* **Tool Usage Patterns**: Which tools are used how often? What's the success rate? Which agent uses which tool?
+* **Agent Activity**: How active is each agent? Who talks the most? Who the least?
+* **Interaction Matrix**: Who follows whom in the conversation? Which agent pairs interact most frequently?
+* **Success Metrics**: Completion rate across all sessions. Average turns per session. Tool success rates.
 * ...
 
-Hast du noch eine Idee, welche Analyse oder Metrik sinnvoll sein kann? 
+Do you have any other ideas for useful analyses or metrics?
 
-Kommen wir nun zur Implementierung.
+Let's move on to the implementation.
 
-## Session Analytics Klasse
+## SessionAnalytics Class
 
-Die `SessionAnalytics` Klasse kapselt alle Datenbankabfragen:
+The `SessionAnalytics` class encapsulates all database queries:
 
 ```python
 class SessionAnalytics:
@@ -67,21 +67,21 @@ class SessionAnalytics:
         # Returns comparative metrics
 ```
 
-Jede Methode kapselt eine SQL-Query. Clean Separation of Concerns: Die Klasse kennt SQL, der Rest des Systems nicht.
+Each method encapsulates an SQL query. Clean Separation of Concerns: the class knows SQL, the rest of the system doesn't.
 
-Ich glaube ich habe nun schon häufiger Separation of Concerns genannt, ohne es genauer zu beschreiben. Daher ein kurzer Exkurs:
+I think I've mentioned Separation of Concerns several times now without describing it in detail. So here's a quick detour:
 > **Separation of Concerns**
-> Jede Komponente macht eine Sache (gut), nicht alles auf einmal. Tag 18 zum Beispiel:
-> `analytics_api.py` -> HTTP-Endpunkte (Kommunikation)
-> `session_analytics.py` -> Datenlogik (Berechnungen)
-> `init_database.py` -> DB-Setup (Struktur)
-> Jede Komponente hat seine Aufgabe und muss sich nur darum kümmern.
+> Each component does one thing (well), not everything at once. Day 18 for example:
+> `analytics_api.py` -> HTTP endpoints (communication)
+> `session_analytics.py` -> Data logic (computations)
+> `init_database.py` -> DB setup (structure)
+> Each component has its task and only needs to worry about that.
 
-Kommen wir zu den nächsten Methoden, die auch je nur eine Aufgabe haben 😉
+Let's move on to the next methods, which also each have only one job 😉
 
 ### Tool Statistics
 
-Die Tool-Statistiken zeigen wie häufig welches Tool genutzt wird und wie erfolgreich:
+The tool statistics show how frequently each tool is used and how successfully:
 
 ```python
 def get_tool_statistics(self, session_id: Optional[str] = None):
@@ -99,20 +99,20 @@ def get_tool_statistics(self, session_id: Optional[str] = None):
     """, (session_id, session_id))
 ```
 
-Für jedes Tool in der gewählten Session bekommen wir eine Aussage zu:
-- **total_calls**: Wie oft wurde es aufgerufen?
-- **successful_calls**: Wie viele Calls waren erfolgreich?
-- **success_rate**: Erfolgsquote (0.0 bis 1.0)
+For each tool in the selected session we get information about:
+- **total_calls**: How often was it called?
+- **successful_calls**: How many calls were successful?
+- **success_rate**: Success rate (0.0 to 1.0)
 
-Wenn `session_id` None ist, aggregieren wir über alle Sessions. Das zeigt dann globale Patterns.
+If `session_id` is None, we aggregate across all sessions. This shows global patterns.
 
 ### Agent Interaction Matrix
 
-Die Interaction Matrix zeigt wer mit wem spricht. Wir werden das mit einem Self-Join lösen. Ich kannte das noch nicht, daher schauen wir uns das mal etwas genauer an.
+The Interaction Matrix shows who talks to whom. We'll solve this with a self-join. I didn't know about this before, so let's take a closer look.
 
-#### Warum brauchen wir einen Self-Join?
+#### Why Do We Need a Self-Join?
 
-Zuerst unsere `messages` Tabelle:
+First, our `messages` table:
 
 | turn_id | agent_name | message |
 |---------|------------|---------|
@@ -121,91 +121,91 @@ Zuerst unsere `messages` Tabelle:
 | 3 | Planner | "Good idea" |
 | 4 | Driver | "I'm ready" |
 
-Wir wollen wissen "Wer folgt auf wen?", aber in jeder Zeile steht nur **ein** Agent. Um zu sehen dass **Hacker** auf **Planner** folgt, müssen wir **zwei Zeilen gleichzeitig** betrachten:
-- Zeile 1 (Planner)
-- Zeile 2 (Hacker)
+We want to know "Who follows whom?", but each row only contains **one** agent. To see that **Hacker** follows **Planner**, we need to look at **two rows simultaneously**:
+- Row 1 (Planner)
+- Row 2 (Hacker)
 
-SQL hat **keine "nächste Zeile" Funktion**. Das ist nicht besonders hilfreich, wenn man genau das wissen möchte 😉
+SQL has **no "next row" function**. That's not particularly helpful when you want to know exactly that 😉
 
-Wenn SQL eine Zeile verarbeitet, kann es **nicht auf die nächste Zeile zugreifen**. Wir können nichts derartiges programmieren: 
+When SQL processes a row, it **cannot access the next row**. We can't program anything like this:
 
 ```sql
 SELECT
-    agent_name,           -- Aktuelle Zeile
-    NEXT_ROW.agent_name   -- ❌ Es gibt keine NEXT_ROW Funktion
+    agent_name,           -- Current row
+    NEXT_ROW.agent_name   -- ❌ There's no NEXT_ROW function
 FROM messages
 ```
 
-Eine solche Funktion gibt schlecht nicht 🤷‍♂️.
+Such a function simply doesn't exist 🤷‍♂️.
 
-**Ohne Join** sieht SQL nur eine Zeile gleichzeitig:
+**Without a join**, SQL only sees one row at a time:
 
 ```
-SQL verarbeitet Zeile 1:
+SQL processing row 1:
 turn_id | agent_name
 --------|------------
-1       | Planner    <- SQL ist hier und kann nicht auf Zeile 2 zugreifen
+1       | Planner    <- SQL is here and can't access row 2
 ```
 
-**Mit Join** bringen wir zwei Zeilen in eine kombinierte Zeile:
+**With a join**, we bring two rows into one combined row:
 
 ```
-SQL verarbeitet kombinierte Zeile:
+SQL processing combined row:
 m1.turn_id | m1.agent_name | m2.turn_id | m2.agent_name
 -----------|---------------|------------|---------------
-1          | Planner       | 2          | Hacker         ✅ Beide in EINER Zeile!
+1          | Planner       | 2          | Hacker         ✅ Both in ONE row!
 ```
 
-Nun lesen wir die Tabelle **zweimal** - einmal für "aktueller Agent", einmal für "nächster Agent":
+Now we read the table **twice** - once for "current agent", once for "next agent":
 
 ```sql
-FROM messages m1      -- Erste Lesung: "Aktueller Sprecher"
-JOIN messages m2      -- Zweite Lesung: "Nächster Sprecher"
-ON m1.turn_id = m2.turn_id - 1  -- Verbinde Turn N mit Turn N+1
+FROM messages m1      -- First reading: "Current speaker"
+JOIN messages m2      -- Second reading: "Next speaker"
+ON m1.turn_id = m2.turn_id - 1  -- Connect turn N with turn N+1
 ```
 
-Im Detail und im implementierten Code sieht das dann so aus: 
+In detail and in the implemented code, it looks like this:
 
 ```python
 cursor.execute("""
     SELECT
-        m1.agent_name as from_agent,    # Agent der spricht
-        m2.agent_name as to_agent,      # Agent der als nächstes spricht
-        COUNT(*) as interaction_count   # Wie oft passiert das?
-    FROM messages m1                    # Erste Kopie der Tabelle
-    JOIN messages m2 ON                 # Zweite Kopie verbinden mit:
-        m1.session_id = m2.session_id   # Gleiche Session UND
-        AND m1.turn_id = m2.turn_id - 1 # m1 ist genau 1 Turn VOR m2
-    WHERE m1.session_id = ?             # Nur für diese Session
-    GROUP BY m1.agent_name, m2.agent_name  # Gruppiere nach Agent-Paaren
-    ORDER BY interaction_count DESC     # Häufigste zuerst
+        m1.agent_name as from_agent,    # Agent who speaks
+        m2.agent_name as to_agent,      # Agent who speaks next
+        COUNT(*) as interaction_count   # How often does this happen?
+    FROM messages m1                    # First copy of the table
+    JOIN messages m2 ON                 # Connect second copy with:
+        m1.session_id = m2.session_id   # Same session AND
+        AND m1.turn_id = m2.turn_id - 1 # m1 is exactly 1 turn BEFORE m2
+    WHERE m1.session_id = ?             # Only for this session
+    GROUP BY m1.agent_name, m2.agent_name  # Group by agent pairs
+    ORDER BY interaction_count DESC     # Most frequent first
 """, (session_id,))
 ```
 
-Schritt für Schritt in meinen Worten: 
-1. **FROM messages m1** - Nimm die messages Tabelle, nenne sie "m1"
-2. **JOIN messages m2** - Nimm die gleiche Tabelle nochmal, nenne sie "m2"
-3. **ON m1.turn_id = m2.turn_id - 1** - Verbinde wo turn_id von m1 genau 1 kleiner ist als m2
-4. **GROUP BY m1.agent_name, m2.agent_name** - Zähle für jedes Agent-Paar
-5. **COUNT(*)** - Wie oft kommt dieses Paar vor?
+Step by step in my words:
+1. **FROM messages m1** - Take the messages table, call it "m1"
+2. **JOIN messages m2** - Take the same table again, call it "m2"
+3. **ON m1.turn_id = m2.turn_id - 1** - Connect where turn_id of m1 is exactly 1 less than m2
+4. **GROUP BY m1.agent_name, m2.agent_name** - Count for each agent pair
+5. **COUNT(*)** - How often does this pair occur?
 
-Und wozu das ganze? Die Interaction Matrix zeigt:
+And what's this all for? The Interaction Matrix shows:
 
-1. **Dominanz**: Wer initiiert Konversationen?
-   - Wenn "Planner -> X" häufig ist, dominiert der Planner
-2. **Bottlenecks**: Gibt es Agents die kaum antworten?
-   - Wenn "X -> Communicator" selten ist, wird er ignoriert
-3. **Collaboration Patterns**: Welche Agents arbeiten zusammen?
-   - Hohe Counts zwischen zwei Agents = enge Zusammenarbeit
-4. **Konversationsfluss**: Ist es zirkulär oder linear?
-   - Linear: A -> B -> C -> Ende
-   - Zirkulär: A -> B -> C -> A -> B -> C
+1. **Dominance**: Who initiates conversations?
+   - If "Planner -> X" is frequent, the Planner dominates
+2. **Bottlenecks**: Are there agents who rarely respond?
+   - If "X -> Communicator" is rare, they're being ignored
+3. **Collaboration Patterns**: Which agents work together?
+   - High counts between two agents = close collaboration
+4. **Conversation Flow**: Is it circular or linear?
+   - Linear: A -> B -> C -> End
+   - Circular: A -> B -> C -> A -> B -> C
 
-Und so weiter... Zumindest ist das meine Vorstellung. Was ich damit mache, weiß ich noch nicht ganz genau. Manche Features in diesem Projekt existieren ja auch nur, um ein Konzept oder ein Tool zu erlernen 😄
+And so on... At least that's my idea. What I'll actually do with it, I don't know exactly yet. Some features in this project exist purely to learn a concept or tool 😄
 
 ### Session Comparison
 
-Eine weitere wichtige Analytics-Funktion ist der Session-Vergleich. Damit können wir verschiedene Runs direkt nebeneinander legen und systematisch vergleichen:
+Another important analytics function is session comparison. With this we can put different runs directly side by side and systematically compare them:
 
 ```python
 def compare_sessions(self, session_ids: List[str]):
@@ -238,16 +238,16 @@ def compare_sessions(self, session_ids: List[str]):
     return comparisons
 ```
 
-Das gibt uns Sessions nebeneinander. Wir sehen sofort:
-- Welche Session mehr Turns hatte
-- Welche Tools in Session A genutzt wurden aber nicht in Session B
-- Welche Agents in verschiedenen Sessions unterschiedlich aktiv waren
+This gives us sessions side by side. We immediately see:
+- Which session had more turns
+- Which tools were used in Session A but not in Session B
+- Which agents were differently active in different sessions
 
-Das ist wertvoll für A/B-Testing. Wenn wir verschiedene Tool-Sets (aus Tag 17) testen, zeigt uns der Vergleich welches Setup besser performed.
+This is valuable for A/B testing. When we test different tool sets (from Day 17), the comparison shows us which setup performs better.
 
 ### Success Metrics
 
-Die letzte wichtige Analytics-Funktion aggregiert Metriken über alle Sessions hinweg:
+The last important analytics function aggregates metrics across all sessions:
 
 ```python
 def get_success_metrics(self):
@@ -283,28 +283,28 @@ def get_success_metrics(self):
     }
 ```
 
-Das gibt uns Kennzahlen auf System-Ebene:
-- **Completion Rate**: Wie viele Sessions laufen bis zum Ende?
-- **Durchschnittliche Turns**: Wie lang ist eine typische Session?
-- **Tool Success Rates**: Welche Tools funktionieren zuverlässig?
+This gives us system-level metrics:
+- **Completion Rate**: How many sessions run to completion?
+- **Average Turns**: How long is a typical session?
+- **Tool Success Rates**: Which tools work reliably?
 
-Diese Metriken zeigen Trends über Zeit. Wenn wir das System verbessern, sollte die Completion Rate steigen.
+These metrics show trends over time. If we improve the system, the completion rate should increase.
 
-Damit haben wir alle Analytics-Funktionen auf SQLite-Ebene implementiert:
-- **Tool Statistics**: Welche Tools werden genutzt
-- **Agent Interaction Matrix**: Wer spricht mit wem (Self-Join!)
-- **Session Comparison**: Runs vergleichen
-- **Success Metrics**: System-weite Kennzahlen
+With this we've implemented all analytics functions at the SQLite level:
+- **Tool Statistics**: Which tools are being used
+- **Agent Interaction Matrix**: Who talks to whom (Self-Join!)
+- **Session Comparison**: Compare runs
+- **Success Metrics**: System-wide metrics
 
-Jetzt machen wir sie über HTTP zugänglich.
+Now let's make them accessible via HTTP.
 
 ## REST API
 
-Und hier kommt die uns bereits bekannte FastAPI wieder zum tragen. Während ich das schreibe fällt mir auf, dass ich noch nicht aufgelöst habe, wie REST API und FastAPI zueinander stehen. Die Begriff werden recht häufig genutzt.
+And here comes the already familiar FastAPI. While writing this, I realize I haven't yet explained how REST API and FastAPI relate to each other. The terms are used quite frequently.
 
-REST ist ein Architektur-Stil (wie man eine API designed), während FastAPI ein Python Framework ist (also die Implementierung). Oder anders: REST ist der Bauplan für ein Haus und FastAPI ist der Werkzeugkasten. In unserem Fall bauen wir eine REST API mit GET/POST/... und nutzen dafür das Framework FastAPI.
+REST is an architectural style (how you design an API), while FastAPI is a Python framework (the implementation). In other words: REST is the blueprint for a house and FastAPI is the toolbox. In our case we're building a REST API with GET/POST/... and using the FastAPI framework to do it.
 
-Damit machen wir die Daten über HTTP verfügbar, was uns viele Türen öffnet für Dashboards, CLI-tools oder andere Services, die die Session-Daten analysieren möchten. 
+This makes the data available via HTTP, which opens many doors for dashboards, CLI tools, or other services that want to analyze the session data.
 
 ```python
 from fastapi import FastAPI, HTTPException, Query
@@ -350,196 +350,196 @@ async def get_success_metrics():
     return analytics.get_success_metrics()
 ```
 
-Die API läuft auf Port 8007. Alle Endpoints sind GET (read-only), was bedeutet, dass die Datenbank nicht modifiziert wird. Zur Anwendung folgt am Ende noch ein Quickstart-Guide :]
+The API runs on port 8007. All endpoints are GET (read-only), which means the database is not modified. There's a quickstart guide at the end :]
 
-### Query-Parameter
+### Query Parameters
 
-Einige Endpoints akzeptieren optionale Parameter:
+Some endpoints accept optional parameters:
 
-**Session-Filter:**
+**Session filter:**
 
 ```bash
 GET /api/tool-stats?session_id=heist_20251218_140000
 ```
 
-Die obigen Zeilen filtern die Statistiken auf eine spezifische Session.
+The above filters statistics to a specific session.
 
-**Session-Vergleich:**
+**Session comparison:**
 
 ```bash
 GET /api/compare?session_ids=heist_001&session_ids=heist_002&session_ids=heist_003
 ```
 
-Diese Zeilen vergleichen mehrere Sessions. Der `session_ids` Parameter kann wiederholt werden. Damit haben wir alle Analytics-Endpoints abgedeckt.
+This compares multiple sessions. The `session_ids` parameter can be repeated. With that we've covered all analytics endpoints.
 
-## Praktische Anwendung: A/B-Testing
+## Practical Application: A/B Testing
 
-Die wahre Stärke der Analytics-API zeigt sich beim systematischen Experimentieren. Hier ein hypothetisches Beispiel, wie man verschiedene Tool-Konfigurationen vergleichen könnte:
+The true power of the analytics API shows itself in systematic experimentation. Here's a hypothetical example of how you could compare different tool configurations:
 
-**Szenario**: Du willst testen ob mehr Tools zu besseren Ergebnissen führen.
+**Scenario**: You want to test whether more tools lead to better results.
 
-**Setup A**: Standard Tools (calculator, file_reader)
-**Setup B**: Erweiterte Tools (calculator, file_reader, database_query, simulation_data)
+**Setup A**: Standard tools (calculator, file_reader)
+**Setup B**: Extended tools (calculator, file_reader, database_query, simulation_data)
 
-Wir lassen jeweils fünf5 Sessions pro Setup laufen und fragst dann die API:
+You run 5 sessions per setup and then query the API:
 
 ```bash
 GET /api/compare?session_ids=setup_a_1&session_ids=setup_a_2&session_ids=setup_a_3&session_ids=setup_a_4&session_ids=setup_a_5&session_ids=setup_b_1&session_ids=setup_b_2&session_ids=setup_b_3&session_ids=setup_b_4&session_ids=setup_b_5
 ```
 
-**Hypothetische Ergebnisse könnten zeigen:**
-- Setup B hat durchschnittlich mehr Turns (Agents nutzen die Extra-Tools)
-- Setup B hat höhere Completion Rate (mehr Tools = mehr Möglichkeiten)
-- `database_query` wird am häufigsten vom Hacker genutzt
-- Die Interaction Matrix zeigt: Mit mehr Tools reden Agents öfter miteinander
+**Hypothetical results could show:**
+- Setup B has more turns on average (agents use the extra tools)
+- Setup B has a higher completion rate (more tools = more possibilities)
+- `database_query` is used most frequently by the Hacker
+- The Interaction Matrix shows: With more tools, agents talk to each other more often
 
-Das wäre echte datengetriebene Entscheidungsfindung - nicht nach Bauchgefühl, sondern basierend auf Metriken.
+This would be true data-driven decision making - not based on gut feeling, but on metrics.
 
-Solche systematischen Vergleiche sind besonders wertvoll beim Experimentieren mit Agent-Konfigurationen, Tool-Sets oder Prompting-Strategien. Statt zu raten "könnte Setup B besser sein?", hast du konkrete Zahlen: "Setup B hat 23% höhere Completion Rate bei durchschnittlich 12 mehr Turns."
+Such systematic comparisons are especially valuable when experimenting with agent configurations, tool sets, or prompting strategies. Instead of guessing "could Setup B be better?", you have concrete numbers: "Setup B has a 23% higher completion rate with an average of 12 more turns."
 
-## Integration mit bestehendem System
+## Integration with Existing System
 
-Ein wichtiger Aspekt von Tag 18 ist wie es sich ins Gesamtsystem einfügt... oder eben **nicht** einfügt. Die Analytics-API ist bewusst **völlig entkoppelt** vom Rest des Systems.
+An important aspect of Day 18 is how it integrates into the overall system... or rather **doesn't** integrate. The Analytics API is deliberately **completely decoupled** from the rest of the system.
 
-### Read-Only Architektur
+### Read-Only Architecture
 
-Die Analytics-API hat nur **Lesezugriff** auf die Datenbank:
+The Analytics API has only **read access** to the database:
 
 ```python
-# Alle Queries sind SELECT
+# All queries are SELECT
 cursor.execute("SELECT * FROM sessions WHERE ...")
 cursor.execute("SELECT COUNT(*) FROM tool_usage WHERE ...")
 ```
 
-Diese Beschränkung auf Read-Only hat drei wichtige Konsequenzen:
+This restriction to read-only has three important consequences:
 
-**Kein Risiko für laufende Sessions**
+**No risk to running sessions**
 
-Da die API nur liest, kann sie nichts kaputt machen. Selbst wenn die Analytics-API crasht, abstürzt oder fehlerhafte Queries ausführt... die Datenbank bleibt unverändert. Das Heist-System kann währenddessen weiterlaufen und Sessions speichern, ohne dass die Analytics-API das stört.
-Im Gegensatz dazu: Wenn ein Service mit Schreibzugriff abstürzt während er eine Transaction durchführt, könnte die Datenbank in einem inkonsistenten Zustand zurückbleiben. Bei Read-Only gibt es dieses Risiko nicht.
+Since the API only reads, it can't break anything. Even if the Analytics API crashes, fails, or executes faulty queries... the database remains unchanged. The Heist system can continue running and saving sessions meanwhile, without the Analytics API interfering.
+In contrast: If a service with write access crashes while executing a transaction, the database could be left in an inconsistent state. With read-only, this risk doesn't exist.
 
-**Keine Side-Effects** 
+**No side effects**
 
-Jeder API-Call verändert genau... nichts. Das hat einen wichtigen Vorteil: Du kannst Queries beliebig oft ausführen, ohne dir Sorgen zu machen.
+Each API call changes exactly... nothing. This has an important advantage: You can execute queries as often as you want without worry.
 
 ```bash
-# Diese Calls 100x hintereinander ausführen? Kein Problem!
+# Execute these calls 100 times in a row? No problem!
 curl http://localhost:8007/api/sessions
 curl http://localhost:8007/api/sessions
 curl http://localhost:8007/api/sessions
-# ... immer das gleiche Ergebnis, keine ungewollten Änderungen
+# ... always the same result, no unwanted changes
 ```
 
-Im Gegensatz zu einer Write-API, wo jeder Call etwas ändert:
+In contrast to a write API, where each call changes something:
 ```bash
-# ❌ VORSICHT bei Write-APIs:
-POST /api/sessions/create  # Erzeugt Session A
-POST /api/sessions/create  # Erzeugt Session B (nicht gewollt!)
-POST /api/sessions/create  # Erzeugt Session C (auch nicht gewollt!)
+# ❌ CAUTION with write APIs:
+POST /api/sessions/create  # Creates session A
+POST /api/sessions/create  # Creates session B (not intended!)
+POST /api/sessions/create  # Creates session C (also not intended!)
 ```
 
-**Vorhersagbar und reproduzierbar**
+**Predictable and reproducible**
 
-Derselbe Call liefert immer dasselbe Ergebnis (solange keine neuen Sessions hinzukommen). Wenn du heute `/api/sessions` aufrufst und 10 Sessions bekommst, und morgen nochmal aufrufst (ohne neue Sessions), bekommst du wieder exakt die gleichen 10 Sessions.
-Das macht Debugging einfach: Du kannst einen API-Call, der ein unerwartetes Ergebnis liefert, beliebig oft wiederholen ohne dass sich das Ergebnis ändert. Das Verhalten ist deterministisch.
-In der API-Entwicklung nennt man das **idempotent** (auch das habe ich neu gelernt, yay!), eine Eigenschaft die besonders bei GET-Requests wichtig ist. Die HTTP-Spezifikation sagt sogar: "GET requests MUST be safe and idempotent."
+The same call always returns the same result (as long as no new sessions are added). If you call `/api/sessions` today and get 10 sessions, and call it again tomorrow (without new sessions), you'll get exactly the same 10 sessions again.
+This makes debugging easy: You can repeat an API call that delivers an unexpected result as often as you want without the result changing. The behavior is deterministic.
+In API development this is called **idempotent** (I learned this too, yay!), a property that's especially important for GET requests. The HTTP specification even says: "GET requests MUST be safe and idempotent."
 
-### Unabhängiger Lifecycle
+### Independent Lifecycle
 
-Die Analytics-API hat einen komplett eigenständigen Lebenszyklus. Sie ist nicht an die Laufzeit des Heist-Systems gebunden und kann völlig unabhängig betrieben werden. Das zeigt sich in vier Aspekten:
+The Analytics API has a completely independent lifecycle. It's not tied to the runtime of the Heist system and can be operated completely independently. This shows in four aspects:
 
-**Parallel zum Heist-System**
+**Parallel to the Heist system**
 
-Man kann beide Services gleichzeitig laufen lassen:
+You can run both services simultaneously:
 ```bash
-# Terminal 1: Heist-System
+# Terminal 1: Heist system
 ./day_16/start_services.sh
 
 # Terminal 2: Analytics API
 ./day_18/start_analytics.sh
 
-# Beide laufen unabhängig und teilen sich nur die Datenbank
+# Both run independently, only sharing the database
 ```
 
-**Jederzeit starten/stoppen**
+**Start/stop anytime**
 
-Anders als das Heist-System, das während einer Session nicht unterbrochen werden sollte, kannst du die Analytics-API beliebig starten und stoppen:
+Unlike the Heist system, which shouldn't be interrupted during a session, you can start and stop the Analytics API at will:
 
 ```bash
-./start_analytics.sh   # Starten
-# Abfragen machen...
-CTRL+C                 # Stoppen
-# Heist-System läuft weiter, Analytics gestoppt
-./start_analytics.sh   # Wieder starten - alles funktioniert
+./start_analytics.sh   # Start
+# Make queries...
+CTRL+C                 # Stop
+# Heist system continues running, Analytics stopped
+./start_analytics.sh   # Start again - everything works
 ```
 
-Das ist möglich weil die API stateless ist.
+This is possible because the API is stateless.
 
-**Eigener Port, keine Konflikte**
+**Own port, no conflicts**
 
-Port 8007 ist dediziert für Analytics. Das Heist-System nutzt die folgenden Services:
+Port 8007 is dedicated to Analytics. The Heist system uses the following services:
 - Port 1234 - LM Studio
 - Port 8001 - OAuth Service
 - Port 8005 - Memory Service
 - Port 8006 - Discovery Server
 
-Es gibt keine Überschneidungen. Man könnte sogar mehrere Analytics-API Instanzen auf verschiedenen Ports laufen lassen.
+No overlaps. You could even run multiple Analytics API instances on different ports.
 
-**Minimale Dependencies**
+**Minimal dependencies**
 
-Die einzige Abhängigkeit ist SQLite, eine dateibasierte Datenbank ohne eigenen Server. Keine externe Datenbank, keine Message Queues und kein Redis Cache. Nur Python, FastAPI und SQLite.
+The only dependency is SQLite, a file-based database without its own server. No external database, no message queues, and no Redis cache. Just Python, FastAPI, and SQLite.
 
-Das macht das Deployment einfach. Man kopiert den `day_18/` Ordner samt `heist_audit.db` auf einen anderen Server, startet `./start_analytics.sh` und ist fertig. Keine komplexe Infrastruktur notwendig.
+This makes deployment simple. You copy the `day_18/` folder along with `heist_audit.db` to another server, start `./start_analytics.sh` and you're done. No complex infrastructure necessary.
 
-Man könnte die API sogar auf einem separaten Server laufen lassen, mit read-only Zugriff auf eine replizierte Datenbank. Oder sie nur bei Bedarf starten, wenn man Daten analysieren möchte.
+You could even run the API on a separate server with read-only access to a replicated database. Or only start it on demand when you want to analyze data.
 
-### Separation of Concerns in Aktion
+### Separation of Concerns in Action
 
-Die Analytics-Schicht kennt **nur** die Datenbank-Struktur:
+The Analytics layer knows **only** the database structure:
 
 ```python
 class SessionAnalytics:
     def __init__(self, db_path: str = "heist_audit.db"):
-        self.db_path = db_path  # Das ist alles!
+        self.db_path = db_path  # That's all!
 ```
 
-Sie weiß nichts von:
-- ❌ Agents und deren Implementierung
-- ❌ LLM-APIs oder Prompts
-- ❌ OAuth-Authentifizierung
-- ❌ Discovery Servern
-- ❌ Memory Services
+It knows nothing about:
+- ❌ Agents and their implementation
+- ❌ LLM APIs or prompts
+- ❌ OAuth authentication
+- ❌ Discovery servers
+- ❌ Memory services
 
-Sie kennt nur:
-- ✅ Tabellen: `sessions`, `messages`, `tool_usage`
-- ✅ Spalten: `session_id`, `tool_name`, `success_rate`
-- ✅ SQL-Queries
+It only knows:
+- ✅ Tables: `sessions`, `messages`, `tool_usage`
+- ✅ Columns: `session_id`, `tool_name`, `success_rate`
+- ✅ SQL queries
 
-Das ist Separation of Concerns. Wir könnten das gesamte Heist-System neu schreiben. Solange die Datenbank-Struktur gleich bleibt, funktioniert die Analytics-API weiter.
+This is Separation of Concerns. We could completely rewrite the Heist system. As long as the database structure remains the same, the Analytics API continues to work.
 
-Diese Entkopplung bringt mehrere Vorteile:
+This decoupling brings several advantages:
 
-* **Stabilität**: Analytics-API kann nicht abstürzen wenn das Heist-System Probleme hat
-* **Performance**: Queries blockieren nicht das Hauptsystem
-* **Wartbarkeit**: Änderungen an Analytics betreffen nicht das Heist-System
-* **Wiederverwendbarkeit**: Die API könnte auch andere Sessions analysieren, nicht nur vom Heist-System
+* **Stability**: Analytics API can't crash if the Heist system has problems
+* **Performance**: Queries don't block the main system
+* **Maintainability**: Changes to Analytics don't affect the Heist system
+* **Reusability**: The API could analyze other sessions too, not just from the Heist system
 
-Das ist ein Pattern das sich in vielen Production-Systemen bewährt hat: **Operational Database** (für laufende Sessions) getrennt von **Analytics Database** (für Auswertungen).
+This is a pattern that has proven itself in many production systems: **Operational Database** (for running sessions) separate from **Analytics Database** (for analysis).
 
 ## Demo
 
-Nachdem wir die Architektur und Implementierung durchgegangen sind, schauen wir uns an wie die API tatsächlich läuft und was sie zurückgibt.
+After going through the architecture and implementation, let's look at how the API actually runs and what it returns.
 
-### Server starten
+### Starting the Server
 
-Die API wird mit einem einfachen Script gestartet:
+The API is started with a simple script:
 
 ```bash
 cd day_18
 ./start_analytics.sh
 ```
 
-Der Server startet auf Port 8007 und zeigt alle verfügbaren Endpoints:
+The server starts on port 8007 and shows all available endpoints:
 
 ```bash
 ================================================================================
@@ -565,15 +565,15 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8007
 ```
 
-### Beispiel: Success Metrics abrufen
+### Example: Fetching Success Metrics
 
-Wir fragen die systemweiten Metriken ab:
+We query the system-wide metrics:
 
 ```bash
 curl http://localhost:8007/api/metrics | python3 -m json.tool
 ```
 
-Die API antwortet mit einem strukturierten JSON-Objekt:
+The API responds with a structured JSON object:
 
 ```json
 {
@@ -591,24 +591,24 @@ Die API antwortet mit einem strukturierten JSON-Objekt:
 }
 ```
 
-Und was bedeutet das?
+And what does this mean?
 
-* **100% Completion Rate** - Alle 3 Sessions wurden erfolgreich abgeschlossen
-* **Durchschnittlich 45 Turns** - Eine typische Session dauert etwa 45 Interaktionen
-* **Perfekte Tool Success Rates** - Alle Tools funktionieren zuverlässig (1.0 = 100%)
-* **Gleichmäßige Tool-Nutzung** - Jedes Tool wurde genau 3x genutzt (einmal pro Session)
+* **100% Completion Rate** - All 3 sessions were successfully completed
+* **Average 45 Turns** - A typical session takes about 45 interactions
+* **Perfect Tool Success Rates** - All tools work reliably (1.0 = 100%)
+* **Even Tool Usage** - Each tool was used exactly 3 times (once per session)
 
-Solche Metriken geben einen schnellen Überblick über die System-Gesundheit. In einem Produktions-System würden wir nach Trends schauen. Steigt die Completion Rate? Welche Tools haben niedrige Success Rates und müssen verbessert werden? Usw...
+Such metrics give a quick overview of system health. In a production system we'd look for trends. Is the completion rate increasing? Which tools have low success rates and need improvement? Etc...
 
-### Beispiel: Sessions vergleichen
+### Example: Comparing Sessions
 
-Noch ein praktisches Beispiel, zwei Sessions direkt vergleichen:
+Another practical example, comparing two sessions directly:
 
 ```bash
 curl 'http://localhost:8007/api/compare?session_ids=demo_session_001&session_ids=demo_session_002' | python3 -m json.tool
 ```
 
-Die Response zeigt einen Side-by-Side Vergleich:
+The response shows a side-by-side comparison:
 
 ```json
 {
@@ -637,102 +637,102 @@ Die Response zeigt einen Side-by-Side Vergleich:
 }
 ```
 
-Session 001 hatte 45 Turns, Session 002 nur 38, obwohl beide completed sind. Warum? Mit den Detail-Daten in `tool_comparison` und `agent_comparison` kannst du analysieren welche Tools unterschiedlich genutzt wurden.
+Session 001 had 45 turns, session 002 only 38, even though both are completed. Why? With the detailed data in `tool_comparison` and `agent_comparison` you can analyze which tools were used differently.
 
-Diese Art von Vergleich ist Gold wert beim Experimentieren mit verschiedenen Konfigurationen.
+This kind of comparison is worth its weight in gold when experimenting with different configurations.
 
-## Zusammenfassung
+## Summary
 
-Tag 18 schließt eine wichtige Lücke. Wir sammeln seit Tag 16 Daten, aber haben sie bisher nie systematisch ausgewertet. Das ändert sich heute. Auch wenn das nur ein konstruiertes Problem bzw. Lösung ist, um Konzepte und Mehtoden zu erlernen 😃
+Day 18 closes an important gap. We've been collecting data since Day 16, but never systematically analyzed it. That changes today. Even though this is just a constructed problem and solution to learn concepts and methods 😃
 
-### Was haben wir gebaut?
+### What Did We Build?
 
-**Die Analytics-Schicht**
+**The Analytics Layer**
 
-Wir haben eine komplette Analytics-Infrastruktur über der bestehenden SQLite-Datenbank gebaut:
+We built a complete analytics infrastructure on top of the existing SQLite database:
 
-* **SessionAnalytics Klasse** - Kapselt alle SQL-Queries und Aggregations-Logik
-  * Tool Statistics: Welche Tools werden genutzt, wie erfolgreich sind sie?
-  * Agent Interaction Matrix: Wer spricht mit wem? (mit Self-Join Deep-Dive)
-  * Session Comparison: Runs direkt vergleichen
-  * Success Metrics: System-weite Kennzahlen
+* **SessionAnalytics Class** - Encapsulates all SQL queries and aggregation logic
+  * Tool Statistics: Which tools are used, how successful are they?
+  * Agent Interaction Matrix: Who talks to whom? (with Self-Join deep-dive)
+  * Session Comparison: Compare runs directly
+  * Success Metrics: System-wide metrics
 
-* **REST API mit FastAPI** - Macht die Analytics über HTTP verfügbar
-  * 7 GET-Endpoints für verschiedene Analysen
-  * Read-only: Keine Side-Effects, sicher
-  * Port 8007: Unabhängig vom Heist-System
-  * Stateless: Kann jederzeit gestartet/gestoppt werden
+* **REST API with FastAPI** - Makes the analytics available via HTTP
+  * 7 GET endpoints for different analyses
+  * Read-only: No side effects, safe
+  * Port 8007: Independent of the Heist system
+  * Stateless: Can be started/stopped anytime
 
-### Warum ist das wichtig?
+### Why Is This Important?
 
-**Datengetriebene Entscheidungen**
+**Data-Driven Decisions**
 
-Ohne Analytics arbeiten wir im Blindflug. Mit Tag 18 können wir objektiv messen und datengetriebene Entscheidungen treffen:
-* Welche Tool-Konfiguration funktioniert besser?
-* Welche Agents sind Bottlenecks?
-* Steigt die Success-Rate über Zeit?
+Without analytics we're flying blind. With Day 18 we can objectively measure and make data-driven decisions:
+* Which tool configuration works better?
+* Which agents are bottlenecks?
+* Is the success rate increasing over time?
 
-**A/B-Testing ermöglichen**
+**Enabling A/B Testing**
 
-Der Session-Vergleich macht systematisches Experimentieren möglich. Du kannst verschiedene Setups testen und basierend auf echten Daten entscheiden, nicht nach Bauchgefühl.
+Session comparison makes systematic experimentation possible. You can test different setups and decide based on real data, not gut feeling.
 
 **Separation of Concerns**
 
-Die Analytics-API ist ein Paradebeispiel für saubere Architektur (schön, dass ich das selber behaupte 😅):
-* Völlig entkoppelt vom Heist-System
-* Kennt nur die Datenbank-Struktur
-* Read-only: Kein Risiko für laufende Sessions
-* Kann auf separatem Server laufen
+The Analytics API is a prime example of clean architecture (nice that I'm saying that myself 😅):
+* Completely decoupled from the Heist system
+* Only knows the database structure
+* Read-only: No risk to running sessions
+* Can run on a separate server
 
-### Was kommt als nächstes?
+### What's Next?
 
-Mit Tag 18 haben wir die Grundlage für datenbasiertes Arbeiten gelegt. In den nächsten Tags könnten wir die folgenden Themen angehen:
-* Visualisierung der Metrics (Grafana, Custom Dashboard)
-* Alerting bei niedrigen Success Rates
-* Trend-Analysen über Zeit
-* Machine Learning auf den Session-Daten
+With Day 18 we've laid the foundation for data-driven work. In the next days we could tackle the following topics:
+* Visualization of metrics (Grafana, custom dashboard)
+* Alerting on low success rates
+* Trend analysis over time
+* Machine learning on session data
 
-Wir haben jetzt die Werkzeuge um zu verstehen was in unserem System passiert. Keine Vermutungen mehr, nur Daten.
+We now have the tools to understand what's happening in our system. No more guessing, just data.
 
 ---
 
-## Verwendung
+## Usage
 
 ### Quick Start
 
 ```bash
-# 1. Ins day_18 Verzeichnis wechseln
+# 1. Navigate to day_18 directory
 cd day_18
 
-# 2. Analytics API starten
+# 2. Start Analytics API
 ./start_analytics.sh
 
-# In einem NEUEN Terminal:
+# In a NEW terminal:
 
-# 3. Health Check
+# 3. Health check
 curl http://localhost:8007/health | python3 -m json.tool
 
-# 4. Alle Sessions anzeigen
+# 4. List all sessions
 curl http://localhost:8007/api/sessions | python3 -m json.tool
 
-# 5. Session-Details
+# 5. Session details
 curl http://localhost:8007/api/sessions/demo_session_003 | python3 -m json.tool
 
-# 6. Tool-Statistiken
+# 6. Tool statistics
 curl http://localhost:8007/api/tool-stats | python3 -m json.tool
 
-# 7. Agent-Activity
+# 7. Agent activity
 curl http://localhost:8007/api/agent-activity | python3 -m json.tool
 
-# 8. Sessions vergleichen
+# 8. Compare sessions
 curl "http://localhost:8007/api/compare?session_ids=demo_session_001&session_ids=demo_session_002" | python3 -m json.tool
 
-# 9. Success Metrics
+# 9. Success metrics
 curl http://localhost:8007/api/metrics | python3 -m json.tool
 
-# Server stoppen: CTRL+C im Terminal wo der Server läuft
+# Stop server: CTRL+C in the terminal where the server is running
 ```
 
-**Tipp:** Nutze `| python3 -m json.tool` am Ende jedes curl-Befehls für formatierte JSON-Ausgabe!
+**Tip:** Use `| python3 -m json.tool` at the end of each curl command for formatted JSON output!
 
-Die Database enthält bereits 3 Demo-Sessions (`demo_session_001`, `demo_session_002`, `demo_session_003`) die du sofort für Tests nutzen kannst - siehe die Beispiele im Kapitel "Die API in Aktion".
+The database already contains 3 demo sessions (`demo_session_001`, `demo_session_002`, `demo_session_003`) that you can use immediately for testing - see the examples in the "Demo" chapter.
