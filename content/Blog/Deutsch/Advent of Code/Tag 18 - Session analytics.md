@@ -1,5 +1,5 @@
 ---
-title: "Day 18: Session Analytics"
+title: "Tag 18: Session Analytics"
 date: 2025-12-18
 tags:
   - python
