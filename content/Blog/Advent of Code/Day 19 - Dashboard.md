@@ -18,6 +18,8 @@ Day 19 makes our data visible. Since Day 16, we've been logging sessions to SQLi
 So what exactly is **WebSocket**?
 > WebSocket is a bidirectional communication protocol over a persistent TCP connection. Unlike HTTP (request-response), it enables real-time data exchange in both directions. The server can push data to the client at any time without the client having to request it. Perfect for live updates, chat, or dashboards.
 
+![alt text](Dashboard.png)
+
 ## The Problem
 
 The Analytics API delivers data. But JSON isn't particularly intuitive. Who wants to scroll through arrays of message objects to understand which agent was most active? Who wants to read tool statistics as columns of numbers? Sometimes that's fun, sure, but... 🤷‍♂️
@@ -320,7 +322,7 @@ python3 run_heist.py --config "agents_config.yaml" --turns "10" --discovery-url 
 
 You don't have to specify every parameter each time. Default values are automatically used, and you only override what you want to change.
 
-### Dashboard Server
+### Dashboard Server CLI
 
 The dashboard server also accepts CLI config:
 
