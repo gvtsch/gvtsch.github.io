@@ -41,41 +41,6 @@ Day 19 consists of four main components:
 * **Dashboard Server**: FastAPI server on port 8007 with YAML configuration (`config.yaml`). This is independent of the other services and only reads from the database.
 * **Frontend**: Single-page application with Cyberpunk 2077-inspired design. 100% vibecoded.
 
-┌─────────────────┐
-│   Browser       │
-│  Dashboard UI   │
-│  (Cyberpunk)    │
-└────────┬────────┘
-         │ HTTP GET
-         │ WebSocket
-         ▼
-┌─────────────────┐
-│  Dashboard      │
-│  Server (8007)  │──────────┐
-│  + config.yaml  │          │ Read-Only
-└─────────────────┘          │
-                             ▼
-┌──────────────────────────────────┐
-│         SQLite DB                │
-│      heist_analytics.db          │
-└────────────▲─────────────────────┘
-             │ Write
-             │
-┌────────────┴─────────┐
-│  Heist Runner        │
-│  (orchestrator)      │
-└──┬──────────┬────────┘
-   │          │
-   │          └─────────────────┐
-   │                            │
-   ▼                            ▼
-┌──────────────┐    ┌─────────────────────┐
-│ Day 17       │    │ Day 16 Services     │
-│ Agent Classes│    │ - OAuth (8001)      │
-│              │    │ - Memory (8005)     │
-└──────────────┘    │ - Discovery (8006)  │
-                    └─────────────────────┘
-
 The dashboard itself is read-only and doesn't require running services. It only reads from the database. The Heist Runner, however, requires the Day 16/17 infrastructure to generate new sessions.
 
 One more note about the dashboard: There's a Threat Detection section. It's currently only present in the UI but not yet functionally implemented.
