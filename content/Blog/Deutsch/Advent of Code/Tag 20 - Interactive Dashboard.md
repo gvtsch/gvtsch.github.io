@@ -1,5 +1,5 @@
 ---
-title: "Day 20: Interactive Dashboard"
+title: "Tag 20: Interactive Dashboard"
 date: 2025-12-20
 tags:
   - python
