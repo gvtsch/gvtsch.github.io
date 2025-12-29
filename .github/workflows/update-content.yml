@@ -1,0 +1,23 @@
+name: Update Content Submodule
+
+on:
+  repository_dispatch:
+    types: [update-content-submodule]
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main repo
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update submodule
+        run: |
+          git submodule update --remote content
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add content
+          git commit -m "Auto-update content submodule" || echo "No changes to commit"
+          git push
