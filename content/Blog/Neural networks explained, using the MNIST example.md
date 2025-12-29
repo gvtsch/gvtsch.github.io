@@ -65,7 +65,7 @@ fig.suptitle("20 of the digits in our dataset")
 plt.show()
 ```
 
-![](Quartz/public/Blog/Assets/2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_12_0.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_12_0.png)
 
 #### Overview of the MNIST dataset
 
@@ -109,7 +109,7 @@ plt.show()
 Label of the randomly selected image: 4
 ```
 
-![](Quartz/public/Blog/Assets/2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_16_1.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_16_1.png)
 
 The random image from the data set has the aforementioned $28x28$ pixels and is stored in grayscale. It is shown on the left as an image.
 The individual gray scale values, the numbers representing each pixel, are shown in the output on the right. These are originally values between $0$ and $255$, or $8$ bits per pixel. The value indicates how bright this pixel is.
@@ -321,7 +321,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-![](Quartz/public/Blog/Assets/2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_44_0.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_44_0.png)
 
 The plot above shows the accuracy and loss of training and validation after each epoch. These curves show the general performance. However, more specific information can also be derived. For example, if the accuracy of the training is very good, but that of the validation is not, the model is probably overfitted. If both accuracies are poor, it is underfitted. More on this shortly. 
 You too can see, that the ealy-stopping callback stopped the training process early, since we planned with 50 epochs.
@@ -439,7 +439,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-![](Quartz/public/Blog/Assets/2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_56_0.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_56_0.png)
     
 
 
@@ -547,7 +547,7 @@ plt.tight_layout()
 plt.show()
 ```
     
-![](Quartz/public/Blog/Assets/2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_68_0.png)
+![](2024-04-01-Neuronale-Netze-am-Beispiel-MNIST_68_0.png)
 
 What we can see from this graph... The correct digit is plotted on the y-axis, and the predicted digit on the x-axis. If these values match, the counter is incremented (on the diagonal). The higher the values on the diagonal, the better, because the model has predicted more correctly.
 
