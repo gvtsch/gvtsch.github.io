@@ -12,12 +12,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_PSUH }}
       - name: Update submodule
         run: |
           git submodule update --remote content
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
+          git config --global user.email "kempkes.christoph@tuta.com"
+          git config --global user.name "gvtsch"
           git add content
           git commit -m "Auto-update content submodule" || echo "No changes to commit"
           git push
