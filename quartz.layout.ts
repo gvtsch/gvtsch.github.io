@@ -35,6 +35,7 @@ export const defaultContentPageLayout: PageLayout = {
           grow: true,
         },
         { Component: Component.Darkmode() },
+        { Component: Component.LanguageSwitcher() },
       ],
     }),
     // Component.RecentNotes({showTags: false}),
@@ -42,6 +43,23 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer({
       sortBy: "date", // Sortiert nach dem 'date'-Feld im Frontmatter
       sortOrder: "desc", // Absteigend (neueste zuerst)
+      filterFn: (node) => {
+        // Filter out tags folder
+        if (node.slugSegment === "tags") return false
+
+        // Get current language from localStorage
+        const savedLocale = typeof window !== "undefined"
+          ? localStorage.getItem("locale") || "en-US"
+          : "en-US"
+        const currentLang = savedLocale.split("-")[0]
+        const otherLang = currentLang === "en" ? "de" : "en"
+
+        // Filter out the other language folder and its contents
+        if (node.slugSegment === otherLang) return false
+        if (node.slug && node.slug.startsWith(`${otherLang}/`)) return false
+
+        return true
+      },
     }),
   ],
   right: [
@@ -64,12 +82,30 @@ export const defaultListPageLayout: PageLayout = {
           grow: true,
         },
         { Component: Component.Darkmode() },
+        { Component: Component.LanguageSwitcher() },
       ],
     }),
     // HIER die Sortieroptionen für den Explorer hinzufügen
     Component.Explorer({
       sortBy: "date", // Sortiert nach dem 'date'-Feld im Frontmatter
       sortOrder: "desc", // Absteigend (neueste zuerst)
+      filterFn: (node) => {
+        // Filter out tags folder
+        if (node.slugSegment === "tags") return false
+
+        // Get current language from localStorage
+        const savedLocale = typeof window !== "undefined"
+          ? localStorage.getItem("locale") || "en-US"
+          : "en-US"
+        const currentLang = savedLocale.split("-")[0]
+        const otherLang = currentLang === "en" ? "de" : "en"
+
+        // Filter out the other language folder and its contents
+        if (node.slugSegment === otherLang) return false
+        if (node.slug && node.slug.startsWith(`${otherLang}/`)) return false
+
+        return true
+      },
     }),
   ],
   right: [],

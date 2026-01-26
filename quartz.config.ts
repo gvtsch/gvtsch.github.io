@@ -18,7 +18,6 @@ const config: QuartzConfig = {
     locale: "en-US",
     baseUrl: "gvtsch.github.io",
     ignorePatterns: ["private", "templates", ".obsidian"],
-    contentFolder: ["content/Notes", "content/Blog"],
     defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",

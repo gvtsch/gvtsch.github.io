@@ -56,6 +56,11 @@ export default {
     contentMeta: {
       readingTime: ({ minutes }) => `${minutes} min read`,
     },
+    languageSwitcher: {
+      switchTo: "Wechseln zu",
+      german: "Deutsch",
+      english: "Englisch",
+    },
   },
   pages: {
     rss: {
