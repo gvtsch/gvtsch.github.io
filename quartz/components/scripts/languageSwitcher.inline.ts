@@ -15,7 +15,6 @@ document.addEventListener("nav", () => {
     const currentLocale = document.documentElement.getAttribute("saved-locale") || "en-US"
     const targetLocale = currentLocale === "en-US" ? "de-DE" : "en-US"
     const targetLang = targetLocale.split("-")[0] // "en" or "de"
-    const currentLang = currentLocale.split("-")[0] // "en" or "de"
 
     // Get translation mapping from button data
     const button = e.currentTarget as HTMLElement
