@@ -1,0 +1,85 @@
+.language-switcher {
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  background: none;
+  border: none;
+  width: 32px;
+  height: 22px;
+  margin: 0 10px;
+  text-align: inherit;
+  flex-shrink: 0;
+
+  .lang-icon {
+    position: absolute;
+    width: 32px;
+    height: 22px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-radius: 3px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &:hover .lang-icon {
+    opacity: 0.8;
+    transform: translateY(-50%) scale(1.05);
+  }
+}
+
+// Show EN flag when locale is EN (current language)
+:root[saved-locale="en-US"] .language-switcher {
+  .lang-en {
+    display: flex;
+  }
+  .lang-de {
+    display: none;
+  }
+}
+
+// Show DE flag when locale is DE (current language)
+:root[saved-locale="de-DE"] .language-switcher {
+  .lang-en {
+    display: none;
+  }
+  .lang-de {
+    display: flex;
+  }
+}
+
+// Filter Explorer based on language
+:root[saved-locale="en-US"] {
+  #explorer-content a[href^="/de/"],
+  #explorer-content a[href="/de"],
+  #explorer-content .folder-outer[data-folderpath="de"] {
+    display: none !important;
+  }
+
+  // Hide parent li elements
+  #explorer-content li:has(> a[href^="/de/"]),
+  #explorer-content li:has(> a[href="/de"]) {
+    display: none !important;
+  }
+}
+
+:root[saved-locale="de-DE"] {
+  #explorer-content a[href^="/en/"],
+  #explorer-content a[href="/en"],
+  #explorer-content .folder-outer[data-folderpath="en"] {
+    display: none !important;
+  }
+
+  // Hide parent li elements
+  #explorer-content li:has(> a[href^="/en/"]),
+  #explorer-content li:has(> a[href="/en"]) {
+    display: none !important;
+  }
+}

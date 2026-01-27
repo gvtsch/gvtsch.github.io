@@ -89,11 +89,21 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     enableRadial,
   } = JSON.parse(graph.dataset["cfg"]!) as D3Config
 
+  // Filter data by current language
+  const savedLocale = localStorage.getItem("locale") || "en-US"
+  const currentLang = savedLocale.split("-")[0] // "en" or "de"
+
   const data: Map<SimpleSlug, ContentDetails> = new Map(
-    Object.entries<ContentDetails>(await fetchData).map(([k, v]) => [
-      simplifySlug(k as FullSlug),
-      v,
-    ]),
+    Object.entries<ContentDetails>(await fetchData)
+      .filter(([k, v]) => {
+        const slug = k as FullSlug
+        // Only include pages from current language folder
+        return slug.startsWith(`${currentLang}/`) || slug === "index"
+      })
+      .map(([k, v]) => [
+        simplifySlug(k as FullSlug),
+        v,
+      ]),
   )
   const links: SimpleLinkData[] = []
   const tags: SimpleSlug[] = []

@@ -58,6 +58,11 @@ export interface Translation {
     contentMeta: {
       readingTime: (variables: { minutes: number }) => string
     }
+    languageSwitcher: {
+      switchTo: string
+      german: string
+      english: string
+    }
   }
   pages: {
     rss: {
