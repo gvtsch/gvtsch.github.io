@@ -20,4 +20,4 @@ jobs:
           git config --global user.name "gvtsch"
           git add content
           git commit -m "Auto-update content submodule" || echo "No changes to commit"
-          git push https://x-access-token:${{ secrets.PAT_PUSH }}@github.com/gvtsch/gvtsch.github.io.git HEAD:v4
+          git push https://x-access-token:${{ secrets.ACTION_DISPATCH_TOKEN }}@github.com/gvtsch/gvtsch.github.io.git HEAD:v4
