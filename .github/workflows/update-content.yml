@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: true
           token: ${{ secrets.ACTION_DISPATCH_TOKEN }}
